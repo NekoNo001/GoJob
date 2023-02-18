@@ -90,50 +90,6 @@ public class findActivity extends AppCompatActivity {
         getCompany();
     }
 
-
-    private void getCompany(){
-        firebaseFirestore.collection("User")
-                .document(FirebaseAuth.getInstance().getUid())
-                .collection("Career")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                firebaseFirestore.collection("Company")
-                                        .whereEqualTo("CareerId",document.getId())
-                                        .get()
-                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                                if (task.isSuccessful()) {
-                                                    for (QueryDocumentSnapshot document : task.getResult()) {
-                                                        Company c = new Company();
-                                                        c.setJobPosition(document.getString("jobPosition"));
-                                                        c.setNameCompany(document.getString("nameCompany"));
-                                                        c.setSalary(document.getString("salary"));
-                                                        c.setTypeOfWork(document.getString("typeOfWork"));
-                                                        c.setNumberOfRecruits(document.getLong("numberOfRecruits"));
-                                                        c.setWorkExperienceNeed(document.getLong("workExperienceNeed"));
-                                                        c.setImageUrl(Uri.parse(document.getString("ImageUrl")));
-                                                        c.setAdress(document.getString("address"));
-                                                        c.setGender(document.getString("gender"));
-                                                        c.setJobDescription(document.getString("jobDescription"));
-                                                        c.setCandidateRequirements(document.getString("candidateRequirements"));
-                                                        c.setBenefit(document.getString("benefit"));
-                                                        c.setLevel(document.getString("Level"));
-                                                        companys.add(c);
-                                                    }
-                                                    adapter.notifyDataSetChanged();
-                                                }
-                                            }
-                                        });
-                            }
-                        }
-                    }
-                });
-    }
     private void setUpManager(){
         manager = new CardStackLayoutManager(this, new CardStackListener() {
             @Override
@@ -203,5 +159,86 @@ public class findActivity extends AppCompatActivity {
                     }
                 }
             });
-        }
+    }
+
+
+    private void getCompany(){
+        firebaseFirestore.collection("User")
+                .document(FirebaseAuth.getInstance().getUid())
+                .collection("Career")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                firebaseFirestore.collection("Company")
+                                        .whereEqualTo("CareerId",document.getId())
+                                        .whereEqualTo("status",true)
+                                        .get()
+                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                if (task.isSuccessful()) {
+                                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                                        areadyApply(document.getId());
+                                                    }
+                                                }
+                                            }
+                                        });
+                            }
+                        }
+                    }
+                });
+    }
+
+    private void areadyApply(String CompanyID) {
+        firebaseFirestore.collection("Company")
+                .document(CompanyID)
+                .collection("Application")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        Log.d(TAG, "onComplete: "+ CompanyID);
+                        ArrayList<String> documentId = new ArrayList<String>();
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                documentId.add(document.getId());
+                            }
+                            Log.d(TAG, "onComplete: "+ documentId);
+                            Log.d(TAG, "onComplete: "+ firebaseauth.getCurrentUser().getUid());
+                            if (documentId.contains((firebaseauth.getCurrentUser().getUid())) != true) {
+                                addCompanyToList(CompanyID);
+                            }
+                        }
+                    }
+                });
+    }
+    private void addCompanyToList(String CompanyID) {
+        firebaseFirestore.collection("Company")
+                .document(CompanyID)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        Company c = new Company();
+                        c.setJobPosition(documentSnapshot.getString("jobPosition"));
+                        c.setNameCompany(documentSnapshot.getString("nameCompany"));
+                        c.setSalary(documentSnapshot.getString("salary"));
+                        c.setTypeOfWork(documentSnapshot.getString("typeOfWork"));
+                        c.setNumberOfRecruits(documentSnapshot.getLong("numberOfRecruits"));
+                        c.setWorkExperienceNeed(documentSnapshot.getLong("workExperienceNeed"));
+                        c.setImageUrl(Uri.parse(documentSnapshot.getString("ImageUrl")));
+                        c.setAdress(documentSnapshot.getString("address"));
+                        c.setGender(documentSnapshot.getString("gender"));
+                        c.setJobDescription(documentSnapshot.getString("jobDescription"));
+                        c.setCandidateRequirements(documentSnapshot.getString("candidateRequirements"));
+                        c.setBenefit(documentSnapshot.getString("benefit"));
+                        c.setLevel(documentSnapshot.getString("Level"));
+                        companys.add(c);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+    }
 }
