@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.LoginActivity">
+
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolbarid"/>
+
+    <TextView
+        android:id="@+id/hind1id"
+        style="@style/hind1"
+        android:layout_below="@+id/toolbarid"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:text="@string/please_enter_your_phone_number_and_passwork_to_log_in"
+        android:textSize="15sp"
+        android:padding="10dp"
+        />
+
+    <EditText
+        android:drawableTint="@color/Mint"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:id="@+id/txtemail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hind1id"
+        android:layout_marginTop="16dp"
+        android:hint="Email"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="20sp" />
+
+    <EditText
+        android:drawableLeft="@drawable/padlock"
+        android:drawableTint="@color/Mint"
+        android:id="@+id/txtpw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtemail"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/btnResetpw"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/txtpw"
+        android:layout_marginTop="-15dp"
+        android:layout_marginLeft="15dp"
+        android:gravity="center_vertical"
+        android:text="Reset your password"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/btnsignIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnResetpw"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/round_bg"
+        android:gravity="center"
+        android:text="@string/sign_in"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

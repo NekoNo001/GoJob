@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <View
+        android:id="@+id/topView"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="GoJob"
+        android:textColor="@color/teal_200"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/view1"
+        android:background="@drawable/bg1"
+        android:layout_width="500dp"
+        android:layout_height="290dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topView"
+        app:layout_constraintBottom_toTopOf="@+id/textview1"/>
+    <TextView
+        android:textColor="@color/darkmodedfont"
+        android:id="@+id/textview1"
+        android:text="@string/job_for_two_side"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view1"
+        app:layout_constraintBottom_toTopOf="@+id/textview2"
+        />
+    <TextView
+        android:textColor="@color/darkmodedfont"
+        android:id="@+id/textview2"
+        android:gravity="center"
+        android:text="@string/help_you_easily_build_a_profile_find_jobs_quickly_if_you_are_a_recruiter_you_can_actively_find_the_people_you_need_for_your_job"
+        android:textSize="15sp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview1"
+        app:layout_constraintBottom_toTopOf="@+id/btnsignIn"/>
+
+    <Button
+        android:id="@+id/btnsignIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/round_bg"
+        android:gravity="center"
+        android:text="@string/sign_in"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnsignUp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview2"/>
+
+    <Button
+        android:id="@+id/btnsignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="36dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/round_bg"
+        android:gravity="center"
+        android:text="@string/sign_up"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnVietnamese"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnsignIn"
+        />
+
+    <TextView
+        android:textColor="@color/darkmodedfont"
+        android:id="@+id/btnVietnamese"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:text="@string/vietnamese"
+        android:gravity="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@id/btnEnglish"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+    <TextView
+        android:textColor="@color/darkmodedfont"
+        android:id="@+id/btnEnglish"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:text="@string/english"
+        android:gravity="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnVietnamese"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

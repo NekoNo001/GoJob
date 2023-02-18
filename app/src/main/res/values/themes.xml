@@ -1,0 +1,60 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.GoJob" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/Mint</item>
+        <item name="colorPrimaryVariant">@color/Mint</item>
+        <item name="colorOnPrimary">#FAFAFA</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <!-- Customize your theme here. -->
+        <item name="android:textColor">@color/darkmodedfont</item>
+        <item name="android:textSize">15dp</item>
+    </style>
+    <style name="Theme.GoJob.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.GoJob.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.GoJob.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Toolbar">
+        <item name="android:background">@color/Mint</item>
+    </style>
+    <style name="hind1">
+        <item name="android:background">@color/gray</item>
+    </style>
+    <style name="collectionBox">
+        <item name="android:background">#FFF</item>
+    </style>
+
+    <!-- icon and font on card -->
+    <style name="iconsize">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginStart">20dp</item>
+    </style>
+    <style name="fontJD" >
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_marginStart">5dp</item>
+        <item name="android:layout_marginTop">17dp</item>
+    </style>
+
+    <!-- job description -->
+    <style name="fontJD2" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginEnd">5dp</item>
+        <item name="android:textColor">@color/darkmodedfont</item>
+    </style>
+
+
+</resources>

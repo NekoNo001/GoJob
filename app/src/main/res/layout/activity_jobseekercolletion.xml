@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.JobseakercolletionActivity">
+
+        <include
+            android:id="@+id/toolbarid"
+            layout="@layout/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="330dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:src="@drawable/img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+        <EditText
+            android:id="@+id/txteIntroduce"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:gravity="left"
+            android:hint="@string/introduce_you_self"
+            android:inputType="textMultiLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/your_avatar"
+            android:textSize="30sp"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarid"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/Mint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <EditText
+            android:id="@+id/nameId"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_vertical"
+            android:hint="@string/name"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/personid"
+            app:layout_constraintTop_toBottomOf="@+id/txteIntroduce" />
+
+        <ImageView
+            android:id="@+id/personid"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/man"
+            app:layout_constraintEnd_toStartOf="@id/nameId"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txteIntroduce" />
+
+        <EditText
+            android:id="@+id/txtGPA"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_vertical"
+            android:hint="GPA*"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="10dp"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/university"
+            app:layout_constraintTop_toBottomOf="@+id/positionId" />
+
+        <EditText
+            android:singleLine="true"
+            android:id="@+id/university"
+            android:layout_width="240dp"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:hint="@string/university"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toStartOf="@id/txtGPA"
+            app:layout_constraintStart_toEndOf="@id/universityico"
+            app:layout_constraintTop_toBottomOf="@+id/positionId"
+            android:imeOptions="actionNext"/>
+
+        <ImageView
+
+            android:id="@+id/universityico"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/graduation"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="9dp"
+            app:layout_constraintEnd_toStartOf="@+id/university"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/workid"/>
+
+        <EditText
+            android:singleLine="true"
+            android:id="@+id/positionId"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_vertical"
+            android:hint="@string/position"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/universityico"
+            app:layout_constraintTop_toBottomOf="@+id/nameId" />
+
+        <ImageView
+            android:id="@+id/workid"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/jobs"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/positionId"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/personid" />
+
+        <AutoCompleteTextView
+            android:id="@+id/txtaddress"
+            android:layout_width="300dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_vertical"
+            android:hint="@string/address"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/universityico"
+            app:layout_constraintTop_toBottomOf="@+id/university"
+            android:imeOptions="actionNext"
+            />
+
+        <ImageView
+            android:id="@+id/addressic"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/location"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/txtaddress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/universityico" />
+
+        <EditText
+            android:singleLine="true"
+            android:id="@+id/txtemail"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:hint="Email*"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/emailic"
+            app:layout_constraintTop_toBottomOf="@+id/txtaddress"/>
+
+        <ImageView
+            android:id="@+id/emailic"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/message"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/txtemail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addressic" />
+
+        <EditText
+            android:id="@+id/txtphone"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_vertical"
+            android:hint="@string/phone_number"
+            android:phoneNumber="true"
+            android:layout_marginTop="10dp"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/emailic"
+            app:layout_constraintTop_toBottomOf="@+id/txtemail"
+            android:imeOptions="actionNext"/>
+
+        <ImageView
+            android:id="@+id/phoneic"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/emergencyphone"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/txtemail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailic" />
+
+
+        <ImageView
+            android:id="@+id/datebirth"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/birthday"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/editTextDate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phoneic" />
+
+        <EditText
+            android:id="@+id/editTextDate"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="20dp"
+            android:hint="@string/date_of_birth"
+            android:focusable="false"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/phoneic"
+            app:layout_constraintTop_toBottomOf="@+id/txtphone"
+            android:imeOptions="actionNext"/>
+
+        <ImageView
+            android:id="@+id/webic"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/information"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/txtweb"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/datebirth" />
+
+        <EditText
+            android:id="@+id/txtweb"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="20dp"
+            android:hint="@string/website"
+
+            android:singleLine="true"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/phoneic"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/round_bg"
+            android:gravity="center"
+            android:text="@string/next"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtweb" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">GoJob</string>
+    <string name="sign_in">Login</string>
+    <string name="sign_up">Register</string>
+    <string name="english">English</string>
+    <string name="vietnamese">Vietnamese</string>
+    <string name="job_for_two_side">Benefits for both sides</string>
+    <string name="register">REGISTER</string>
+    <string name="createcv">CREATE YOUR CV</string>
+    <string name="help_you_easily_build_a_profile_find_jobs_quickly_if_you_are_a_recruiter_you_can_actively_find_the_people_you_need_for_your_job">Help you easily build a profile, find jobs quickly. if you are a recruiter, you can actively find the people you need for your job</string>
+    <string name="please_enter_your_phone_number_and_passwork_to_log_in">Please enter your email and passwork to log in</string>
+    <string name="please_enter_your_phone_number_and_passwork_to_sign_up">Please enter your email and passwork to sign up</string>
+    <string name="LoginSuccess">Login Success</string>
+    <string name="Wrong">Wrong email or password</string>
+    <string name="EmailSend">Email Send</string>
+    <string name="CreateAccout">Create Accout!!!</string>
+    <string name="alreadyhaveaccout">This Email already have account</string>
+    <string name="Youare">You are?</string>
+    <string name="select_your_role">Select your role</string>
+    <string name="next">Next</string>
+    <string name="job_seeker">Job seeker</string>
+    <string name="Create_Your_CV">Create Your CV</string>
+    <string name="your_avatar">Your Avatar</string>
+    <string name="position">Position*</string>
+    <string name="name">Name*</string>
+    <string name="university">University*</string>
+    <string name="introduce_you_self">Introduce you self</string>
+    <string name="phone_number">Phone number*</string>
+    <string name="date_of_birth">Date Of Birth*</string>
+    <string name="website">Website</string>
+    <string name="address">Address*</string>
+    <string name="missing">You Missing important information (*)</string>
+    <string name="skill"><b>Skill</b></string>
+    <string name="certifications_js"><b>Certifications</b></string>
+    <string name="interest"><b>Interest</b></string>
+    <string name="workexperian"><b>Work Experience</b></string>
+    <string name="Choose">Choose your fields</string>
+    ---------------------------------------------------Job------------------------------------------
+    <string name="a">IT Developer</string>
+    <string name="b">Business / Sales</string>
+    <string name="c">Architecture</string>
+    <string name="d">Government agency</string>
+    <string name="e">Graphic Design</string>
+    <string name="f">Insurance</string>
+    <string name="g">Legal</string>
+    <string name="h">Interpreter</string>
+    <string name="i">Media</string>
+    <string name="j">Postal</string>
+    <string name="k">Estate Agent</string>
+    <string name="l">Stocks</string>
+    <string name="m">Tourism</string>
+    <string name="n">Textile / Footwear</string>
+    <string name="o">Mechanical</string>
+    ---------------------------------------------------Job------------------------------------------
+    <string name="salary">Salary</string>
+    <string name="recruit">Recruit</string>
+    <string name="work">Work</string>
+    <string name="experience">Experience</string>
+    <string name="level">Level</string>
+    <string name="people">\ people</string>
+    <string name="year">\ year</string>
+
+</resources>
