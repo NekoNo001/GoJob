@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -161,6 +162,7 @@ public class findActivity extends AppCompatActivity {
         manager.setStackFrom(StackFrom.None);
         manager.setSwipeThreshold(0.5f);
         manager.setDirections(Direction.HORIZONTAL);
+        manager.setOverlayInterpolator(new LinearInterpolator());
     }
     private void EventChangeListener(){
             firebaseFirestore.collection("Company").whereEqualTo("Status",true).addSnapshotListener(new EventListener<QuerySnapshot>() {
