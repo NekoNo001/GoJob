@@ -19,9 +19,11 @@ import com.b1906478.gojob.adapter.CardAdapter;
 import com.b1906478.gojob.databinding.ActivityFindBinding;
 import com.b1906478.gojob.model.Company;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -37,6 +39,7 @@ import com.yuyakaido.android.cardstackview.StackFrom;
 import com.yuyakaido.android.cardstackview.SwipeAnimationSetting;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class findActivity extends AppCompatActivity {
     ActivityFindBinding binding;
@@ -46,7 +49,6 @@ public class findActivity extends AppCompatActivity {
     ArrayList<Company> companys;
     CardAdapter adapter;
     CardStackView cardStackView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,36 +88,48 @@ public class findActivity extends AppCompatActivity {
             }
         });
         getCompany();
+    }
 
-        }
+
     private void getCompany(){
-        firebaseFirestore.collection("Company")
-                .whereEqualTo("Status", true)
+        firebaseFirestore.collection("User")
+                .document(FirebaseAuth.getInstance().getUid())
+                .collection("Career")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Company c = new Company();
-                                c.setJobPosition(document.getString("jobPosition"));
-                                c.setNameCompany(document.getString("nameCompany"));
-                                c.setSalary(document.getString("salary"));
-                                c.setTypeOfWork(document.getString("typeOfWork"));
-                                c.setNumberOfRecruits(document.getLong("numberOfRecruits"));
-                                c.setWorkExperienceNeed(document.getLong("workExperienceNeed"));
-                                c.setImageUrl(Uri.parse(document.getString("ImageUrl")));
-                                c.setAdress(document.getString("address"));
-                                c.setGender(document.getString("gender"));
-                                c.setJobDescription(document.getString("jobDescription"));
-                                c.setCandidateRequirements(document.getString("candidateRequirements"));
-                                c.setBenefit(document.getString("benefit"));
-                                c.setLevel(document.getString("Level"));
-                                companys.add(c);
+                                firebaseFirestore.collection("Company")
+                                        .whereEqualTo("CareerId",document.getId())
+                                        .get()
+                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                if (task.isSuccessful()) {
+                                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                                        Company c = new Company();
+                                                        c.setJobPosition(document.getString("jobPosition"));
+                                                        c.setNameCompany(document.getString("nameCompany"));
+                                                        c.setSalary(document.getString("salary"));
+                                                        c.setTypeOfWork(document.getString("typeOfWork"));
+                                                        c.setNumberOfRecruits(document.getLong("numberOfRecruits"));
+                                                        c.setWorkExperienceNeed(document.getLong("workExperienceNeed"));
+                                                        c.setImageUrl(Uri.parse(document.getString("ImageUrl")));
+                                                        c.setAdress(document.getString("address"));
+                                                        c.setGender(document.getString("gender"));
+                                                        c.setJobDescription(document.getString("jobDescription"));
+                                                        c.setCandidateRequirements(document.getString("candidateRequirements"));
+                                                        c.setBenefit(document.getString("benefit"));
+                                                        c.setLevel(document.getString("Level"));
+                                                        companys.add(c);
+                                                    }
+                                                    adapter.notifyDataSetChanged();
+                                                }
+                                            }
+                                        });
                             }
-                            adapter.notifyDataSetChanged();
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     }
                 });
