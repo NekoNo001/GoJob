@@ -7,9 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="darkmodedfont">#A1A1A1</color>
+    <color name="darkmodedfont">#E1E1E1</color>
     <color name="darkmode">#000000</color>
     <color name="Mint">#FF03DAC5</color>
     <color name="gray">#E3E3E3</color>
-    <color name="Darkgray">#4C4C4C</color>
+    <color name="Darkgray">#454545</color>
 </resources>

@@ -15,6 +15,7 @@
         <!-- Customize your theme here. -->
         <item name="android:textColor">@color/darkmodedfont</item>
         <item name="android:textSize">15dp</item>
+        <item name="backgroundColor">@color/white</item>
     </style>
     <style name="Theme.GoJob.NoActionBar">
         <item name="windowActionBar">false</item>

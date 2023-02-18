@@ -37,6 +37,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:iconPadding="0dp"
         app:iconTint="@color/white"
-        android:visibility="gone"
         app:iconSize="35dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,12 +15,10 @@
         <!-- Customize your theme here. -->
         <item name="android:textColor">@color/darkmodedfont</item>
         <item name="android:textSize">15dp</item>
+        <item name="backgroundColor">@color/black</item>
     </style>
     <style name="Toolbar">
         <item name="android:background">@color/black</item>
-    </style>
-    <style name="hind1">
-        <item name="android:background">@color/Darkgray</item>
     </style>
     <style name="collectionBox">
         <item name="android:background">#222222</item>

@@ -21,11 +21,14 @@ import com.b1906478.gojob.adapter.careerListener;
 import com.b1906478.gojob.databinding.ActivityCareerfieldBinding;
 import com.b1906478.gojob.databinding.ActivityCompanycolletionBinding;
 import com.b1906478.gojob.model.Career;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.rpc.context.AttributeContext;
 
@@ -40,6 +43,8 @@ public class CareerfieldActivity extends AppCompatActivity implements careerList
     FirebaseAuth firebaseauth;
     FirebaseFirestore firebaseFirestore;
     ActivityCareerfieldBinding binding;
+    char t=97;
+    int tempId= 100;
     private Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,30 +60,46 @@ public class CareerfieldActivity extends AppCompatActivity implements careerList
         backbuttob(leftArrow);
         RecyclerView careerRV = findViewById(R.id.RVcarrer);
         List<Career> careers = new ArrayList<>();
-        char t=97;
-        int tempId= 100;
-
-        for(int i=1; i<=15 ; i++ ){
-            String temp = String.valueOf(t);
-            String tempDrawable = String.valueOf(t);
-            String tempIdName= "C" + tempId;
-            Career tempCareer = new Career();
-            tempCareer.nameCareer = getString(getStringIDbyname(temp));
-            tempCareer.image = getDrawIDbyname(tempDrawable);
-            tempCareer.CareerId = tempIdName;
-            careers.add(tempCareer);
-            t++;
-            tempId++;
-        }
-
         final careerAdapter careeradapter = new careerAdapter(careers,this);
         careerRV.setAdapter(careeradapter);
+
+        firebaseFirestore.collection("User")
+                .document(FirebaseAuth.getInstance().getUid())
+                .collection("Career")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            ArrayList<String> tempdocumentSnapshot = new ArrayList<>();
+                            for (QueryDocumentSnapshot documentSnapshot : task.getResult()){
+                                tempdocumentSnapshot.add(documentSnapshot.getId());
+                            }
+                            for(int i=1; i<=15 ; i++ ){
+                                String temp = String.valueOf(t);
+                                String tempDrawable = String.valueOf(t);
+                                String tempIdName= "C" + tempId;
+                                Career tempCareer = new Career();
+                                tempCareer.nameCareer = getString(getStringIDbyname(temp));
+                                tempCareer.image = getDrawIDbyname(tempDrawable);
+                                tempCareer.CareerId = tempIdName;
+                                if(tempdocumentSnapshot.contains(tempIdName))
+                                    tempCareer.isSelected = true;
+                                careers.add(tempCareer);
+                                t++;
+                                tempId++;
+                            }
+                            careeradapter.notifyDataSetChanged();
+                        }
+                    }
+                });
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 List<Career> selectedCareer = careeradapter.getSelectedCareer();
-                for(int j=1; j< careers.size(); j++){
+                for(int j=0; j< careers.size(); j++){
                     firebaseFirestore.collection("User")
                             .document(FirebaseAuth.getInstance().getUid())
                             .collection("Career").document(careers.get(j).CareerId).delete();
@@ -94,17 +115,13 @@ public class CareerfieldActivity extends AppCompatActivity implements careerList
                 Intent i = new Intent(CareerfieldActivity.this,findActivity.class);
                 startActivity(i);
                 finish();
-            }
+        }
         });
     }
 
     @Override
     public void onCareerAction(Boolean isSelected) {
-        if(isSelected){
-            btn.setVisibility(View.VISIBLE);
-        }else{
-            btn.setVisibility(View.GONE);
-        }
+
     }
 
     public void backbuttob(ImageView a) {
