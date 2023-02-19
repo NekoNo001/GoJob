@@ -34,12 +34,10 @@ import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
 import com.yuyakaido.android.cardstackview.CardStackListener;
 import com.yuyakaido.android.cardstackview.CardStackView;
 import com.yuyakaido.android.cardstackview.Direction;
-import com.yuyakaido.android.cardstackview.Duration;
 import com.yuyakaido.android.cardstackview.StackFrom;
 import com.yuyakaido.android.cardstackview.SwipeAnimationSetting;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class findActivity extends AppCompatActivity {
     ActivityFindBinding binding;
@@ -147,12 +145,12 @@ public class findActivity extends AppCompatActivity {
                         if (dc.getType() == DocumentChange.Type.ADDED){
                             Company c = new Company();
                             c.setJobPosition(dc.getDocument().getString("jobPosition"));
-                            c.setNameCompany(dc.getDocument().getString("nameCompany"));
-                            c.setSalary(dc.getDocument().getString("salary"));
-                            c.setTypeOfWork(dc.getDocument().getString("typeOfWork"));
-                            c.setNumberOfRecruits(dc.getDocument().getLong("numberOfRecruits"));
-                            c.setWorkExperienceNeed(dc.getDocument().getLong("workExperienceNeed"));
-                            c.setImageUrl(Uri.parse(dc.getDocument().getString("ImageUrl")));
+                            c.setCompanyName(dc.getDocument().getString("nameCompany"));
+                            c.setCompanySalary(dc.getDocument().getString("salary"));
+                            c.setCompanyTypeOfWork(dc.getDocument().getString("typeOfWork"));
+                            c.setCompanyNumberOfRecruits(dc.getDocument().getLong("numberOfRecruits"));
+                            c.setCompanyWorkExperience(dc.getDocument().getLong("workExperienceNeed"));
+                            c.setCompanyAvatar(Uri.parse(dc.getDocument().getString("ImageUrl")));
                             companys.add(c);
                         }
                         adapter.notifyDataSetChanged();
@@ -174,7 +172,7 @@ public class findActivity extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 firebaseFirestore.collection("Company")
                                         .whereEqualTo("CareerId",document.getId())
-                                        .whereEqualTo("status",true)
+                                        .whereEqualTo("companyStatus",true)
                                         .get()
                                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                             @Override
@@ -191,7 +189,6 @@ public class findActivity extends AppCompatActivity {
                     }
                 });
     }
-
     private void areadyApply(String CompanyID) {
         firebaseFirestore.collection("Company")
                 .document(CompanyID)
@@ -223,19 +220,19 @@ public class findActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         Company c = new Company();
-                        c.setJobPosition(documentSnapshot.getString("jobPosition"));
-                        c.setNameCompany(documentSnapshot.getString("nameCompany"));
-                        c.setSalary(documentSnapshot.getString("salary"));
-                        c.setTypeOfWork(documentSnapshot.getString("typeOfWork"));
-                        c.setNumberOfRecruits(documentSnapshot.getLong("numberOfRecruits"));
-                        c.setWorkExperienceNeed(documentSnapshot.getLong("workExperienceNeed"));
-                        c.setImageUrl(Uri.parse(documentSnapshot.getString("ImageUrl")));
-                        c.setAdress(documentSnapshot.getString("address"));
-                        c.setGender(documentSnapshot.getString("gender"));
-                        c.setJobDescription(documentSnapshot.getString("jobDescription"));
-                        c.setCandidateRequirements(documentSnapshot.getString("candidateRequirements"));
-                        c.setBenefit(documentSnapshot.getString("benefit"));
-                        c.setLevel(documentSnapshot.getString("Level"));
+                        c.setJobPosition(documentSnapshot.getString("companyJobPosition"));
+                        c.setCompanyName(documentSnapshot.getString("companyName"));
+                        c.setCompanySalary(documentSnapshot.getString("companySalary"));
+                        c.setCompanyTypeOfWork(documentSnapshot.getString("companyTypeOfWork"));
+                        c.setCompanyNumberOfRecruits(documentSnapshot.getLong("companyNumberOfRecruits"));
+                        c.setCompanyWorkExperience(documentSnapshot.getLong("companyWorkExperience"));
+                        c.setCompanyAvatar(Uri.parse(documentSnapshot.getString("companyAvatar")));
+                        c.setCompanyAdress(documentSnapshot.getString("companyAdress"));
+                        c.setCompanyGender(documentSnapshot.getString("companyGenderNeed"));
+                        c.setCompanyJobDescription(documentSnapshot.getString("companyJobdDescription"));
+                        c.setCompanyCandidateRequirements(documentSnapshot.getString("companyCandidateRequirements"));
+                        c.setCompanyBenefit(documentSnapshot.getString("companyBenefit"));
+                        c.setCompanyLevel(documentSnapshot.getString("companyLevel"));
                         companys.add(c);
                         adapter.notifyDataSetChanged();
                     }

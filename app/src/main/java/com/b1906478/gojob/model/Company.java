@@ -2,142 +2,140 @@ package com.b1906478.gojob.model;
 
 import android.net.Uri;
 
-import java.util.List;
-
 public class Company {
-    String nameCompany, jobPosition, adress, salary, typeOfWork,gender, Location, jobDescription, candidateRequirements, benefit, Level;
-    Number numberOfRecruits, workExperienceNeed;
-    Uri ImageUrl;
+    String companyName, companyJobPosition, companyAdress, companySalary, companyTypeOfWork, companyGender, companyJobLocation, companyJobDescription, companyCandidateRequirements, companyBenefit, companyLevel;
+    Number companyNumberOfRecruits, companyWorkExperience;
+    Uri companyAvatar;
 
     public Company() {
     }
 
-    public String getNameCompany() {
-        return nameCompany;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setNameCompany(String nameCompany) {
-        this.nameCompany = nameCompany;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
     public String getJobPosition() {
-        return jobPosition;
+        return companyJobPosition;
     }
 
-    public void setJobPosition(String jobPosition) {
-        this.jobPosition = jobPosition;
+    public void setJobPosition(String companyJobPosition) {
+        this.companyJobPosition = companyJobPosition;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getCompanyAdress() {
+        return companyAdress;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setCompanyAdress(String companyAdress) {
+        this.companyAdress = companyAdress;
     }
 
-    public String getSalary() {
-        return salary;
+    public String getCompanySalary() {
+        return companySalary;
     }
 
-    public void setSalary(String salary) {
-        this.salary = salary;
+    public void setCompanySalary(String companySalary) {
+        this.companySalary = companySalary;
     }
 
-    public String getTypeOfWork() {
-        return typeOfWork;
+    public String getCompanyTypeOfWork() {
+        return companyTypeOfWork;
     }
 
-    public void setTypeOfWork(String typeOfWork) {
-        this.typeOfWork = typeOfWork;
+    public void setCompanyTypeOfWork(String companyTypeOfWork) {
+        this.companyTypeOfWork = companyTypeOfWork;
     }
 
-    public String getGender() {
-        return gender;
+    public String getCompanyGender() {
+        return companyGender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setCompanyGender(String companyGender) {
+        this.companyGender = companyGender;
     }
 
-    public String getLocation() {
-        return Location;
+    public String getCompanyJobLocation() {
+        return companyJobLocation;
     }
 
-    public void setLocation(String location) {
-        Location = location;
+    public void setCompanyJobLocation(String companyJobLocation) {
+        this.companyJobLocation = companyJobLocation;
     }
 
-    public String getJobDescription() {
-        return jobDescription;
+    public String getCompanyJobDescription() {
+        return companyJobDescription;
     }
 
-    public void setJobDescription(String jobDescription) {
-        this.jobDescription = jobDescription;
+    public void setCompanyJobDescription(String companyJobDescription) {
+        this.companyJobDescription = companyJobDescription;
     }
 
-    public String getCandidateRequirements() {
-        return candidateRequirements;
+    public String getCompanyCandidateRequirements() {
+        return companyCandidateRequirements;
     }
 
-    public void setCandidateRequirements(String candidateRequirements) {
-        this.candidateRequirements = candidateRequirements;
+    public void setCompanyCandidateRequirements(String companyCandidateRequirements) {
+        this.companyCandidateRequirements = companyCandidateRequirements;
     }
 
-    public String getBenefit() {
-        return benefit;
+    public String getCompanyBenefit() {
+        return companyBenefit;
     }
 
-    public void setBenefit(String benefit) {
-        this.benefit = benefit;
+    public void setCompanyBenefit(String companyBenefit) {
+        this.companyBenefit = companyBenefit;
     }
 
-    public Number getNumberOfRecruits() {
-        return numberOfRecruits;
+    public Number getCompanyNumberOfRecruits() {
+        return companyNumberOfRecruits;
     }
 
-    public void setNumberOfRecruits(Number numberOfRecruits) {
-        this.numberOfRecruits = numberOfRecruits;
+    public void setCompanyNumberOfRecruits(Number companyNumberOfRecruits) {
+        this.companyNumberOfRecruits = companyNumberOfRecruits;
     }
 
-    public Number getWorkExperienceNeed() {
-        return workExperienceNeed;
+    public Number getCompanyWorkExperience() {
+        return companyWorkExperience;
     }
 
-    public void setWorkExperienceNeed(Number workExperienceNeed) {
-        this.workExperienceNeed = workExperienceNeed;
+    public void setCompanyWorkExperience(Number companyWorkExperience) {
+        this.companyWorkExperience = companyWorkExperience;
     }
 
-    public Uri getImageUrl() {
-        return ImageUrl;
+    public Uri getCompanyAvatar() {
+        return companyAvatar;
     }
 
-    public void setImageUrl(Uri imageUrl) {
-        ImageUrl = imageUrl;
+    public void setCompanyAvatar(Uri companyAvatar) {
+        this.companyAvatar = companyAvatar;
     }
 
-    public String getLevel() {
-        return Level;
+    public String getCompanyLevel() {
+        return companyLevel;
     }
 
-    public void setLevel(String level) {
-        Level = level;
+    public void setCompanyLevel(String companyLevel) {
+        this.companyLevel = companyLevel;
     }
 
-    public Company(String nameCompany, String jobPosition, String adress, String salary, String typeOfWork, String gender, String location, String jobDescription, String candidateRequirements, String benefit, Number numberOfRecruits, Number workExperienceNeed, Uri imageUrl, String Level) {
-        this.nameCompany = nameCompany;
-        this.jobPosition = jobPosition;
-        this.adress = adress;
-        this.salary = salary;
-        this.typeOfWork = typeOfWork;
-        this.gender = gender;
-        Location = location;
-        this.jobDescription = jobDescription;
-        this.candidateRequirements = candidateRequirements;
-        this.benefit = benefit;
-        this.numberOfRecruits = numberOfRecruits;
-        this.workExperienceNeed = workExperienceNeed;
-        ImageUrl = imageUrl;
-        this.Level = Level;
+    public Company(String companyName, String jobPosition, String companyAdress, String companySalary, String typeOfWork, String companyGender, String companyJobLocation, String companyJobDescription, String companyCandidateRequirements, String companyBenefit, Number companyNumberOfRecruits, Number companyWorkExperience, Uri companyAvatar, String companyLevel) {
+        this.companyName = companyName;
+        this.companyJobPosition = jobPosition;
+        this.companyAdress = companyAdress;
+        this.companySalary = companySalary;
+        this.companyTypeOfWork = typeOfWork;
+        this.companyGender = companyGender;
+        this.companyJobLocation = companyJobLocation;
+        this.companyJobDescription = companyJobDescription;
+        this.companyCandidateRequirements = companyCandidateRequirements;
+        this.companyBenefit = companyBenefit;
+        this.companyNumberOfRecruits = companyNumberOfRecruits;
+        this.companyWorkExperience = companyWorkExperience;
+        this.companyAvatar = companyAvatar;
+        this.companyLevel = companyLevel;
     }
 }

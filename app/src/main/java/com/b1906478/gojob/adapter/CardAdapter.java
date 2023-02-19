@@ -1,5 +1,4 @@
 package com.b1906478.gojob.adapter;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,19 +62,19 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.myViewHolder> 
             benefit = itemView.findViewById(R.id.txtbenefit);
         }
         void bindCard(myViewHolder holder, final Company company){
-            Picasso.get().load(company.getImageUrl()).resize(5000,5000).centerCrop().into(Avatar);
+            Picasso.get().load(company.getCompanyAvatar()).resize(5000,5000).centerCrop().into(Avatar);
             JobPosition.setText(company.getJobPosition());
-            NameCompany.setText(company.getNameCompany());
-            Salary.setText(company.getSalary());
-            NumberOfRecruits.setText(String.valueOf(company.getNumberOfRecruits()) + holder.itemView.getContext().getResources().getString(R.string.people));
-            TypeOfWork.setText(company.getTypeOfWork());
-            WorkExperience.setText(String.valueOf(company.getWorkExperienceNeed()) + holder.itemView.getContext().getResources().getString(R.string.year));
-            Level.setText(company.getLevel());
-            gender.setText(company.getGender());
-            address.setText(company.getAdress().replace("\\n","\n"));
-            jobDescription.setText(company.getJobDescription().replace("\\n","\n"));
-            candidateRequirements.setText(company.getCandidateRequirements().replace("\\n","\n"));
-            benefit.setText(company.getBenefit().replace("\\n","\n"));
+            NameCompany.setText(company.getCompanyName());
+            Salary.setText(company.getCompanySalary());
+            NumberOfRecruits.setText(String.valueOf(company.getCompanyNumberOfRecruits()) + holder.itemView.getContext().getResources().getString(R.string.people));
+            TypeOfWork.setText(company.getCompanyTypeOfWork());
+            WorkExperience.setText(String.valueOf(company.getCompanyWorkExperience()) + holder.itemView.getContext().getResources().getString(R.string.year));
+            Level.setText(company.getCompanyLevel());
+            gender.setText(company.getCompanyGender());
+            address.setText(company.getCompanyAdress().replace("\\n","\n"));
+            jobDescription.setText(company.getCompanyJobDescription().replace("\\n","\n"));
+            candidateRequirements.setText(company.getCompanyCandidateRequirements().replace("\\n","\n"));
+            benefit.setText(company.getCompanyBenefit().replace("\\n","\n"));
         }
     }
 }

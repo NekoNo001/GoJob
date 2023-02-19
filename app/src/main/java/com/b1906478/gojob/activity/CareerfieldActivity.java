@@ -106,8 +106,8 @@ public class CareerfieldActivity extends AppCompatActivity implements careerList
                 }
                 for (int i=0; i< selectedCareer.size();i++) {
                     Map<String, Object> Career = new HashMap<>();
-                    Career.put("NameCareer", selectedCareer.get(i).nameCareer);
-                    Career.put("CareerID", selectedCareer.get(i).CareerId);
+                    Career.put("CareerName", selectedCareer.get(i).nameCareer);
+                    Career.put("CareerId", selectedCareer.get(i).CareerId);
                     firebaseFirestore.collection("User")
                             .document(FirebaseAuth.getInstance().getUid())
                             .collection("Career").document(String.valueOf(selectedCareer.get(i).CareerId)).set(Career);

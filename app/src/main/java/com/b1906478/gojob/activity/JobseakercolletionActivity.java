@@ -18,6 +18,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -109,21 +110,21 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                 String phone = binding.txtphone.getText().toString();
                 String website = binding.txtemail.getText().toString();
                 String dob = binding.editTextDate.getText().toString();
-//                if (name.matches("") || position.matches("") || university.matches("") || gpa.matches("") || address.matches("") || email.matches("") || phone.matches("") || dob.matches("")) {
-//                    Toast.makeText(JobseakercolletionActivity.this, R.string.missing, Toast.LENGTH_LONG).show();
-//                } else {
+                if (name.matches("") || position.matches("") || university.matches("") || gpa.matches("") || address.matches("") || email.matches("") || phone.matches("") || dob.matches("")) {
+                    Toast.makeText(JobseakercolletionActivity.this, R.string.missing, Toast.LENGTH_LONG).show();
+                } else {
                     Map<String, Object> User = new HashMap<>();
-                    User.put("Introduce", Introduce);
-                    User.put("Name", name);
-                    User.put("Position", position);
-                    User.put("University", university);
-                    User.put("GPA", gpa);
-                    User.put("Address", address);
-                    User.put("Email", email);
-                    User.put("Phone", phone);
-                    User.put("Website", website);
-                    User.put("DayOfBirth", dob);
-                    User.put("ImageUrl", ImageUrl);
+                    User.put("userIntroduce", Introduce);
+                    User.put("userName", name);
+                    User.put("userPosition", position);
+                    User.put("userUniversity", university);
+                    User.put("userGPA", gpa);
+                    User.put("userAddress", address);
+                    User.put("userEmail", email);
+                    User.put("userPhone", phone);
+                    User.put("userWebsite", website);
+                    User.put("userDOB", dob);
+                    User.put("userAvatar", ImageUrl);
                     firebaseFirestore.collection("User")
                             .document(FirebaseAuth.getInstance().getUid())
                             .set(User);
@@ -149,7 +150,7 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     firebaseFirestore.collection("User").document(FirebaseAuth.getInstance().getUid())
-                                            .update("ImageUri",uri);
+                                            .update("userAvatar",uri);
                                 }
                             });
                         }
@@ -158,7 +159,7 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                     startActivity(i);
                 }
 
-//            }
+            }
         });
     }
 
