@@ -124,7 +124,7 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                     User.put("Phone", phone);
                     User.put("Website", website);
                     User.put("DOB", dob);
-                    User.put("Avatar", ImageUrl);
+                    User.put("ImageUrl", ImageUrl);
                     firebaseFirestore.collection("User")
                             .document(FirebaseAuth.getInstance().getUid())
                             .set(User);

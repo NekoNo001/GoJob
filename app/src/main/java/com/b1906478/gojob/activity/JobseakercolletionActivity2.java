@@ -87,10 +87,10 @@ public class JobseakercolletionActivity2 extends AppCompatActivity {
                 String experience = binding.txtworkExperian.getText().toString();
                 firebaseFirestore.collection("User")
                         .document(FirebaseAuth.getInstance().getUid())
-                        .update("userSkill", skill,
-                    "userCertificate", cer,
-                                     "userInterest", interest,
-                                     "userWork Experience", experience);
+                        .update("Skill", skill,
+                    "Certificate", cer,
+                                     "Interest", interest,
+                                     "Work Experience", experience);
                 Intent i = new Intent(JobseakercolletionActivity2.this,CareerfieldActivity.class);
                 startActivity(i);
                 finish();
