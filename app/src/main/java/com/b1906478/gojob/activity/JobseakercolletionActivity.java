@@ -1,7 +1,6 @@
 package com.b1906478.gojob.activity;
 
 
-
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -19,7 +18,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,12 +25,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.b1906478.gojob.R;
 import com.b1906478.gojob.databinding.ActivityJobseekercolletionBinding;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -64,19 +59,16 @@ public class JobseakercolletionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityJobseekercolletionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         firebaseauth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
-
         EditText gpt = findViewById(R.id.txtGPA);
         gpt.setFilters(new InputFilter[]{ new MinMaxFilter( "1.00" , "4.00" )});
         ImageView leftArrow = findViewById(R.id.leftArrow);
         TextView txttoolbar = findViewById(R.id.txtToolbar);
-        edt = (EditText) findViewById(R.id.editTextDate);
+        edt = findViewById(R.id.editTextDate);
         Button btn = findViewById(R.id.btnNext);
         txttoolbar.setText(R.string.Create_Your_CV);
         ImageView img = findViewById(R.id.imageView2);
-
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,9 +109,9 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                 String phone = binding.txtphone.getText().toString();
                 String website = binding.txtemail.getText().toString();
                 String dob = binding.editTextDate.getText().toString();
-                if (name.matches("") || position.matches("") || university.matches("") || gpa.matches("") || address.matches("") || email.matches("") || phone.matches("") || dob.matches("")) {
-                    Toast.makeText(JobseakercolletionActivity.this, R.string.missing, Toast.LENGTH_LONG).show();
-                } else {
+//                if (name.matches("") || position.matches("") || university.matches("") || gpa.matches("") || address.matches("") || email.matches("") || phone.matches("") || dob.matches("")) {
+//                    Toast.makeText(JobseakercolletionActivity.this, R.string.missing, Toast.LENGTH_LONG).show();
+//                } else {
                     Map<String, Object> User = new HashMap<>();
                     User.put("Introduce", Introduce);
                     User.put("Name", name);
@@ -166,7 +158,7 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                     startActivity(i);
                 }
 
-            }
+//            }
         });
     }
 
