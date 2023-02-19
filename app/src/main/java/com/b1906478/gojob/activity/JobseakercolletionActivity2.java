@@ -81,10 +81,10 @@ public class JobseakercolletionActivity2 extends AppCompatActivity {
         a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String skill = binding.txtSkill.getText().toString().trim();
-                String cer = binding.txtcer.getText().toString().trim();
-                String interest = binding.txtinterest.getText().toString().trim();
-                String experience = binding.txtworkExperian.getText().toString().trim();
+                String skill = binding.txtSkill.getText().toString();
+                String cer = binding.txtcer.getText().toString();
+                String interest = binding.txtinterest.getText().toString();
+                String experience = binding.txtworkExperian.getText().toString();
                 firebaseFirestore.collection("User")
                         .document(FirebaseAuth.getInstance().getUid())
                         .update("Skill", skill,

@@ -107,16 +107,16 @@ public class JobseakercolletionActivity extends AppCompatActivity {
         a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String Introduce = binding.txteIntroduce.getText().toString().trim();
-                String name = binding.nameId.getText().toString().trim();
-                String position = binding.positionId.getText().toString().trim();
-                String university = binding.university.getText().toString().trim();
-                String gpa = binding.txtGPA.getText().toString().trim();
-                String address = binding.txtaddress.getText().toString().trim();
-                String email = binding.txtemail.getText().toString().trim();
-                String phone = binding.txtphone.getText().toString().trim();
-                String website = binding.txtemail.getText().toString().trim();
-                String dob = binding.editTextDate.getText().toString().trim();
+                String Introduce = binding.txteIntroduce.getText().toString();
+                String name = binding.nameId.getText().toString();
+                String position = binding.positionId.getText().toString();
+                String university = binding.university.getText().toString();
+                String gpa = binding.txtGPA.getText().toString();
+                String address = binding.txtaddress.getText().toString();
+                String email = binding.txtemail.getText().toString();
+                String phone = binding.txtphone.getText().toString();
+                String website = binding.txtemail.getText().toString();
+                String dob = binding.editTextDate.getText().toString();
                 if (name.matches("") || position.matches("") || university.matches("") || gpa.matches("") || address.matches("") || email.matches("") || phone.matches("") || dob.matches("")) {
                     Toast.makeText(JobseakercolletionActivity.this, R.string.missing, Toast.LENGTH_LONG).show();
                 } else {
