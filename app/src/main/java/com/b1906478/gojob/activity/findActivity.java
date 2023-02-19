@@ -56,35 +56,8 @@ public class findActivity extends AppCompatActivity {
         firebaseauth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
         companys =new ArrayList<>();
+        setUpCardStackView();
         setUpManager();
-        cardStackView = findViewById(R.id.cardStack);
-        Button btnApply = binding.btnApply;
-        Button btnRefuse = binding.btnrefuse;
-        adapter = new CardAdapter(companys);
-        cardStackView.setLayoutManager(manager);
-        cardStackView.setAdapter(adapter);
-        btnApply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SwipeAnimationSetting swipeAnimationSetting= new SwipeAnimationSetting.Builder()
-                        .setDirection(Direction.Right)
-                        .setInterpolator(new AccelerateInterpolator())
-                        .build();
-                manager.setSwipeAnimationSetting(swipeAnimationSetting);
-                cardStackView.swipe();;
-            }
-        });
-        btnRefuse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SwipeAnimationSetting swipeAnimationSetting= new SwipeAnimationSetting.Builder()
-                        .setDirection(Direction.Left)
-                        .setInterpolator(new AccelerateInterpolator())
-                        .build();
-                manager.setSwipeAnimationSetting(swipeAnimationSetting);
-                cardStackView.swipe();
-            }
-        });
         getCompany();
     }
 
@@ -132,34 +105,36 @@ public class findActivity extends AppCompatActivity {
         manager.setDirections(Direction.HORIZONTAL);
         manager.setOverlayInterpolator(new LinearInterpolator());
     }
-    private void EventChangeListener(){
-            firebaseFirestore.collection("Company").whereEqualTo("Status",true).addSnapshotListener(new EventListener<QuerySnapshot>() {
-                @Override
-                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-
-                    if(error !=null){
-                        Log.e("firestore error",error.getMessage());
-                        return;
-                    }
-                    for (DocumentChange dc : value.getDocumentChanges()){
-                        if (dc.getType() == DocumentChange.Type.ADDED){
-                            Company c = new Company();
-                            c.setJobPosition(dc.getDocument().getString("jobPosition"));
-                            c.setCompanyName(dc.getDocument().getString("nameCompany"));
-                            c.setCompanySalary(dc.getDocument().getString("salary"));
-                            c.setCompanyTypeOfWork(dc.getDocument().getString("typeOfWork"));
-                            c.setCompanyNumberOfRecruits(dc.getDocument().getLong("numberOfRecruits"));
-                            c.setCompanyWorkExperience(dc.getDocument().getLong("workExperienceNeed"));
-                            c.setCompanyAvatar(Uri.parse(dc.getDocument().getString("ImageUrl")));
-                            companys.add(c);
-                        }
-                        adapter.notifyDataSetChanged();
-                    }
-                }
-            });
+    private void setUpCardStackView() {
+        cardStackView = findViewById(R.id.cardStack);
+        Button btnApply = binding.btnApply;
+        Button btnRefuse = binding.btnrefuse;
+        adapter = new CardAdapter(companys);
+        cardStackView.setLayoutManager(manager);
+        cardStackView.setAdapter(adapter);
+        btnApply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SwipeAnimationSetting swipeAnimationSetting= new SwipeAnimationSetting.Builder()
+                        .setDirection(Direction.Right)
+                        .setInterpolator(new AccelerateInterpolator())
+                        .build();
+                manager.setSwipeAnimationSetting(swipeAnimationSetting);
+                cardStackView.swipe();;
+            }
+        });
+        btnRefuse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SwipeAnimationSetting swipeAnimationSetting= new SwipeAnimationSetting.Builder()
+                        .setDirection(Direction.Left)
+                        .setInterpolator(new AccelerateInterpolator())
+                        .build();
+                manager.setSwipeAnimationSetting(swipeAnimationSetting);
+                cardStackView.swipe();
+            }
+        });
     }
-
-
     private void getCompany(){
         firebaseFirestore.collection("User")
                 .document(FirebaseAuth.getInstance().getUid())
@@ -219,23 +194,26 @@ public class findActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        Company c = new Company();
-                        c.setJobPosition(documentSnapshot.getString("jobPosition"));
-                        c.setCompanyName(documentSnapshot.getString("nameCompany"));
-                        c.setCompanySalary(documentSnapshot.getString("salary"));
-                        c.setCompanyTypeOfWork(documentSnapshot.getString("typeOfWork"));
-                        c.setCompanyNumberOfRecruits(documentSnapshot.getLong("numberOfRecruits"));
-                        c.setCompanyWorkExperience(documentSnapshot.getLong("workExperienceNeed"));
-                        c.setCompanyAvatar(Uri.parse(documentSnapshot.getString("ImageUrl")));
-                        c.setCompanyAdress(documentSnapshot.getString("address"));
-                        c.setCompanyGender(documentSnapshot.getString("gender"));
-                        c.setCompanyJobDescription(documentSnapshot.getString("jobDescription"));
-                        c.setCompanyCandidateRequirements(documentSnapshot.getString("candidateRequirements"));
-                        c.setCompanyBenefit(documentSnapshot.getString("benefit"));
-                        c.setCompanyLevel(documentSnapshot.getString("Level"));
-                        companys.add(c);
+                        createCompanyFromDocument(documentSnapshot);
                         adapter.notifyDataSetChanged();
                     }
                 });
+    }
+    private void createCompanyFromDocument(DocumentSnapshot documentSnapshot){
+        Company c = new Company();
+        c.setJobPosition(documentSnapshot.getString("jobPosition"));
+        c.setCompanyName(documentSnapshot.getString("nameCompany"));
+        c.setCompanySalary(documentSnapshot.getString("salary"));
+        c.setCompanyTypeOfWork(documentSnapshot.getString("typeOfWork"));
+        c.setCompanyNumberOfRecruits(documentSnapshot.getLong("numberOfRecruits"));
+        c.setCompanyWorkExperience(documentSnapshot.getLong("workExperienceNeed"));
+        c.setCompanyAvatar(Uri.parse(documentSnapshot.getString("ImageUrl")));
+        c.setCompanyAdress(documentSnapshot.getString("address"));
+        c.setCompanyGender(documentSnapshot.getString("gender"));
+        c.setCompanyJobDescription(documentSnapshot.getString("jobDescription"));
+        c.setCompanyCandidateRequirements(documentSnapshot.getString("candidateRequirements"));
+        c.setCompanyBenefit(documentSnapshot.getString("benefit"));
+        c.setCompanyLevel(documentSnapshot.getString("Level"));
+        companys.add(c);
     }
 }
