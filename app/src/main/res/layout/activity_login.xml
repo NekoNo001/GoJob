@@ -69,6 +69,7 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/round_bg"
         android:gravity="center"
+        android:textColor="@color/white"
         android:text="@string/sign_in"
         android:textSize="18sp"
         android:textStyle="bold" />

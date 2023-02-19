@@ -30,14 +30,14 @@
 
     <ImageView
         android:id="@+id/view1"
-        android:background="@drawable/bg1"
         android:layout_width="500dp"
-        android:layout_height="290dp"
+        android:layout_height="0dp"
         android:layout_marginTop="30dp"
+        android:background="@drawable/bg1"
+        app:layout_constraintBottom_toTopOf="@+id/textview1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topView"
-        app:layout_constraintBottom_toTopOf="@+id/textview1"/>
+        app:layout_constraintTop_toBottomOf="@+id/topView" />
     <TextView
         android:textColor="@color/darkmodedfont"
         android:id="@+id/textview1"
@@ -71,10 +71,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/round_bg"
         android:gravity="center"
         android:text="@string/sign_in"
         android:textSize="18sp"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnsignUp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -92,11 +94,11 @@
         android:gravity="center"
         android:text="@string/sign_up"
         android:textSize="18sp"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnVietnamese"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnsignIn"
         />
 
     <TextView
