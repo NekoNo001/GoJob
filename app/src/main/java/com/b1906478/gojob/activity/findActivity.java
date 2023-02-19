@@ -172,7 +172,7 @@ public class findActivity extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 firebaseFirestore.collection("Company")
                                         .whereEqualTo("CareerId",document.getId())
-                                        .whereEqualTo("companyStatus",true)
+                                        .whereEqualTo("status",true)
                                         .get()
                                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                             @Override
@@ -220,19 +220,19 @@ public class findActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         Company c = new Company();
-                        c.setJobPosition(documentSnapshot.getString("companyJobPosition"));
-                        c.setCompanyName(documentSnapshot.getString("companyName"));
-                        c.setCompanySalary(documentSnapshot.getString("companySalary"));
-                        c.setCompanyTypeOfWork(documentSnapshot.getString("companyTypeOfWork"));
-                        c.setCompanyNumberOfRecruits(documentSnapshot.getLong("companyNumberOfRecruits"));
-                        c.setCompanyWorkExperience(documentSnapshot.getLong("companyWorkExperience"));
-                        c.setCompanyAvatar(Uri.parse(documentSnapshot.getString("companyAvatar")));
-                        c.setCompanyAdress(documentSnapshot.getString("companyAdress"));
-                        c.setCompanyGender(documentSnapshot.getString("companyGenderNeed"));
-                        c.setCompanyJobDescription(documentSnapshot.getString("companyJobdDescription"));
-                        c.setCompanyCandidateRequirements(documentSnapshot.getString("companyCandidateRequirements"));
-                        c.setCompanyBenefit(documentSnapshot.getString("companyBenefit"));
-                        c.setCompanyLevel(documentSnapshot.getString("companyLevel"));
+                        c.setJobPosition(documentSnapshot.getString("jobPosition"));
+                        c.setCompanyName(documentSnapshot.getString("nameCompany"));
+                        c.setCompanySalary(documentSnapshot.getString("salary"));
+                        c.setCompanyTypeOfWork(documentSnapshot.getString("typeOfWork"));
+                        c.setCompanyNumberOfRecruits(documentSnapshot.getLong("numberOfRecruits"));
+                        c.setCompanyWorkExperience(documentSnapshot.getLong("workExperienceNeed"));
+                        c.setCompanyAvatar(Uri.parse(documentSnapshot.getString("ImageUrl")));
+                        c.setCompanyAdress(documentSnapshot.getString("address"));
+                        c.setCompanyGender(documentSnapshot.getString("gender"));
+                        c.setCompanyJobDescription(documentSnapshot.getString("jobDescription"));
+                        c.setCompanyCandidateRequirements(documentSnapshot.getString("candidateRequirements"));
+                        c.setCompanyBenefit(documentSnapshot.getString("benefit"));
+                        c.setCompanyLevel(documentSnapshot.getString("Level"));
                         companys.add(c);
                         adapter.notifyDataSetChanged();
                     }

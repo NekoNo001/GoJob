@@ -114,17 +114,17 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                     Toast.makeText(JobseakercolletionActivity.this, R.string.missing, Toast.LENGTH_LONG).show();
                 } else {
                     Map<String, Object> User = new HashMap<>();
-                    User.put("userIntroduce", Introduce);
-                    User.put("userName", name);
-                    User.put("userPosition", position);
-                    User.put("userUniversity", university);
-                    User.put("userGPA", gpa);
-                    User.put("userAddress", address);
-                    User.put("userEmail", email);
-                    User.put("userPhone", phone);
-                    User.put("userWebsite", website);
-                    User.put("userDOB", dob);
-                    User.put("userAvatar", ImageUrl);
+                    User.put("Introduce", Introduce);
+                    User.put("Name", name);
+                    User.put("Position", position);
+                    User.put("University", university);
+                    User.put("GPA", gpa);
+                    User.put("Address", address);
+                    User.put("Email", email);
+                    User.put("Phone", phone);
+                    User.put("Website", website);
+                    User.put("DOB", dob);
+                    User.put("Avatar", ImageUrl);
                     firebaseFirestore.collection("User")
                             .document(FirebaseAuth.getInstance().getUid())
                             .set(User);
