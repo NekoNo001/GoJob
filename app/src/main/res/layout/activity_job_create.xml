@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.jobCreate">
+
+
+        <include
+            android:id="@+id/toolbarid"
+            layout="@layout/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/jobPosition"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="50dp"
+            android:gravity="center_vertical"
+            android:hint="Job Position*"
+            android:layout_marginTop="20dp"
+            android:singleLine="true"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarid" />
+
+        <ImageView
+            android:id="@+id/personid"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/man"
+            app:layout_constraintEnd_toStartOf="@id/jobPosition"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarid" />
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@color/darkmodedfont"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/personid"
+            android:layout_marginTop="10dp"/>
+
+        <ImageView
+            android:id="@+id/addressic"
+            style="@style/iconsizeforcreate"
+            android:layout_marginStart="30dp"
+            android:src="@drawable/regularpayments"
+            app:layout_constraintEnd_toStartOf="@+id/Salary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line1" />
+
+        <TextView
+            android:id="@+id/Salary"
+            android:layout_width="120dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
+            android:singleLine="true"
+            android:text="@string/salary"
+            android:textColor="@color/darkmodedfont"
+            android:textSize="20sp"
+            android:visibility="gone"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/addressic"
+            app:layout_constraintTop_toBottomOf="@+id/line1" />
+
+        <EditText
+            android:id="@+id/txtsalary"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:singleLine="true"
+            android:hint="Salary"
+            android:textColor="@color/darkmodedfont"
+            app:layout_constraintEnd_toStartOf="@id/imgNumOfrecut"
+            app:layout_constraintStart_toEndOf="@id/addressic"
+            app:layout_constraintTop_toBottomOf="@+id/line1" />
+
+        <ImageView
+            android:id="@+id/imgNumOfrecut"
+            style="@style/iconsizeforcreate"
+            android:src="@drawable/recruitment"
+            app:layout_constraintStart_toEndOf="@id/txtsalary"
+            app:layout_constraintTop_toBottomOf="@+id/line1" />
+
+        <TextView
+            android:id="@+id/numofrecut"
+            android:layout_width="120dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:layout_marginStart="10dp"
+            android:singleLine="true"
+            android:text="@string/recruit"
+            android:textColor="@color/darkmodedfont"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/imgNumOfrecut"
+            app:layout_constraintTop_toBottomOf="@+id/line1" />
+
+        <EditText
+            android:id="@+id/txtnumofrecut"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="5dp"
+            android:gravity="center_vertical"
+            android:imeOptions="actionNext"
+            android:layout_marginTop="10dp"
+            android:singleLine="true"
+            android:text="10 People"
+            android:textColor="@color/darkmodedfont"
+            app:layout_constraintStart_toEndOf="@+id/imgNumOfrecut"
+            app:layout_constraintTop_toBottomOf="@+id/line1" />
+
+        <ImageView
+            android:id="@+id/typejobic"
+            style="@style/iconsizeforcreate"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/parttime"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addressic" />
+
+        <TextView
+            android:id="@+id/typejob"
+            android:layout_width="120dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="7dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:visibility="gone"
+            android:text="@string/work"
+            android:textColor="@color/darkmodedfont"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/addressic"
+            app:layout_constraintTop_toBottomOf="@+id/txtsalary" />
+
+        <EditText
+            android:id="@+id/txttypejob"
+            style="@style/fontJD"
+            android:gravity="center_vertical"
+            android:layout_height="48dp"
+            android:layout_marginTop="5dp"
+            android:hint="Type of job*"
+            app:layout_constraintStart_toEndOf="@id/addressic"
+            app:layout_constraintTop_toBottomOf="@+id/typejob" />
+
+        <ImageView
+            android:id="@+id/imgexp"
+            style="@style/iconsizeforcreate"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_experience"
+            app:layout_constraintStart_toEndOf="@id/txttypejob"
+            app:layout_constraintTop_toBottomOf="@+id/imgNumOfrecut" />
+
+        <TextView
+            android:id="@+id/exp"
+            android:layout_width="130dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:visibility="gone"
+            android:text="@string/experience"
+            android:textColor="@color/darkmodedfont"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/imgexp"
+            app:layout_constraintTop_toBottomOf="@+id/txtnumofrecut" />
+
+        <EditText
+            android:id="@+id/txtexp"
+            style="@style/fontJD"
+            android:singleLine="true"
+            android:gravity="center_vertical"
+            android:text="2 year"
+            android:layout_marginTop="5dp"
+            android:layout_height="48dp"
+            android:textColor="@color/darkmodedfont"
+            app:layout_constraintStart_toEndOf="@id/imgexp"
+            app:layout_constraintTop_toBottomOf="@+id/exp" />
+
+
+        <ImageView
+            android:id="@+id/levelic"
+            style="@style/iconsizeforcreate"
+            android:src="@drawable/mlm"
+            android:layout_marginStart="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/typejobic" />
+
+        <EditText
+            android:id="@+id/txtlevel"
+            style="@style/fontJD"
+            android:gravity="center_vertical"
+            android:layout_height="48dp"
+            android:text="Staff"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toEndOf="@+id/levelic"
+            app:layout_constraintTop_toBottomOf="@+id/txttypejob" />
+
+
+        <ImageView
+            android:id="@+id/icgender"
+            style="@style/iconsizeforcreate"
+            android:src="@drawable/equality"
+            app:layout_constraintStart_toEndOf="@+id/txtlevel"
+            app:layout_constraintTop_toBottomOf="@+id/typejobic" />
+
+        <EditText
+            android:id="@+id/txtgender"
+            style="@style/fontJD"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:text="Not required"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toEndOf="@+id/icgender"
+            app:layout_constraintTop_toBottomOf="@+id/txttypejob" />
+
+
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@color/darkmodedfont"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtgender"
+            android:layout_marginTop="10dp"/>
+
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/round_bg"
+            android:gravity="center"
+            android:text="@string/next"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

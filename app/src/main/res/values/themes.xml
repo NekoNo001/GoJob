@@ -57,5 +57,13 @@
         <item name="android:textColor">@color/darkmodedfont</item>
     </style>
 
+    <!-- job description create -->
+    <style name="iconsizeforcreate">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginStart">20dp</item>
+    </style>
+
 
 </resources>
