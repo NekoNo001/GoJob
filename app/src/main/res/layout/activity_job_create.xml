@@ -21,30 +21,41 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/information"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Job Information"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarid" />
+
         <EditText
             android:id="@+id/jobPosition"
             android:layout_width="280dp"
             android:layout_height="50dp"
             android:layout_marginEnd="50dp"
+            android:layout_marginTop="10dp"
             android:gravity="center_vertical"
-            android:hint="Job Position*"
-            android:layout_marginTop="20dp"
+            android:hint="@string/JobPosition"
             android:singleLine="true"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarid" />
+            app:layout_constraintTop_toBottomOf="@+id/information" />
 
         <ImageView
             android:id="@+id/personid"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="15dp"
             android:background="@drawable/man"
             app:layout_constraintEnd_toStartOf="@id/jobPosition"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarid" />
+            app:layout_constraintTop_toBottomOf="@+id/information" />
 
         <View
             android:id="@+id/line1"
@@ -89,7 +100,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:singleLine="true"
-            android:hint="Salary"
+            android:hint="Salary*"
             android:textColor="@color/darkmodedfont"
             app:layout_constraintEnd_toStartOf="@id/imgNumOfrecut"
             app:layout_constraintStart_toEndOf="@id/addressic"
@@ -126,7 +137,7 @@
             android:imeOptions="actionNext"
             android:layout_marginTop="10dp"
             android:singleLine="true"
-            android:text="10 People"
+            android:hint="Need*"
             android:textColor="@color/darkmodedfont"
             app:layout_constraintStart_toEndOf="@+id/imgNumOfrecut"
             app:layout_constraintTop_toBottomOf="@+id/line1" />
@@ -164,6 +175,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="5dp"
             android:hint="Type of job*"
+            android:singleLine="true"
             app:layout_constraintStart_toEndOf="@id/addressic"
             app:layout_constraintTop_toBottomOf="@+id/typejob" />
 
@@ -197,8 +209,9 @@
             style="@style/fontJD"
             android:singleLine="true"
             android:gravity="center_vertical"
-            android:text="2 year"
+            android:hint="Experience*"
             android:layout_marginTop="5dp"
+            android:inputType="number"
             android:layout_height="48dp"
             android:textColor="@color/darkmodedfont"
             app:layout_constraintStart_toEndOf="@id/imgexp"
@@ -218,7 +231,8 @@
             style="@style/fontJD"
             android:gravity="center_vertical"
             android:layout_height="48dp"
-            android:text="Staff"
+            android:hint="Level*"
+            android:singleLine="true"
             android:layout_marginTop="5dp"
             app:layout_constraintStart_toEndOf="@+id/levelic"
             app:layout_constraintTop_toBottomOf="@+id/txttypejob" />
@@ -236,8 +250,9 @@
             style="@style/fontJD"
             android:layout_height="48dp"
             android:gravity="center_vertical"
-            android:text="Not required"
+            android:hint="Gender*"
             android:layout_marginTop="5dp"
+            android:singleLine="true"
             app:layout_constraintStart_toEndOf="@+id/icgender"
             app:layout_constraintTop_toBottomOf="@+id/txttypejob" />
 
@@ -254,23 +269,126 @@
             app:layout_constraintTop_toBottomOf="@+id/txtgender"
             android:layout_marginTop="10dp"/>
 
+        <TextView
+            android:id="@+id/jobdescription"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/job_description"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@+id/line2" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/view1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:hint="@string/Description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jobdescription">
+
+            <EditText
+                android:id="@+id/txtjobdescription"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:scrollHorizontally="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/candidateRequirements"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/candidate_requirements"
+            android:textSize="20sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/view1" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/view2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:hint="@string/Requirements"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/candidateRequirements">
+
+            <EditText
+                android:id="@+id/txtSkill"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:scrollHorizontally="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/benefit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/benefit"
+            android:textSize="20sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/view3"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:hint="@string/Benefitof"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/benefit">
+
+            <EditText
+                android:id="@+id/txtbenefit"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:scrollHorizontally="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnNext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="50dp"
+            android:layout_margin="50dp"
             android:background="@drawable/round_bg"
             android:gravity="center"
             android:text="@string/next"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view3" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

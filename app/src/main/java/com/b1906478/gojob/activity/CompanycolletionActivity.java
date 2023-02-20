@@ -116,7 +116,7 @@ public class CompanycolletionActivity extends AppCompatActivity {
                             }
                         });
                     }
-                    Intent i = new Intent(CompanycolletionActivity.this,JobseakercolletionActivity2.class);
+                    Intent i = new Intent(CompanycolletionActivity.this,jobCreate.class);
                     startActivity(i);
                 }
 

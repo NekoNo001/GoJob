@@ -59,5 +59,12 @@
     <string name="level">Level</string>
     <string name="people">\ people</string>
     <string name="year">\ year</string>
+    <string name="job_description">Job Description</string>
+    <string name="candidate_requirements">Candidate Requirements</string>
+    <string name="Requirements">Requirements*</string>
+    <string name="Description">Description of job*</string>
+    <string name="JobPosition">Job Position*</string>
+    <string name="benefit">Benefit</string>
+    <string name="Benefitof">Benefit of your Company*</string>
 
 </resources>

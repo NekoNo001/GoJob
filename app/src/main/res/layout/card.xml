@@ -306,7 +306,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="5dp"
                 android:textStyle="bold"
-                android:text="Job Description"
+                android:text="@string/job_description"
                 android:textSize="20dp"/>
 
             <TextView
@@ -327,7 +327,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="5dp"
                 android:textStyle="bold"
-                android:text="Candidate Requirements"
+                android:text="@string/candidate_requirements"
                 android:textSize="20dp"/>
 
             <TextView
@@ -348,7 +348,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="5dp"
                 android:textStyle="bold"
-                android:text="Benefit"
+                android:text="@string/benefit"
                 android:textSize="20dp"/>
 
             <TextView
