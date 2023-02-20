@@ -1,86 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.CompanycollectionActivity"
-    >
+    android:fillViewport="true">
 
 
-    <include
-        android:id="@+id/toolbarid"
-        layout="@layout/toolbar"
-        />
-
-
-    <TextView
-        android:id="@+id/hind1id"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbarid"
-        android:gravity="center_vertical"
-        android:text="@string/select_your_role"
-        android:textSize="30sp"
-        android:textColor="@color/darkmodedfont"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarid"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:textStyle="bold"/>
+        android:layout_height="match_parent"
+        tools:context=".activity.CompanycolletionActivity">
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/hind1id"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        style="@style/collectionBox"
-        android:elevation="5dp">
+        <include
+            android:id="@+id/toolbarid"
+            layout="@layout/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="370dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
-        <RadioButton
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your Company Avatar"
+            android:textSize="30sp"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarid"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="5dp"
             android:textColor="@color/Mint"
-            android:id="@+id/Job_seeker"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <EditText
+            android:id="@+id/txtcompanyName"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:hint="Company Name*"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <ImageView
+            android:id="@+id/personid"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/office"
+            app:layout_constraintEnd_toStartOf="@id/txtcompanyName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+
+        <Button
+            android:id="@+id/btnNext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layoutDirection="rtl"
-            android:padding="10dp"
-            android:text="@string/job_seeker"
-            android:textAlignment="textStart"
-            android:textSize="20sp"
-            android:checked="true"
-            />
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/round_bg"
+            android:gravity="center"
+            android:text="@string/next"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtcompanyName" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <RadioButton
-            android:textColor="@color/darkmodedfont"
-            android:id="@+id/Recruiter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layoutDirection="rtl"
-            android:padding="10dp"
-            android:text="Recruiter"
-            android:textAlignment="textStart"
-            android:textSize="20sp" />
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/btnsignIn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_bg"
-        android:gravity="center"
-        android:text="@string/next"
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -69,7 +69,7 @@ public class SignupActivity2 extends AppCompatActivity {
                     startActivity(i);
                     finish();
                 }if (btnRecruiter.isChecked()){
-                    Intent i =new Intent(SignupActivity2.this,CompanycollectionActivity.class);
+                    Intent i =new Intent(SignupActivity2.this,CompanycolletionActivity.class);
                     startActivity(i);
                     finish();
                 }
