@@ -156,7 +156,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtsalary" />
 
             <TextView
-                android:id="@+id/txttypejob"
+                android:id="@+id/txtLevel"
                 style="@style/fontJD"
                 android:gravity="center_vertical"
                 android:text="Full-time"
@@ -169,7 +169,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:src="@drawable/ic_experience"
-                app:layout_constraintStart_toEndOf="@id/txttypejob"
+                app:layout_constraintStart_toEndOf="@id/txtLevel"
                 app:layout_constraintTop_toBottomOf="@+id/imgNumOfrecut" />
 
             <TextView
@@ -221,19 +221,19 @@
                 app:layout_constraintTop_toBottomOf="@+id/typejobic" />
 
             <TextView
-                android:id="@+id/txtlevel"
+                android:id="@+id/txtTypejob"
                 style="@style/fontJD"
                 android:gravity="center_vertical"
                 android:text="Staff"
                 app:layout_constraintStart_toEndOf="@+id/levelic"
-                app:layout_constraintTop_toBottomOf="@+id/txttypejob" />
+                app:layout_constraintTop_toBottomOf="@+id/txtLevel" />
 
 
             <ImageView
                 android:id="@+id/icgender"
                 style="@style/iconsize"
                 android:src="@drawable/equality"
-                app:layout_constraintStart_toEndOf="@+id/txtlevel"
+                app:layout_constraintStart_toEndOf="@+id/txtTypejob"
                 app:layout_constraintTop_toBottomOf="@+id/typejobic" />
 
             <TextView
@@ -242,7 +242,7 @@
                 android:gravity="center_vertical"
                 android:text="Not required"
                 app:layout_constraintStart_toEndOf="@+id/icgender"
-                app:layout_constraintTop_toBottomOf="@+id/txttypejob" />
+                app:layout_constraintTop_toBottomOf="@+id/txtLevel" />
 
             <View
                 android:id="@+id/line1"

@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.jobCreate">
+        tools:context=".activity.jobCreateActivity">
 
 
         <include
@@ -25,7 +25,7 @@
             android:id="@+id/information"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Job Information"
+            android:text="@string/JobInformation"
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
             android:textSize="20sp"
@@ -100,7 +100,8 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:singleLine="true"
-            android:hint="Salary*"
+            android:hint="@string/Salary"
+            android:imeOptions="actionNext"
             android:textColor="@color/darkmodedfont"
             app:layout_constraintEnd_toStartOf="@id/imgNumOfrecut"
             app:layout_constraintStart_toEndOf="@id/addressic"
@@ -137,6 +138,7 @@
             android:imeOptions="actionNext"
             android:layout_marginTop="10dp"
             android:singleLine="true"
+            android:inputType="number"
             android:hint="Need*"
             android:textColor="@color/darkmodedfont"
             app:layout_constraintStart_toEndOf="@+id/imgNumOfrecut"
@@ -147,7 +149,7 @@
             style="@style/iconsizeforcreate"
             android:layout_marginStart="30dp"
             android:layout_marginTop="15dp"
-            android:src="@drawable/parttime"
+            android:src="@drawable/mlm"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addressic" />
 
@@ -169,12 +171,13 @@
             app:layout_constraintTop_toBottomOf="@+id/txtsalary" />
 
         <EditText
-            android:id="@+id/txttypejob"
+            android:id="@+id/txtLevel"
             style="@style/fontJD"
             android:gravity="center_vertical"
             android:layout_height="48dp"
             android:layout_marginTop="5dp"
-            android:hint="Type of job*"
+            android:hint="@string/Level"
+            android:imeOptions="actionNext"
             android:singleLine="true"
             app:layout_constraintStart_toEndOf="@id/addressic"
             app:layout_constraintTop_toBottomOf="@+id/typejob" />
@@ -185,7 +188,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginTop="15dp"
             android:src="@drawable/ic_experience"
-            app:layout_constraintStart_toEndOf="@id/txttypejob"
+            app:layout_constraintStart_toEndOf="@id/txtLevel"
             app:layout_constraintTop_toBottomOf="@+id/imgNumOfrecut" />
 
         <TextView
@@ -209,10 +212,11 @@
             style="@style/fontJD"
             android:singleLine="true"
             android:gravity="center_vertical"
-            android:hint="Experience*"
+            android:hint="@string/Experience"
             android:layout_marginTop="5dp"
             android:inputType="number"
             android:layout_height="48dp"
+            android:imeOptions="actionNext"
             android:textColor="@color/darkmodedfont"
             app:layout_constraintStart_toEndOf="@id/imgexp"
             app:layout_constraintTop_toBottomOf="@+id/exp" />
@@ -221,42 +225,64 @@
         <ImageView
             android:id="@+id/levelic"
             style="@style/iconsizeforcreate"
-            android:src="@drawable/mlm"
+            android:src="@drawable/parttime"
             android:layout_marginStart="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/typejobic" />
 
-        <EditText
-            android:id="@+id/txtlevel"
+        <AutoCompleteTextView
+            android:id="@+id/txtTypejob"
             style="@style/fontJD"
             android:gravity="center_vertical"
             android:layout_height="48dp"
-            android:hint="Level*"
+            android:hint="@string/typejob"
             android:singleLine="true"
+            android:inputType="none"
+            android:focusable="false"
             android:layout_marginTop="5dp"
             app:layout_constraintStart_toEndOf="@+id/levelic"
-            app:layout_constraintTop_toBottomOf="@+id/txttypejob" />
+            app:layout_constraintTop_toBottomOf="@+id/txtLevel"/>
+
+        <Spinner
+            android:id="@+id/my_spinner2"
+            style="@style/fontJD"
+            android:layout_marginTop="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/my_edit_text"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@+id/levelic"
+            app:layout_constraintTop_toBottomOf="@+id/txtTypejob" />
 
 
         <ImageView
             android:id="@+id/icgender"
             style="@style/iconsizeforcreate"
             android:src="@drawable/equality"
-            app:layout_constraintStart_toEndOf="@+id/txtlevel"
+            app:layout_constraintStart_toEndOf="@+id/txtTypejob"
             app:layout_constraintTop_toBottomOf="@+id/typejobic" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/txtgender"
             style="@style/fontJD"
             android:layout_height="48dp"
+            android:layout_marginTop="5dp"
             android:gravity="center_vertical"
             android:hint="Gender*"
-            android:layout_marginTop="5dp"
+            android:focusable="false"
+            android:inputType="none"
             android:singleLine="true"
             app:layout_constraintStart_toEndOf="@+id/icgender"
-            app:layout_constraintTop_toBottomOf="@+id/txttypejob" />
+            app:layout_constraintTop_toBottomOf="@+id/txtLevel" />
 
-
+        <Spinner
+            android:id="@+id/my_spinner"
+            style="@style/fontJD"
+            app:layout_constraintStart_toEndOf="@+id/icgender"
+            android:layout_marginTop="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/my_edit_text"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@+id/txtgender" />
 
         <View
             android:id="@+id/line2"
@@ -327,7 +353,7 @@
             app:layout_constraintTop_toBottomOf="@+id/candidateRequirements">
 
             <EditText
-                android:id="@+id/txtSkill"
+                android:id="@+id/txtRequirements"
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:gravity="top"

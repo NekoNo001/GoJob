@@ -50,11 +50,11 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.myViewHolder> 
             JobPosition = itemView.findViewById(R.id.textView1);
             NameCompany = itemView.findViewById(R.id.textView2);
             Salary = itemView.findViewById(R.id.txtsalary);
-            TypeOfWork = itemView.findViewById(R.id.txttypejob);
+            TypeOfWork = itemView.findViewById(R.id.txtLevel);
             WorkExperience = itemView.findViewById(R.id.txtexp);
             NumberOfRecruits = itemView.findViewById(R.id.txtnumofrecut);
             Avatar = itemView.findViewById(R.id.imageView);
-            Level = itemView.findViewById(R.id.txtlevel);
+            Level = itemView.findViewById(R.id.txtTypejob);
             gender = itemView.findViewById(R.id.txtgender);
             address = itemView.findViewById(R.id.txtaddress);
             jobDescription = itemView.findViewById(R.id.txtjobdescription);
