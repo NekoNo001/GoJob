@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.LinearInterpolator;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.Toast;
@@ -54,8 +55,8 @@ public class findActivity extends AppCompatActivity {
         firebaseauth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
         companys =new ArrayList<>();
-        setUpCardStackView();
         setUpManager();
+        setUpCardStackView();
         getCompany();
     }
 
@@ -143,7 +144,7 @@ public class findActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                firebaseFirestore.collection("Company")
+                                firebaseFirestore.collection("Job")
                                         .whereEqualTo("CareerId",document.getId())
                                         .whereEqualTo("status",true)
                                         .get()
@@ -162,56 +163,70 @@ public class findActivity extends AppCompatActivity {
                     }
                 });
     }
-    private void areadyApply(String CompanyID) {
-        firebaseFirestore.collection("Company")
-                .document(CompanyID)
+    private void areadyApply(String JobId) {
+        firebaseFirestore.collection("Job")
+                .document(JobId)
                 .collection("Application")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        Log.d(TAG, "onComplete: "+ CompanyID);
                         ArrayList<String> documentId = new ArrayList<String>();
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 documentId.add(document.getId());
                             }
                             Log.d(TAG, "onComplete: "+ documentId);
-                            Log.d(TAG, "onComplete: "+ firebaseauth.getCurrentUser().getUid());
                             if (documentId.contains((firebaseauth.getCurrentUser().getUid())) != true) {
-                                addCompanyToList(CompanyID);
+                                addJobToList(JobId);
                             }
                         }
                     }
                 });
     }
-    private void addCompanyToList(String CompanyID) {
-        firebaseFirestore.collection("Company")
-                .document(CompanyID)
+    private void addJobToList(String JobId) {
+        firebaseFirestore.collection("Job")
+                .document(JobId)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        createCompanyFromDocument(documentSnapshot);
-                        adapter.notifyDataSetChanged();
+                        Company company = createCompanyFromDocument(documentSnapshot);
+                        getNameAndAvatar(company);
                     }
                 });
     }
-    private void createCompanyFromDocument(DocumentSnapshot documentSnapshot){
-        Company c = new Company();
-        c.setJobPosition(documentSnapshot.getString("jobPosition"));
-        c.setCompanyName(documentSnapshot.getString("nameCompany"));
-        c.setCompanySalary(documentSnapshot.getString("salary"));
-        c.setCompanyTypeOfWork(documentSnapshot.getString("typeOfWork"));
-        c.setCompanyNumberOfRecruits(documentSnapshot.getLong("numberOfRecruits"));
-        c.setCompanyWorkExperience(documentSnapshot.getLong("workExperienceNeed"));
-        c.setCompanyAvatar(Uri.parse(documentSnapshot.getString("ImageUrl")));
-        c.setCompanyAdress(documentSnapshot.getString("address"));
-        c.setCompanyGender(documentSnapshot.getString("gender"));
-        c.setCompanyJobDescription(documentSnapshot.getString("jobDescription"));
-        c.setCompanyCandidateRequirements(documentSnapshot.getString("candidateRequirements"));
-        c.setCompanyBenefit(documentSnapshot.getString("benefit"));
-        c.setCompanyLevel(documentSnapshot.getString("Level"));
-        companys.add(c);
+    private Company createCompanyFromDocument(DocumentSnapshot documentSnapshot) {
+        Company company = new Company();
+        company.setJobPosition(documentSnapshot.getString("jobPosition"));
+        company.setCompanySalary(documentSnapshot.getString("salary"));
+        company.setCompanyTypeOfWork(documentSnapshot.getString("typeOfWork"));
+        company.setCompanyNumberOfRecruits(documentSnapshot.getLong("numberOfRecruits"));
+        company.setCompanyWorkExperience(documentSnapshot.getLong("workExperienceNeed"));
+        company.setCompanyAdress(documentSnapshot.getString("address"));
+        company.setCompanyGender(documentSnapshot.getString("gender"));
+        company.setCompanyJobDescription(documentSnapshot.getString("jobDescription"));
+        company.setCompanyCandidateRequirements(documentSnapshot.getString("candidateRequirements"));
+        company.setCompanyBenefit(documentSnapshot.getString("benefit"));
+        company.setCompanyLevel(documentSnapshot.getString("level"));
+        company.setCompanyName(documentSnapshot.getString("CompanyId"));
+        company.setCompanyAdress(documentSnapshot.getString("address"));
+        return company;
+    }
+
+    private void getNameAndAvatar(Company c) {
+        Log.d(TAG, "onComplete: "+ c.getCompanyName());
+        firebaseFirestore.collection("Company")
+                .document(c.getCompanyName())
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        c.setCompanyName(documentSnapshot.getString("Name"));
+                        c.setCompanyAvatar(Uri.parse(documentSnapshot.getString("imageUrl")));
+                        companys.add(c);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
     }
 }

@@ -142,6 +142,7 @@ public class jobCreateActivity extends AppCompatActivity {
                 String jobDescription = binding.txtjobdescription.getText().toString();
                 String Requirements = binding.txtRequirements.getText().toString();
                 String benefit = binding.txtbenefit.getText().toString();
+                String address = binding.txtaddress.getText().toString();
                 if (JobPosition.matches("") || salary.matches("") || binding.txtnumofrecut.getText().toString().isEmpty()  || level.matches("") || binding.txtexp.getText().toString().isEmpty() || typejob.matches("") || jobDescription.matches("") || Requirements.matches("") || benefit.matches("")) {
                     Toast.makeText(jobCreateActivity.this, R.string.missing, Toast.LENGTH_SHORT).show();
                 } else {
@@ -157,6 +158,7 @@ public class jobCreateActivity extends AppCompatActivity {
                     Job.put("candidateRequirements", Requirements);
                     Job.put("benefit", benefit);
                     Job.put("CompanyId",firebaseauth.getCurrentUser().getUid());
+                    Job.put("adress",address);
                     Job.put("status",true);
                     firebaseFirestore.collection("Job")
                             .add(Job);
