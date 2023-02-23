@@ -33,6 +33,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -143,15 +144,15 @@ public class jobCreateActivity extends AppCompatActivity {
                 String Requirements = binding.txtRequirements.getText().toString();
                 String benefit = binding.txtbenefit.getText().toString();
                 String address = binding.txtaddress.getText().toString();
-                if (JobPosition.matches("") || salary.matches("") || binding.txtnumofrecut.getText().toString().isEmpty()  || level.matches("") || binding.txtexp.getText().toString().isEmpty() || typejob.matches("") || jobDescription.matches("") || Requirements.matches("") || benefit.matches("")) {
+                if (JobPosition.matches("") || salary.matches("") || recut.matches("")  || level.matches("") || exp.matches("") || typejob.matches("") || jobDescription.matches("") || Requirements.matches("") || benefit.matches("")) {
                     Toast.makeText(jobCreateActivity.this, R.string.missing, Toast.LENGTH_SHORT).show();
                 } else {
                     Map<String, Object> Job = new HashMap<>();
                     Job.put("jobPosition", JobPosition);
                     Job.put("salary", salary);
-                    Job.put("numberOfRecruits", recut);
+                    Job.put("numberOfRecruits",  Integer.parseInt(recut));
                     Job.put("level", level);
-                    Job.put("workExperienceNeed", exp);
+                    Job.put("workExperienceNeed", Integer.parseInt(exp));
                     Job.put("typeOfWork", typejob);
                     Job.put("gender", gender);
                     Job.put("jobDescription", jobDescription);
@@ -160,6 +161,7 @@ public class jobCreateActivity extends AppCompatActivity {
                     Job.put("CompanyId",firebaseauth.getCurrentUser().getUid());
                     Job.put("adress",address);
                     Job.put("status",true);
+                    Job.put("EndDay","now");
                     firebaseFirestore.collection("Job")
                             .add(Job);
 
@@ -170,5 +172,6 @@ public class jobCreateActivity extends AppCompatActivity {
             }
         });
     }
+
 }
 
