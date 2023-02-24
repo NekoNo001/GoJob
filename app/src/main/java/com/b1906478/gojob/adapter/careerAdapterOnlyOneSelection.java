@@ -16,11 +16,11 @@ import com.b1906478.gojob.model.Career;
 import java.util.ArrayList;
 import java.util.List;
 
-public class careerAdapter extends  RecyclerView.Adapter<careerAdapter.careerViewHolder>{
+public class careerAdapterOnlyOneSelection extends  RecyclerView.Adapter<careerAdapterOnlyOneSelection.careerViewHolder>{
     private List<Career> careers;
     private careerListener careerlistener;
 
-    public careerAdapter(List<Career> careers, careerListener careerlistener) {
+    public careerAdapterOnlyOneSelection(List<Career> careers, careerListener careerlistener) {
         this.careers = careers;
         this.careerlistener = careerlistener;
     }
@@ -84,20 +84,13 @@ public class careerAdapter extends  RecyclerView.Adapter<careerAdapter.careerVie
             layoutCareer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(career.isSelected)
-                    {
-                        viewbackground.setBackgroundResource(R.drawable.career_background);
-                        txtCareer.setTextColor(view.getResources().getColor(R.color.darkmodedfont));
-                        career.isSelected = false;
-                        if (getSelectedCareer().size() == 0){
-                            careerlistener.onCareerAction(false);
-                        }
-                    }else {
-                        txtCareer.setTextColor(view.getResources().getColor(R.color.white));
-                        viewbackground.setBackgroundResource(R.drawable.career_background_selected);
-                        career.isSelected = true;
+                    for (Career c : careers) {
+                        c.isSelected = false;
                         careerlistener.onCareerAction(true);
                     }
+                    career.isSelected = true;
+                    careerlistener.onCareerAction(true);
+                    notifyDataSetChanged();
                 }
             });
         }

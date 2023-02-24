@@ -67,11 +67,9 @@ public class SignupActivity2 extends AppCompatActivity {
                 if (btnseeker.isChecked()){
                     Intent i =new Intent(SignupActivity2.this,JobseakercolletionActivity.class);
                     startActivity(i);
-                    finish();
                 }if (btnRecruiter.isChecked()){
                     Intent i =new Intent(SignupActivity2.this,CompanycolletionActivity.class);
                     startActivity(i);
-                    finish();
                 }
 
             }

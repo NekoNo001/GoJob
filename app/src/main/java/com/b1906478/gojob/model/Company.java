@@ -3,7 +3,7 @@ package com.b1906478.gojob.model;
 import android.net.Uri;
 
 public class Company {
-    String companyName, companyJobPosition, companyAdress, companySalary, companyTypeOfWork, companyGender, companyJobLocation, companyJobDescription, companyCandidateRequirements, companyBenefit, companyLevel;
+    String companyName, companyJobPosition, companyAdress, companySalary, companyTypeOfWork, companyGender, companyJobLocation, companyJobDescription, companyCandidateRequirements, companyBenefit, companyLevel, companyCity;
     Number companyNumberOfRecruits, companyWorkExperience;
     Uri companyAvatar;
 
@@ -122,20 +122,37 @@ public class Company {
         this.companyLevel = companyLevel;
     }
 
-    public Company(String companyName, String jobPosition, String companyAdress, String companySalary, String typeOfWork, String companyGender, String companyJobLocation, String companyJobDescription, String companyCandidateRequirements, String companyBenefit, Number companyNumberOfRecruits, Number companyWorkExperience, Uri companyAvatar, String companyLevel) {
+    public String getCompanyJobPosition() {
+        return companyJobPosition;
+    }
+
+    public void setCompanyJobPosition(String companyJobPosition) {
+        this.companyJobPosition = companyJobPosition;
+    }
+
+    public String getCompanyCity() {
+        return companyCity;
+    }
+
+    public void setCompanyCity(String companyCity) {
+        this.companyCity = companyCity;
+    }
+
+    public Company(String companyName, String companyJobPosition, String companyAdress, String companySalary, String companyTypeOfWork, String companyGender, String companyJobLocation, String companyJobDescription, String companyCandidateRequirements, String companyBenefit, String companyLevel, String companyCity, Number companyNumberOfRecruits, Number companyWorkExperience, Uri companyAvatar) {
         this.companyName = companyName;
-        this.companyJobPosition = jobPosition;
+        this.companyJobPosition = companyJobPosition;
         this.companyAdress = companyAdress;
         this.companySalary = companySalary;
-        this.companyTypeOfWork = typeOfWork;
+        this.companyTypeOfWork = companyTypeOfWork;
         this.companyGender = companyGender;
         this.companyJobLocation = companyJobLocation;
         this.companyJobDescription = companyJobDescription;
         this.companyCandidateRequirements = companyCandidateRequirements;
         this.companyBenefit = companyBenefit;
+        this.companyLevel = companyLevel;
+        this.companyCity = companyCity;
         this.companyNumberOfRecruits = companyNumberOfRecruits;
         this.companyWorkExperience = companyWorkExperience;
         this.companyAvatar = companyAvatar;
-        this.companyLevel = companyLevel;
     }
 }

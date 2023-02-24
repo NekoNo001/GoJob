@@ -53,12 +53,47 @@ public class jobCreateActivity extends AppCompatActivity {
         TextView txttoolbar = findViewById(R.id.txtToolbar);
         Button btn = findViewById(R.id.btnNext);
         txttoolbar.setText(R.string.Addfirstjob);
+        setUpJob();
         setUpTypeJob();
         setUpGender();
         backbuttob(leftArrow);
         Onclicknext(btn);
+        String careerId = getIntent().getStringExtra("careerId");
+        Toast.makeText(this,careerId,Toast.LENGTH_LONG).show();
     }
 
+
+    private void setUpJob(){
+
+        EditText editText = findViewById(R.id.txtlocation);
+        Spinner spinner = findViewById(R.id.my_spinner3);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.my_dropdown_items_location, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                spinner.performClick();
+            }
+        });
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = (String) parent.getItemAtPosition(position);
+                Log.d(TAG, "onItemSelected: "+ selectedItem);
+                editText.setText(selectedItem);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
+    }
     private void setUpTypeJob() {
         EditText editText = findViewById(R.id.txtTypejob);
         Spinner spinner = findViewById(R.id.my_spinner2);
@@ -133,6 +168,7 @@ public class jobCreateActivity extends AppCompatActivity {
         a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String city = binding.txtlocation.getText().toString();
                 String JobPosition = binding.jobPosition.getText().toString();
                 String salary = binding.txtsalary.getText().toString();
                 String recut = (binding.txtnumofrecut.getText().toString());
@@ -147,7 +183,9 @@ public class jobCreateActivity extends AppCompatActivity {
                 if (JobPosition.matches("") || salary.matches("") || recut.matches("")  || level.matches("") || exp.matches("") || typejob.matches("") || jobDescription.matches("") || Requirements.matches("") || benefit.matches("")) {
                     Toast.makeText(jobCreateActivity.this, R.string.missing, Toast.LENGTH_SHORT).show();
                 } else {
+                    String careerId = getIntent().getStringExtra("careerId");
                     Map<String, Object> Job = new HashMap<>();
+                    Job.put("careerId",careerId);
                     Job.put("jobPosition", JobPosition);
                     Job.put("salary", salary);
                     Job.put("numberOfRecruits",  Integer.parseInt(recut));
@@ -160,8 +198,8 @@ public class jobCreateActivity extends AppCompatActivity {
                     Job.put("benefit", benefit);
                     Job.put("CompanyId",firebaseauth.getCurrentUser().getUid());
                     Job.put("adress",address);
+                    Job.put("city",city);
                     Job.put("status",true);
-                    Job.put("EndDay","now");
                     firebaseFirestore.collection("Job")
                             .add(Job);
 

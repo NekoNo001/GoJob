@@ -16,9 +16,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.b1906478.gojob.R;
 import com.b1906478.gojob.databinding.ActivityCompanycolletionBinding;
+import com.b1906478.gojob.model.Company;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -27,7 +32,10 @@ import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 
@@ -61,7 +69,7 @@ public class CompanycolletionActivity extends AppCompatActivity {
                 startActivityForResult(i, 100);
             }
         });
-
+        getOnDataOnCloud();
         backbuttob(leftArrow);
         Onclicknext(btn, img);
     }
@@ -84,45 +92,81 @@ public class CompanycolletionActivity extends AppCompatActivity {
                 if (name.matches("") ){
                     Toast.makeText(CompanycolletionActivity.this, R.string.missing, Toast.LENGTH_LONG).show();
                 } else {
-                    Map<String, Object> User = new HashMap<>();
-                    User.put("Name", name);
+                    Map<String, Object> Company = new HashMap<>();
+                    Company.put("Name", name);
                     firebaseFirestore.collection("Company")
-                            .document(FirebaseAuth.getInstance().getUid())
-                            .set(User);
-
-                    StorageReference mountainImagesRef = storageRef.child("Company/" + FirebaseAuth.getInstance().getUid() + ".PNG");
-                    img.setDrawingCacheEnabled(true);
-                    img.buildDrawingCache();
-                    if(img.getDrawable() != null){
-                        Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
-                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-                        byte[] data = baos.toByteArray();
-
-                        UploadTask uploadTask = mountainImagesRef.putBytes(data);
-                        uploadTask.addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception exception) {
-                            }
-                        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                mountainImagesRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                    @Override
-                                    public void onSuccess(Uri uri) {
-                                        firebaseFirestore.collection("Company").document(FirebaseAuth.getInstance().getUid())
-                                                .update("ImageUrl",uri);
-                                    }
-                                });
-                            }
-                        });
-                    }
-                    Intent i = new Intent(CompanycolletionActivity.this,jobCreateActivity.class);
+                            .document(firebaseauth.getCurrentUser().getUid())
+                            .set(Company);
+                    UploadImage(img);
+                    String UserType = "Company";
+                    Intent i = new Intent(CompanycolletionActivity.this,CareerfieldActivity.class);
+                    i.putExtra("Key",UserType);
                     startActivity(i);
                 }
 
             }
         });
+    }
+
+    public void UploadImage(ImageView img) {
+        if (img.getDrawable() != null) {
+            StorageReference mountainImagesRef = storageRef.child("Company/" + FirebaseAuth.getInstance().getUid() + ".PNG");
+            img.setDrawingCacheEnabled(true);
+            img.buildDrawingCache();
+            Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+            byte[] data = baos.toByteArray();
+
+            UploadTask uploadTask = mountainImagesRef.putBytes(data);
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    mountainImagesRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            firebaseFirestore.collection("Company").document(FirebaseAuth.getInstance().getUid())
+                                    .update("imageUrl", uri);
+                        }
+                    });
+                }
+            });
+        }else{
+            firebaseFirestore.collection("Company").document(FirebaseAuth.getInstance().getUid())
+                    .update("imageUrl", "");
+        }
+    }
+    private void getOnDataOnCloud() {
+        firebaseFirestore.collection("Company")
+                .document(firebaseauth.getCurrentUser().getUid())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(task.isSuccessful()){
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                // Docuent already exists in Firestore
+                                binding.txtcompanyName.setText(document.getString("Name"));
+                                if(document.getString("imageUrl") != ""){
+                                    StorageReference mountainImagesRef = storageRef.child("Company/" + FirebaseAuth.getInstance().getUid() + ".PNG");
+                                    mountainImagesRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+                                            Picasso.get()
+                                                    .load(uri)
+                                                    .into(binding.imageView2);
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    }
+                });
     }
 
     @Override

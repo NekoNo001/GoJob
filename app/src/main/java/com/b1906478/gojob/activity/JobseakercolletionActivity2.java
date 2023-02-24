@@ -91,6 +91,8 @@ public class JobseakercolletionActivity2 extends AppCompatActivity {
                                      "Interest", interest,
                                      "Work Experience", experience);
                 Intent i = new Intent(JobseakercolletionActivity2.this,CareerfieldActivity.class);
+                String UserType = "User";
+                i.putExtra("Key",UserType);
                 startActivity(i);
             }
         });

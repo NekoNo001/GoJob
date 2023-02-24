@@ -185,14 +185,14 @@ public class JobseakercolletionActivity extends AppCompatActivity {
 
                     UploadImage(img);
                     Intent i = new Intent(JobseakercolletionActivity.this,JobseakercolletionActivity2.class);
-                    startActivityForResult(i,4);
+                    startActivity(i);
                 }
 
             }
         });
     }
 
-    private void UploadImage(ImageView img) {
+    public void UploadImage(ImageView img) {
         if (img.getDrawable() != null) {
             StorageReference mountainImagesRef = storageRef.child("User/" + FirebaseAuth.getInstance().getUid() + ".PNG");
             img.setDrawingCacheEnabled(true);

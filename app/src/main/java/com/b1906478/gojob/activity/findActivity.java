@@ -210,6 +210,7 @@ public class findActivity extends AppCompatActivity {
         company.setCompanyBenefit(documentSnapshot.getString("benefit"));
         company.setCompanyLevel(documentSnapshot.getString("level"));
         company.setCompanyName(documentSnapshot.getString("CompanyId"));
+        company.setCompanyCity(documentSnapshot.getString("city"));
         return company;
     }
 

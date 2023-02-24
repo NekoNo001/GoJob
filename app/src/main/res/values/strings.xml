@@ -72,17 +72,22 @@
     <string name="Salary">Salary*</string>
     <string name="JobInformation">Job Information</string>
     <string name="Addfirstjob">Add a first Job</string>
+    <string name="Joblocation">"   Job location*"</string>
 
     -----------------------------------dropdown item----------------------------------------
     <string-array name="my_dropdown_items">
-        <item>Male</item>
-        <item>Female</item>
         <item>Not Required</item>
+        <item>Female</item>
+        <item>Male</item>
     </string-array>
     <string-array name="my_dropdown_items_typejob">
         <item>Full-Time</item>
         <item>Part-Time</item>
         <item>Intern</item>
+    </string-array>
+    <string-array name="my_dropdown_items_location">
+        <item>Ho Chi Minh</item>
+        <item>Ha Noi</item>
     </string-array>
 
 </resources>
