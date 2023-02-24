@@ -222,7 +222,11 @@ public class findActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         c.setCompanyName(documentSnapshot.getString("Name"));
-                        c.setCompanyAvatar(Uri.parse(documentSnapshot.getString("imageUrl")));
+                        if(documentSnapshot.getString("imageUrl") != ""){
+                            c.setCompanyAvatar(Uri.parse(documentSnapshot.getString("imageUrl")));
+                        }else{
+                            c.setCompanyAvatar(null);
+                        }
                         companys.add(c);
                         adapter.notifyDataSetChanged();
                     }

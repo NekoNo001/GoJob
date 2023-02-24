@@ -40,7 +40,6 @@
             android:gravity="left"
             android:hint="@string/introduce_you_self"
             android:inputType="textMultiLine"
-            android:imeOptions="actionNext"
             android:maxLength="250"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

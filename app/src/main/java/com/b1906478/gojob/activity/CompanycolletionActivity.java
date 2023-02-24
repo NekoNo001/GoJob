@@ -72,7 +72,6 @@ public class CompanycolletionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i =new Intent(CompanycolletionActivity.this,SignupActivity2.class);
                 startActivity(i);
-                finish();
             }
         });
     }

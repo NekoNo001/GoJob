@@ -92,7 +92,6 @@ public class JobseakercolletionActivity2 extends AppCompatActivity {
                                      "Work Experience", experience);
                 Intent i = new Intent(JobseakercolletionActivity2.this,CareerfieldActivity.class);
                 startActivity(i);
-                finish();
             }
         });
     }

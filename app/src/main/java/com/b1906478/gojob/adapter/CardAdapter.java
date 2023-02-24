@@ -62,7 +62,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.myViewHolder> 
             benefit = itemView.findViewById(R.id.txtbenefit);
         }
         void bindCard(myViewHolder holder, final Company company){
-            Picasso.get().load(company.getCompanyAvatar()).resize(1360,1370).centerCrop().into(Avatar);
+            if(company.getCompanyAvatar() != null){
+                Picasso.get().load(company.getCompanyAvatar()).resize(1360,1370).centerCrop().into(Avatar);
+            }
             JobPosition.setText(company.getJobPosition());
             NameCompany.setText(company.getCompanyName());
             Salary.setText(company.getCompanySalary());
