@@ -146,7 +146,6 @@ public class JobseakercolletionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                ;
             }
         });
     }
@@ -186,7 +185,7 @@ public class JobseakercolletionActivity extends AppCompatActivity {
 
                     UploadImage(img);
                     Intent i = new Intent(JobseakercolletionActivity.this,JobseakercolletionActivity2.class);
-                    startActivity(i);
+                    startActivityForResult(i,4);
                 }
 
             }
@@ -194,31 +193,36 @@ public class JobseakercolletionActivity extends AppCompatActivity {
     }
 
     private void UploadImage(ImageView img) {
-        StorageReference mountainImagesRef = storageRef.child("User/" + FirebaseAuth.getInstance().getUid() + ".PNG");
-        img.setDrawingCacheEnabled(true);
-        img.buildDrawingCache();
-        Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-        byte[] data = baos.toByteArray();
+        if (img.getDrawable() != null) {
+            StorageReference mountainImagesRef = storageRef.child("User/" + FirebaseAuth.getInstance().getUid() + ".PNG");
+            img.setDrawingCacheEnabled(true);
+            img.buildDrawingCache();
+            Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+            byte[] data = baos.toByteArray();
 
-        UploadTask uploadTask = mountainImagesRef.putBytes(data);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                mountainImagesRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        firebaseFirestore.collection("User").document(FirebaseAuth.getInstance().getUid())
-                                .update("imageUrl",uri);
-                    }
-                });
-            }
-        });
+            UploadTask uploadTask = mountainImagesRef.putBytes(data);
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    mountainImagesRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            firebaseFirestore.collection("User").document(FirebaseAuth.getInstance().getUid())
+                                    .update("imageUrl", uri);
+                        }
+                    });
+                }
+            });
+        }else{
+            firebaseFirestore.collection("User").document(FirebaseAuth.getInstance().getUid())
+                    .update("imageUrl", "");
+        }
     }
 
     private void listcity() {

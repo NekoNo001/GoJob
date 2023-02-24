@@ -113,6 +113,7 @@ public class CareerfieldActivity extends AppCompatActivity implements careerList
                             .collection("Career").document(String.valueOf(selectedCareer.get(i).CareerId)).set(Career);
                 }
                 Intent i = new Intent(CareerfieldActivity.this,findActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
                 finish();
         }

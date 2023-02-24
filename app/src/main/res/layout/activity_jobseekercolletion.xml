@@ -40,6 +40,7 @@
             android:gravity="left"
             android:hint="@string/introduce_you_self"
             android:inputType="textMultiLine"
+            android:imeOptions="actionNext"
             android:maxLength="250"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -270,6 +271,7 @@
             android:maxLength="50"
             android:singleLine="true"
             android:layout_marginTop="10dp"
+            android:imeOptions="actionDone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/phoneic"
             app:layout_constraintTop_toBottomOf="@+id/editTextDate" />

@@ -145,7 +145,7 @@ public class findActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 firebaseFirestore.collection("Job")
-                                        .whereEqualTo("CareerId",document.getId())
+                                        .whereEqualTo("careerId",document.getId())
                                         .whereEqualTo("status",true)
                                         .get()
                                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -210,7 +210,6 @@ public class findActivity extends AppCompatActivity {
         company.setCompanyBenefit(documentSnapshot.getString("benefit"));
         company.setCompanyLevel(documentSnapshot.getString("level"));
         company.setCompanyName(documentSnapshot.getString("CompanyId"));
-        company.setCompanyAdress(documentSnapshot.getString("address"));
         return company;
     }
 

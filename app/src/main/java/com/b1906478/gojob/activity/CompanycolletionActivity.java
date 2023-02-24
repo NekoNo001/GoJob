@@ -70,8 +70,9 @@ public class CompanycolletionActivity extends AppCompatActivity {
         a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent i =new Intent(CompanycolletionActivity.this,SignupActivity2.class);
+                startActivity(i);
                 finish();
-                ;
             }
         });
     }
