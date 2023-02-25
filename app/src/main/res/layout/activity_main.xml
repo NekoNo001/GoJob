@@ -24,14 +24,13 @@
         android:textStyle="bold"
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/view1"
         android:layout_width="500dp"
-        android:layout_height="0dp"
+        android:layout_height="400dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/bg1"
         app:layout_constraintBottom_toTopOf="@+id/textview1"
@@ -113,7 +112,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
     <TextView
-        android:textColor="@color/darkmodedfont"
+        android:textColor="@color/Mint"
+        android:textStyle="bold"
         android:id="@+id/btnEnglish"
         android:layout_width="0dp"
         android:layout_height="60dp"

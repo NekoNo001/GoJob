@@ -100,7 +100,8 @@ public class findActivity extends AppCompatActivity {
         manager.setCanScrollHorizontal(true);
         manager.setCanScrollVertical(false);
         manager.setStackFrom(StackFrom.None);
-        manager.setSwipeThreshold(0.5f);
+        manager.setSwipeThreshold(0.2f);
+        manager.setMaxDegree(20.0f);
         manager.setDirections(Direction.HORIZONTAL);
         manager.setOverlayInterpolator(new LinearInterpolator());
     }
@@ -223,10 +224,10 @@ public class findActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         c.setCompanyName(documentSnapshot.getString("Name"));
-                        if(documentSnapshot.getString("imageUrl") != ""){
-                            c.setCompanyAvatar(Uri.parse(documentSnapshot.getString("imageUrl")));
-                        }else{
+                        if("".equals(documentSnapshot.getString("imageUrl"))){
                             c.setCompanyAvatar(null);
+                        }else{
+                            c.setCompanyAvatar(Uri.parse(documentSnapshot.getString("imageUrl")));
                         }
                         companys.add(c);
                         adapter.notifyDataSetChanged();

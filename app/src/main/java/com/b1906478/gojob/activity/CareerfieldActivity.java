@@ -58,8 +58,35 @@ public class CareerfieldActivity extends AppCompatActivity implements careerList
         final careerAdapter careeradapter = new careerAdapter(careers,this);
         final careerAdapterOnlyOneSelection careerAdapterOnlyOneSelection = new careerAdapterOnlyOneSelection(careers,this);
         String UserType = getIntent().getStringExtra("Key");
-        Log.d(TAG, "onCreate: " + UserType);
-        if("User".equals(UserType)){
+        if("Company".equals(UserType)){
+            careerRV.setAdapter(careerAdapterOnlyOneSelection);
+            for(int i=1; i<=15 ; i++ ){
+                String temp = String.valueOf(t);
+                String tempDrawable = String.valueOf(t);
+                String tempIdName= "C" + tempId;
+                Career tempCareer = new Career();
+                tempCareer.nameCareer = getString(getStringIDbyname(temp));
+                tempCareer.image = getDrawIDbyname(tempDrawable);
+                tempCareer.CareerId = tempIdName;
+                careers.add(tempCareer);
+                t++;
+                tempId++;
+            }
+            careerAdapterOnlyOneSelection.notifyDataSetChanged();
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    List<Career> selectedCareer = careerAdapterOnlyOneSelection.getSelectedCareer();
+                    String Career = selectedCareer.get(0).CareerId;
+                    Intent i = new Intent(CareerfieldActivity.this,jobCreateActivity.class);
+                    String companyId = getIntent().getStringExtra("companyId");
+                    i.putExtra("companyId",companyId);
+                    i.putExtra("careerId",Career);
+                    startActivity(i);
+                }
+            });
+        }
+        else{
             careerRV.setAdapter(careeradapter);
             firebaseFirestore.collection("User")
                     .document(FirebaseAuth.getInstance().getUid())
@@ -112,31 +139,6 @@ public class CareerfieldActivity extends AppCompatActivity implements careerList
                     i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(i);
                     finish();
-                }
-            });
-        }else{
-            careerRV.setAdapter(careerAdapterOnlyOneSelection);
-            for(int i=1; i<=15 ; i++ ){
-                String temp = String.valueOf(t);
-                String tempDrawable = String.valueOf(t);
-                String tempIdName= "C" + tempId;
-                Career tempCareer = new Career();
-                tempCareer.nameCareer = getString(getStringIDbyname(temp));
-                tempCareer.image = getDrawIDbyname(tempDrawable);
-                tempCareer.CareerId = tempIdName;
-                careers.add(tempCareer);
-                t++;
-                tempId++;
-            }
-            careerAdapterOnlyOneSelection.notifyDataSetChanged();
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    List<Career> selectedCareer = careerAdapterOnlyOneSelection.getSelectedCareer();
-                    String Career = selectedCareer.get(0).CareerId;
-                    Intent i = new Intent(CareerfieldActivity.this,jobCreateActivity.class);
-                    i.putExtra("careerId",Career);
-                    startActivity(i);
                 }
             });
         }

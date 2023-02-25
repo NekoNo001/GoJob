@@ -59,7 +59,10 @@ public class jobCreateActivity extends AppCompatActivity {
         backbuttob(leftArrow);
         Onclicknext(btn);
         String careerId = getIntent().getStringExtra("careerId");
+        String companyId = getIntent().getStringExtra("companyId");
         Toast.makeText(this,careerId,Toast.LENGTH_LONG).show();
+        Log.d("MyActivity", "Career ID: " + careerId);
+        Log.d("MyActivity", "Company ID: " + companyId);
     }
 
 
@@ -197,7 +200,7 @@ public class jobCreateActivity extends AppCompatActivity {
                     Job.put("candidateRequirements", Requirements);
                     Job.put("benefit", benefit);
                     Job.put("CompanyId",firebaseauth.getCurrentUser().getUid());
-                    Job.put("adress",address);
+                    Job.put("address",address);
                     Job.put("city",city);
                     Job.put("status",true);
                     firebaseFirestore.collection("Job")

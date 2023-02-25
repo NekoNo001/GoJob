@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -69,7 +70,7 @@ public class CompanycolletionActivity extends AppCompatActivity {
                 startActivityForResult(i, 100);
             }
         });
-        getOnDataOnCloud();
+//        getOnDataOnCloud();
         backbuttob(leftArrow);
         Onclicknext(btn, img);
     }
@@ -78,8 +79,7 @@ public class CompanycolletionActivity extends AppCompatActivity {
         a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i =new Intent(CompanycolletionActivity.this,SignupActivity2.class);
-                startActivity(i);
+                finish();
             }
         });
     }
@@ -94,10 +94,23 @@ public class CompanycolletionActivity extends AppCompatActivity {
                 } else {
                     Map<String, Object> Company = new HashMap<>();
                     Company.put("Name", name);
+                    Company.put("imageUrl", "");
                     firebaseFirestore.collection("Company")
                             .document(firebaseauth.getCurrentUser().getUid())
                             .set(Company);
                     UploadImage(img);
+//                    firebaseFirestore.collection("Company")
+//                            .add(Company).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                                @Override
+//                                public void onSuccess(DocumentReference documentReference) {
+//                                    String UserType = "Company";
+//                                    String companyId = documentReference.getId();
+//                                    Intent i = new Intent(CompanycolletionActivity.this,CareerfieldActivity.class);
+//                                    i.putExtra("Key",UserType);
+//                                    i.putExtra("companyId",companyId);
+//                                    startActivity(i);
+//                                }
+//                            });
                     String UserType = "Company";
                     Intent i = new Intent(CompanycolletionActivity.this,CareerfieldActivity.class);
                     i.putExtra("Key",UserType);
