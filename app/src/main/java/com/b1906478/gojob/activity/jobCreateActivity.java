@@ -60,7 +60,6 @@ public class jobCreateActivity extends AppCompatActivity {
         Onclicknext(btn);
         String careerId = getIntent().getStringExtra("careerId");
         String companyId = getIntent().getStringExtra("companyId");
-        Toast.makeText(this,careerId,Toast.LENGTH_LONG).show();
         Log.d("MyActivity", "Career ID: " + careerId);
         Log.d("MyActivity", "Company ID: " + companyId);
     }

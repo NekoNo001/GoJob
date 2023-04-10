@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+            android:id="@+id/nav_searching"
+            android:icon="@drawable/search_ic"
+            android:iconTint="@color/Mint"
+            android:title="@string/search" />
+    <item
+        android:id="@+id/nav_Career"
+        android:icon="@drawable/brifcase"
+        android:iconTint="@color/Mint"
+        android:title="@string/careers" />
+    <item
+            android:id="@+id/nav_sort"
+            android:icon="@drawable/search_ic"
+            android:iconTint="@color/Mint"
+            android:title="@string/sort">
+            <menu>
+                <item
+                    android:id="@+id/nav_city"
+                    android:iconTint="@color/Mint"
+                    android:title="City"/>
+                <item
+                    android:id="@+id/nav_type"
+                    android:iconTint="@color/Mint"
+                    android:title="Type Work"/>
+                <item
+                    android:id="@+id/nav_workexp"
+                    android:iconTint="@color/Mint"
+                    android:title="Experience"/>
+            </menu>
+    </item>
+    <item
+        android:id="@+id/nav_Setting"
+        android:icon="@drawable/search_ic"
+        android:iconTint="@color/Mint"
+        android:title="Setting">
+        <menu>
+            <item
+                android:id="@+id/nav_mode"
+                android:title="@string/dark_mode"
+                android:icon="@drawable/darkmode_ic"/>
+            <item
+                android:id="@+id/nav_logout"
+                android:title="@string/logout"
+                android:icon="@drawable/logout_ic"/>
+        </menu>
+    </item>
+</menu>

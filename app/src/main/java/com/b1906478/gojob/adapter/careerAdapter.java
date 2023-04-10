@@ -76,7 +76,7 @@ public class careerAdapter extends  RecyclerView.Adapter<careerAdapter.careerVie
             careerIc.setImageResource(career.image);
             if(career.isSelected){
                 viewbackground.setBackgroundResource(R.drawable.career_background_selected);
-                txtCareer.setTextColor(txtCareer.getResources().getColor(R.color.darkmode));
+                txtCareer.setTextColor(txtCareer.getResources().getColor(R.color.white));
             }else {
                 viewbackground.setBackgroundResource(R.drawable.career_background);
                 txtCareer.setTextColor(txtCareer.getResources().getColor(R.color.darkmodedfont));

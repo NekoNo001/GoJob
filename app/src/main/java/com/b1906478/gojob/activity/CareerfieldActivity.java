@@ -8,13 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.b1906478.gojob.R;
 import com.b1906478.gojob.adapter.careerAdapter;
 import com.b1906478.gojob.adapter.careerAdapterOnlyOneSelection;
@@ -50,7 +47,10 @@ public class CareerfieldActivity extends AppCompatActivity implements careerList
         btn = findViewById(R.id.btnnextstep);
         ImageView leftArrow = findViewById(R.id.leftArrow);
         TextView txttoolbar = findViewById(R.id.txtToolbar);
-        btn.setVisibility(View.GONE);
+        String edit = getIntent().getStringExtra("Edit");
+        if(edit.equals("true")){
+            btn.setVisibility(View.VISIBLE);
+        }else{btn.setVisibility(View.GONE);}
         txttoolbar.setText(R.string.Choose);
         backbuttob(leftArrow);
         RecyclerView careerRV = findViewById(R.id.RVcarrer);

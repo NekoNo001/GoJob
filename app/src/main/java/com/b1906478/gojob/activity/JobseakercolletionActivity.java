@@ -33,6 +33,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
@@ -182,8 +183,19 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                     firebaseFirestore.collection("User")
                             .document(FirebaseAuth.getInstance().getUid())
                             .set(User);
-
                     UploadImage(img);
+                    String edit = getIntent().getStringExtra("Key");
+                    if(!edit.equals("Edit")) {
+                        Map<String, Object> Notification = new HashMap<>();
+                        Notification.put("message", getString(R.string.hello_new_user_we_wish_you_all_the_luck_in_finding_a_job));
+                        Notification.put("Name", FieldValue.serverTimestamp());
+                        Notification.put("imageUrl", "https://firebasestorage.googleapis.com/v0/b/gojob-f9aa4.appspot.com/o/Company%2Flogo.png?alt=media&token=e205e05d-271b-47d6-9cb0-604e89fc8cfe");
+                        firebaseFirestore.collection("User")
+                                .document(FirebaseAuth.getInstance().getUid())
+                                .collection("Notification")
+                                .document()
+                                .set(Notification);
+                    }
                     Intent i = new Intent(JobseakercolletionActivity.this,JobseakercolletionActivity2.class);
                     startActivity(i);
                 }
