@@ -1,4 +1,45 @@
 <resources>
+    ---------------------------------------------------Job------------------------------------------
+    <string name="a">IT Developer</string>
+    <string name="b">Business / Sales</string>
+    <string name="c">Architecture</string>
+    <string name="d">Government agency</string>
+    <string name="e">Graphic Design</string>
+    <string name="f">Insurance</string>
+    <string name="g">Legal</string>
+    <string name="h">Interpreter</string>
+    <string name="i">Media</string>
+    <string name="j">Postal</string>
+    <string name="k">Estate Agent</string>
+    <string name="l">Stocks</string>
+    <string name="m">Tourism</string>
+    <string name="n">Textile / Footwear</string>
+    <string name="o">Mechanical</string>
+    ------------------------------------------------Job
+    Information------------------------------------------
+    <string name="salary">Salary</string>
+    <string name="recruit">Recruit</string>
+    <string name="work">Work</string>
+    <string name="experience">Experience</string>
+    <string name="level">Level</string>
+    <string name="people">\ people</string>
+    <string name="year">\ year</string>
+    <string name="job_description">Job Description</string>
+    <string name="candidate_requirements">Candidate Requirements</string>
+    <string name="Requirements">Requirements*</string>
+    <string name="Description">Description of job*</string>
+    <string name="JobPosition">Job Position*</string>
+    <string name="benefit">Benefit</string>
+    <string name="Benefitof">Benefit of your Company*</string>
+    <string name="typejob">Type of job*</string>
+    <string name="Level">Level*</string>
+    <string name="Experience">Experience*</string>
+    <string name="Salary">Salary*</string>
+    <string name="JobInformation">Job Information</string>
+    <string name="Addfirstjob">Add a first Job</string>
+    <string name="Joblocation">"   Job location*"</string>
+
+    ------------------------------------------------all app------------------------------------------
     <string name="app_name">GoJob</string>
     <string name="sign_in">Login</string>
     <string name="sign_up">Register</string>
@@ -35,44 +76,20 @@
     <string name="interest"><b>Interest</b></string>
     <string name="workexperian"><b>Work Experience</b></string>
     <string name="Choose">Choose your fields</string>
-    ---------------------------------------------------Job------------------------------------------
-    <string name="a">IT Developer</string>
-    <string name="b">Business / Sales</string>
-    <string name="c">Architecture</string>
-    <string name="d">Government agency</string>
-    <string name="e">Graphic Design</string>
-    <string name="f">Insurance</string>
-    <string name="g">Legal</string>
-    <string name="h">Interpreter</string>
-    <string name="i">Media</string>
-    <string name="j">Postal</string>
-    <string name="k">Estate Agent</string>
-    <string name="l">Stocks</string>
-    <string name="m">Tourism</string>
-    <string name="n">Textile / Footwear</string>
-    <string name="o">Mechanical</string>
-    ---------------------------------------------------Job------------------------------------------
-    <string name="salary">Salary</string>
-    <string name="recruit">Recruit</string>
-    <string name="work">Work</string>
-    <string name="experience">Experience</string>
-    <string name="level">Level</string>
-    <string name="people">\ people</string>
-    <string name="year">\ year</string>
-    <string name="job_description">Job Description</string>
-    <string name="candidate_requirements">Candidate Requirements</string>
-    <string name="Requirements">Requirements*</string>
-    <string name="Description">Description of job*</string>
-    <string name="JobPosition">Job Position*</string>
-    <string name="benefit">Benefit</string>
-    <string name="Benefitof">Benefit of your Company*</string>
-    <string name="typejob">Type of job*</string>
-    <string name="Level">Level*</string>
-    <string name="Experience">Experience*</string>
-    <string name="Salary">Salary*</string>
-    <string name="JobInformation">Job Information</string>
-    <string name="Addfirstjob">Add a first Job</string>
-    <string name="Joblocation">"   Job location*"</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="email_not_registered">Email not registered</string>
+    <string name="enter_email_and_password">Enter email and password</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="logout">Logout</string>
+    <string name="search">Search</string>
+    <string name="sort">Sort</string>
+    <string name="do_you_want_to_turn_on_off_dark_mode_you_will_need_to_restart_the_app_for_the_change_to_take_effect">Do you want to turn on/off dark mode? You will need to restart the app for the change to take effect</string>
+    <string name="confirm_change">Confirm change</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="your_want_to_logout">You want to logout?</string>
+    <string name="notification">Notification</string>
+    <string name="hello_new_user_we_wish_you_all_the_luck_in_finding_a_job">Hello new user! We wish you all the luck in finding a job</string>
 
     -----------------------------------dropdown item----------------------------------------
     <string-array name="my_dropdown_items">

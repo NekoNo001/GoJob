@@ -13,14 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.b1906478.gojob.R;
 import com.b1906478.gojob.databinding.ActivitySignup2Binding;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class SignupActivity2 extends AppCompatActivity {
 
-    FirebaseAuth firebaseauth;
-    FirebaseFirestore firebaseFirestore;
     ActivitySignup2Binding binding;
     RadioGroup radioGroup;
     @Override
@@ -28,8 +24,6 @@ public class SignupActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivitySignup2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        firebaseauth = FirebaseAuth.getInstance();
-        firebaseFirestore = FirebaseFirestore.getInstance();
         ImageView leftArrow = findViewById(R.id.leftArrow);
         TextView txttoolbar = findViewById(R.id.txtToolbar);
         radioGroup = findViewById(R.id.radioGroup);
@@ -41,7 +35,6 @@ public class SignupActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                ;
             }
         });
 

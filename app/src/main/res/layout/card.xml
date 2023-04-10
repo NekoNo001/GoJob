@@ -33,11 +33,10 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="Vi tri A"
-                android:textColor="@color/darkmodedfont"
+                android:textColor="@color/Mint"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -307,7 +306,8 @@
                 android:layout_marginTop="5dp"
                 android:textStyle="bold"
                 android:text="@string/job_description"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                android:textColor="@color/Mint"/>
 
             <TextView
                 android:id="@+id/txtjobdescription"
@@ -328,7 +328,8 @@
                 android:layout_marginTop="5dp"
                 android:textStyle="bold"
                 android:text="@string/candidate_requirements"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                android:textColor="@color/Mint"/>
 
             <TextView
                 android:id="@+id/txtcandidateRequirements"
@@ -349,18 +350,19 @@
                 android:layout_marginTop="5dp"
                 android:textStyle="bold"
                 android:text="@string/benefit"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                android:textColor="@color/Mint"/>
 
             <TextView
                 android:id="@+id/txtbenefit"
                 style="@style/fontJD2"
-                android:layout_marginBottom="50dp"
                 android:text="Place Holder"
                 android:textColor="@color/darkmodedfont"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/benefit"/>
+                app:layout_constraintTop_toBottomOf="@+id/benefit"
+                android:layout_marginBottom="150dp"/>
 
 
             <FrameLayout
@@ -381,7 +383,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

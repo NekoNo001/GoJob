@@ -1,9 +1,13 @@
 package com.b1906478.gojob.activity;
 
+import static com.b1906478.gojob.activity.LoginActivity.signInStart;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,45 +22,46 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        Button btnsignIn = (Button) findViewById(R.id.btnsignIn);
-        Button btnsignUp = (Button) findViewById(R.id.btnsignUp);
-        TextView Vietnam = findViewById(R.id.btnVietnamese);
-        TextView English = findViewById(R.id.btnEnglish);
-        btnsignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,LoginActivity.class);
-                startActivity(i);
-            }
-        });
-        btnsignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,SignupActivity.class);
-                startActivity(i);
-            }
-        });
+            binding=ActivityMainBinding.inflate(getLayoutInflater());
+            setContentView(binding.getRoot());
+            Button btnsignIn = (Button) findViewById(R.id.btnsignIn);
+            Button btnsignUp = (Button) findViewById(R.id.btnsignUp);
+            TextView Vietnam = findViewById(R.id.btnVietnamese);
+            TextView English = findViewById(R.id.btnEnglish);
+            btnsignIn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(MainActivity.this,LoginActivity.class);
+                    startActivity(i);
+                }
+            });
+            btnsignUp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(MainActivity.this,SignupActivity.class);
+                    startActivity(i);
+                }
+            });
 
-        Vietnam.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Vietnam.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-                Vietnam.setTextColor(view.getResources().getColor(R.color.Mint));
-                English.setTextColor(view.getResources().getColor(R.color.darkmodedfont));
-                English.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
-            }
-        });
-        English.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                English.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-                Vietnam.setTextColor(view.getResources().getColor(R.color.darkmodedfont));
-                English.setTextColor(view.getResources().getColor(R.color.Mint));
-                Vietnam.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
-            }
-        });
+            Vietnam.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Vietnam.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                    Vietnam.setTextColor(view.getResources().getColor(R.color.Mint));
+                    English.setTextColor(view.getResources().getColor(R.color.darkmodedfont));
+                    English.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+                }
+            });
+            English.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    English.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                    Vietnam.setTextColor(view.getResources().getColor(R.color.darkmodedfont));
+                    English.setTextColor(view.getResources().getColor(R.color.Mint));
+                    Vietnam.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+                }
+            });
+
     }
 
 }

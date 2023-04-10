@@ -8,13 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.b1906478.gojob.R;
 import com.b1906478.gojob.adapter.careerAdapter;
 import com.b1906478.gojob.adapter.careerAdapterOnlyOneSelection;
