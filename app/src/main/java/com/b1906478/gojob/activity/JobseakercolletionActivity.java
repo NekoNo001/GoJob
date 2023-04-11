@@ -185,7 +185,7 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                             .set(User);
                     UploadImage(img);
                     String edit = getIntent().getStringExtra("Key");
-                    if(!edit.equals("Edit")) {
+                    if(edit == null) {
                         Map<String, Object> Notification = new HashMap<>();
                         Notification.put("message", getString(R.string.hello_new_user_we_wish_you_all_the_luck_in_finding_a_job));
                         Notification.put("Name", FieldValue.serverTimestamp());
@@ -195,9 +195,12 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                                 .collection("Notification")
                                 .document()
                                 .set(Notification);
-                    }
+                        Intent i = new Intent(JobseakercolletionActivity.this,JobseakercolletionActivity2.class);
+                        startActivity(i);
+                    }else{
                     Intent i = new Intent(JobseakercolletionActivity.this,JobseakercolletionActivity2.class);
-                    startActivity(i);
+                    i.putExtra("Key","Edit");
+                    startActivity(i);}
                 }
 
             }

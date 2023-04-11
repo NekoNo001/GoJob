@@ -48,7 +48,7 @@ public class CareerfieldActivity extends AppCompatActivity implements careerList
         ImageView leftArrow = findViewById(R.id.leftArrow);
         TextView txttoolbar = findViewById(R.id.txtToolbar);
         String edit = getIntent().getStringExtra("Edit");
-        if(edit.equals("true")){
+        if(edit != null && edit.equals("true")){
             btn.setVisibility(View.VISIBLE);
         }else{btn.setVisibility(View.GONE);}
         txttoolbar.setText(R.string.Choose);

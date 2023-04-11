@@ -92,10 +92,18 @@ public class JobseakercolletionActivity2 extends AppCompatActivity {
                     "Certificate", cer,
                                      "Interest", interest,
                                      "Work Experience", experience);
+                String edit = getIntent().getStringExtra("Key");
+                if(edit != null && edit.equals("Edit")){
+                    Intent i = new Intent(JobseakercolletionActivity2.this,findActivity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(i);
+                    finish();
+                }else{
                 Intent i = new Intent(JobseakercolletionActivity2.this,CareerfieldActivity.class);
                 String UserType = "User";
                 i.putExtra("Key",UserType);
                 startActivity(i);
+                }
             }
         });
     }
