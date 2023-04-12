@@ -40,7 +40,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -55,11 +54,15 @@ import com.yuyakaido.android.cardstackview.SwipeAnimationSetting;
 import java.util.ArrayList;
 
 public class findActivity extends AppCompatActivity {
+    int slectionItemByCity =0;
+    int slectionItemByType =0;
+    int slectionItemByExp =0;
     ActivityFindBinding binding;
     FirebaseAuth firebaseauth;
     FirebaseFirestore firebaseFirestore;
     CardStackLayoutManager manager;
     ArrayList<Company> companys;
+    ArrayList<Company> SortListcompanys;
     CardAdapter adapter;
     CardStackView cardStackView;
     private boolean doubleBackToExitPressedOnce = false;
@@ -73,6 +76,7 @@ public class findActivity extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
         ImageView reddot = binding.reddot;
         companys = new ArrayList<>();
+        SortListcompanys = new ArrayList<>();
         setUpManager();
         setUpCardStackView();
         getCompany();
@@ -221,6 +225,10 @@ public class findActivity extends AppCompatActivity {
         MenuItem btnLogout = navigationView.getMenu().findItem(R.id.nav_logout);
         MenuItem btnCareers = navigationView.getMenu().findItem(R.id.nav_Career);
         MenuItem btnSearch = navigationView.getMenu().findItem(R.id.nav_searching);
+        MenuItem btnSortCity = navigationView.getMenu().findItem(R.id.nav_city);
+        MenuItem btnSortType = navigationView.getMenu().findItem(R.id.nav_type);
+        MenuItem btnSortExp = navigationView.getMenu().findItem(R.id.nav_workexp);
+
         btnDarkMode.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
@@ -298,6 +306,167 @@ public class findActivity extends AppCompatActivity {
                 startActivity(i);
                 return false;
             }});
+        btnSortCity.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                slectionItemByType =0;
+                slectionItemByExp =0;
+                // create an array of options
+                final String[] options = {getString(R.string.none) ,"Ha Noi", "Ho Chi Minh"};
+                // create an instance of AlertDialog.Builder
+                AlertDialog.Builder builder = new AlertDialog.Builder(findActivity.this);
+                // set the title of the dialog
+                builder.setTitle(getString(R.string.choice_city_to_sort)).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                });
+                builder.setSingleChoiceItems(options, slectionItemByCity, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // handle the click event for each item in the dropdown menu
+                        slectionItemByCity = which;
+                    }
+                });
+                builder.setPositiveButton(R.string.sort, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(findActivity.this,getString(R.string.sort_by) + options[slectionItemByCity].toString(),Toast.LENGTH_SHORT).show();
+                        if(slectionItemByCity == 0){
+                            adapter = new CardAdapter(companys);
+                            cardStackView.setLayoutManager(manager);
+                            cardStackView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+                        }else{
+                            SortListcompanys.clear();
+                            for(Company company : companys){
+                                if(company.getCompanyCity().equals(options[slectionItemByCity].toString())){
+                                    SortListcompanys.add(company);
+                                    adapter = new CardAdapter(SortListcompanys);
+                                    cardStackView.setLayoutManager(manager);
+                                    cardStackView.setAdapter(adapter);
+                                    adapter.notifyDataSetChanged();
+                                }
+                            }}
+                    }
+                });
+                // create the dialog and show it
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                return false;
+            }
+        });
+        btnSortType.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                slectionItemByCity =0;
+                slectionItemByExp =0;
+                // create an array of options
+                final String[] options = {getString(R.string.none) ,getString(R.string.full_time), getString(R.string.part_time), getString(R.string.intern)};
+                // create an instance of AlertDialog.Builder
+                AlertDialog.Builder builder = new AlertDialog.Builder(findActivity.this);
+                // set the title of the dialog
+                builder.setTitle(R.string.choice_type_of_job_to_sort).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                });
+                builder.setSingleChoiceItems(options, slectionItemByType, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // handle the click event for each item in the dropdown menu
+                        slectionItemByType = which;
+                    }
+                });
+                builder.setPositiveButton(R.string.sort, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(findActivity.this,getString(R.string.sort_by) + options[slectionItemByType].toString(),Toast.LENGTH_SHORT).show();
+                        if(slectionItemByType == 0){
+                            adapter = new CardAdapter(companys);
+                            cardStackView.setLayoutManager(manager);
+                            cardStackView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+                        }else{
+                            SortListcompanys.clear();
+                            for(Company company : companys){
+                                if(company.getCompanyTypeOfWork().equals(options[slectionItemByType].toString())){
+                                    SortListcompanys.add(company);
+                                    adapter = new CardAdapter(SortListcompanys);
+                                    cardStackView.setLayoutManager(manager);
+                                    cardStackView.setAdapter(adapter);
+                                    adapter.notifyDataSetChanged();
+                                }
+                            }}
+                    }
+                });
+                // create the dialog and show it
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                return false;
+            }
+        });
+        btnSortExp.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                slectionItemByCity =0;
+                slectionItemByType =0;
+                // create an array of options
+                final String[] options = {getString(R.string.none),"0" + getString(R.string.year) ,"1" + getString(R.string.year),"2" + getString(R.string.year),"3+" + getString(R.string.year)};
+                // create an instance of AlertDialog.Builder
+                AlertDialog.Builder builder = new AlertDialog.Builder(findActivity.this);
+                // set the title of the dialog
+                builder.setTitle(R.string.choice_type_of_job_to_sort).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                });
+                builder.setSingleChoiceItems(options, slectionItemByExp, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // handle the click event for each item in the dropdown menu
+                        slectionItemByExp = which;
+                    }
+                });
+                builder.setPositiveButton(R.string.sort, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(findActivity.this,getString(R.string.sort_by) + options[slectionItemByExp].toString(),Toast.LENGTH_SHORT).show();
+                        if(slectionItemByExp == 0){
+                            adapter = new CardAdapter(companys);
+                            cardStackView.setLayoutManager(manager);
+                            cardStackView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+                        }else{
+                            SortListcompanys.clear();
+                            for(Company company : companys){
+                                if(slectionItemByExp < 4){
+                                    Toast.makeText(findActivity.this, company.getCompanyWorkExperience().toString(),Toast.LENGTH_SHORT).show();
+                                    if(company.getCompanyWorkExperience().equals(Long.valueOf(slectionItemByExp -1 ))){
+                                        SortListcompanys.add(company);
+                                        adapter = new CardAdapter(SortListcompanys);
+                                        cardStackView.setLayoutManager(manager);
+                                        cardStackView.setAdapter(adapter);
+                                        adapter.notifyDataSetChanged();
+                                    }
+                                }else {
+                                    if(company.getCompanyWorkExperience().longValue() >= 3){
+                                        SortListcompanys.add(company);
+                                        adapter = new CardAdapter(SortListcompanys);
+                                        cardStackView.setLayoutManager(manager);
+                                        cardStackView.setAdapter(adapter);
+                                        adapter.notifyDataSetChanged();
+                                }}
+                            }
+                        }
+                    }
+                });
+                // create the dialog and show it
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                return false;
+            }
+        });
     }
 
     private void setProfile(TextView nameTxt,TextView jobPositiontxt, ImageView avatarImg) {

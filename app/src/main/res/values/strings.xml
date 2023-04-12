@@ -92,6 +92,13 @@
     <string name="notification">Notification</string>
     <string name="hello_new_user_we_wish_you_all_the_luck_in_finding_a_job">Hello new user! We wish you all the luck in finding a job</string>
     <string name="careers">Careers</string>
+    <string name="sort_by">"Sort by "</string>
+    <string name="full_time">Full-Time</string>
+    <string name="part_time">Part-Time</string>
+    <string name="none">None</string>
+    <string name="intern">Intern</string>
+    <string name="choice_city_to_sort">Choice city to sort</string>
+    <string name="choice_type_of_job_to_sort">Choice Type of Job to sort</string>
 
     -----------------------------------dropdown item----------------------------------------
     <string-array name="my_dropdown_items">
