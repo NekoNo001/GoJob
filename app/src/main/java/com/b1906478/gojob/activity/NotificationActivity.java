@@ -79,6 +79,8 @@ public class NotificationActivity extends AppCompatActivity {
                                                 notification.NotificationMessenge = dc.getDocument().getString("message");
                                                 notification.NotificationTime = dc.getDocument().getTimestamp("notificationTime");
                                                 notification.imageUrl = dc.getDocument().getString("imageUrl");
+                                                notification.jobId = dc.getDocument().getString("jobId");
+                                                notification.jobPosition = dc.getDocument().getString("jobPosition");
                                                 notifications.add(0, notification);
                                                 notificationAdapter.notifyItemInserted(0);
                                             }

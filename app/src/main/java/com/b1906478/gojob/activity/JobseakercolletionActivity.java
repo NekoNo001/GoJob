@@ -180,6 +180,7 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                     User.put("Website", website);
                     User.put("DOB", timestamp);
                     User.put("imageUrl", ImageUrl);
+                    User.put("status", false);
                     firebaseFirestore.collection("User")
                             .document(FirebaseAuth.getInstance().getUid())
                             .set(User);
@@ -188,7 +189,8 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                     if(edit == null) {
                         Map<String, Object> Notification = new HashMap<>();
                         Notification.put("message", getString(R.string.hello_new_user_we_wish_you_all_the_luck_in_finding_a_job));
-                        Notification.put("Name", FieldValue.serverTimestamp());
+                        Notification.put("notificationTime", FieldValue.serverTimestamp());
+                        Notification.put("status",false);
                         Notification.put("imageUrl", "https://firebasestorage.googleapis.com/v0/b/gojob-f9aa4.appspot.com/o/Company%2Flogo.png?alt=media&token=e205e05d-271b-47d6-9cb0-604e89fc8cfe");
                         firebaseFirestore.collection("User")
                                 .document(FirebaseAuth.getInstance().getUid())
@@ -198,11 +200,11 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                         Intent i = new Intent(JobseakercolletionActivity.this,JobseakercolletionActivity2.class);
                         startActivity(i);
                     }else{
-                    Intent i = new Intent(JobseakercolletionActivity.this,JobseakercolletionActivity2.class);
-                    i.putExtra("Key","Edit");
-                    startActivity(i);}
+                        Intent i = new Intent(JobseakercolletionActivity.this,JobseakercolletionActivity2.class);
+                        i.putExtra("Key","Edit");
+                        startActivity(i);
+                    }
                 }
-
             }
         });
     }

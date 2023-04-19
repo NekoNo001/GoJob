@@ -2,10 +2,22 @@ package com.b1906478.gojob.model;
 
 import android.net.Uri;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+
 public class Company {
-    String companyName, companyJobPosition, companyAdress, companySalary, companyTypeOfWork, companyGender, companyJobLocation, companyJobDescription, companyCandidateRequirements, companyBenefit, companyLevel, companyCity;
+    String companyName, companyJobPosition, companyAdress, companySalary, companyTypeOfWork, companyGender, companyJobLocation, companyJobDescription, companyCandidateRequirements, companyBenefit, companyLevel, companyCity, jobId;
     Number companyNumberOfRecruits, companyWorkExperience;
     Uri companyAvatar;
+    Date dateStart;
+
+    public Date getDateStart() {
+        return dateStart;
+    }
+
+    public void setDateStart(Date dateStart) {
+        this.dateStart = dateStart;
+    }
 
     public Company() {
     }
@@ -18,11 +30,11 @@ public class Company {
         this.companyName = companyName;
     }
 
-    public String getJobPosition() {
+    public String getCompanyJobPosition() {
         return companyJobPosition;
     }
 
-    public void setJobPosition(String companyJobPosition) {
+    public void setCompanyJobPosition(String companyJobPosition) {
         this.companyJobPosition = companyJobPosition;
     }
 
@@ -90,6 +102,30 @@ public class Company {
         this.companyBenefit = companyBenefit;
     }
 
+    public String getCompanyLevel() {
+        return companyLevel;
+    }
+
+    public void setCompanyLevel(String companyLevel) {
+        this.companyLevel = companyLevel;
+    }
+
+    public String getCompanyCity() {
+        return companyCity;
+    }
+
+    public void setCompanyCity(String companyCity) {
+        this.companyCity = companyCity;
+    }
+
+    public String getJobId() {
+        return jobId;
+    }
+
+    public void setJobId(String jobId) {
+        this.jobId = jobId;
+    }
+
     public Number getCompanyNumberOfRecruits() {
         return companyNumberOfRecruits;
     }
@@ -114,31 +150,7 @@ public class Company {
         this.companyAvatar = companyAvatar;
     }
 
-    public String getCompanyLevel() {
-        return companyLevel;
-    }
-
-    public void setCompanyLevel(String companyLevel) {
-        this.companyLevel = companyLevel;
-    }
-
-    public String getCompanyJobPosition() {
-        return companyJobPosition;
-    }
-
-    public void setCompanyJobPosition(String companyJobPosition) {
-        this.companyJobPosition = companyJobPosition;
-    }
-
-    public String getCompanyCity() {
-        return companyCity;
-    }
-
-    public void setCompanyCity(String companyCity) {
-        this.companyCity = companyCity;
-    }
-
-    public Company(String companyName, String companyJobPosition, String companyAdress, String companySalary, String companyTypeOfWork, String companyGender, String companyJobLocation, String companyJobDescription, String companyCandidateRequirements, String companyBenefit, String companyLevel, String companyCity, Number companyNumberOfRecruits, Number companyWorkExperience, Uri companyAvatar) {
+    public Company(String companyName, String companyJobPosition, String companyAdress, String companySalary, String companyTypeOfWork, String companyGender, String companyJobLocation, String companyJobDescription, String companyCandidateRequirements, String companyBenefit, String companyLevel, String companyCity, String jobId, Number companyNumberOfRecruits, Number companyWorkExperience, Uri companyAvatar) {
         this.companyName = companyName;
         this.companyJobPosition = companyJobPosition;
         this.companyAdress = companyAdress;
@@ -151,8 +163,10 @@ public class Company {
         this.companyBenefit = companyBenefit;
         this.companyLevel = companyLevel;
         this.companyCity = companyCity;
+        this.jobId = jobId;
         this.companyNumberOfRecruits = companyNumberOfRecruits;
         this.companyWorkExperience = companyWorkExperience;
         this.companyAvatar = companyAvatar;
     }
+
 }

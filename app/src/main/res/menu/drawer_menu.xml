@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
     <item
             android:id="@+id/nav_searching"
             android:icon="@drawable/search_ic"
@@ -11,25 +12,15 @@
         android:iconTint="@color/Mint"
         android:title="@string/careers" />
     <item
-            android:id="@+id/nav_sort"
-            android:icon="@drawable/search_ic"
+        android:id="@+id/nav_applyView"
+        android:icon="@drawable/cv_ic"
+        android:iconTint="@color/Mint"
+        android:title="@string/review_applied_jobs" />
+    <item
+            android:id="@+id/nav_filter"
+            android:icon="@drawable/filter_ic"
             android:iconTint="@color/Mint"
-            android:title="@string/sort">
-            <menu>
-                <item
-                    android:id="@+id/nav_city"
-                    android:iconTint="@color/Mint"
-                    android:title="City"/>
-                <item
-                    android:id="@+id/nav_type"
-                    android:iconTint="@color/Mint"
-                    android:title="Type Work"/>
-                <item
-                    android:id="@+id/nav_workexp"
-                    android:iconTint="@color/Mint"
-                    android:title="Experience"/>
-            </menu>
-    </item>
+            android:title="@string/filter"/>
     <item
         android:id="@+id/nav_Setting"
         android:icon="@drawable/search_ic"
@@ -40,6 +31,10 @@
                 android:id="@+id/nav_mode"
                 android:title="@string/dark_mode"
                 android:icon="@drawable/darkmode_ic"/>
+            <item
+                android:id="@+id/nav_language"
+                android:title="@string/language"
+                android:icon="@drawable/language_ic"/>
             <item
                 android:id="@+id/nav_logout"
                 android:title="@string/logout"

@@ -15,8 +15,7 @@
     <string name="m">Tourism</string>
     <string name="n">Textile / Footwear</string>
     <string name="o">Mechanical</string>
-    ------------------------------------------------Job
-    Information------------------------------------------
+    ------------------------------------------------Job Information---------------------------------
     <string name="salary">Salary</string>
     <string name="recruit">Recruit</string>
     <string name="work">Work</string>
@@ -39,8 +38,7 @@
     <string name="Addfirstjob">Add a first Job</string>
     <string name="Joblocation">"   Job location*"</string>
 
-    ------------------------------------------------all
-    app------------------------------------------
+    ------------------------------------------------allapp-------------------------------------
     <string name="app_name">GoJob</string>
     <string name="sign_in">Login</string>
     <string name="sign_up">Register</string>
@@ -98,7 +96,22 @@
     <string name="none">None</string>
     <string name="intern">Intern</string>
     <string name="choice_city_to_sort">Choice city to sort</string>
-    <string name="choice_type_of_job_to_sort">Choice Type of Job to sort</string>
+    <string name="choice_type_of_job_to_sort">Choice type of job to sort</string>
+    <string name="choice_experience_year_to_sort">Choice experience year to sort</string>
+    <string name="job_search_status">Job search status</string>
+    <string name="review_applied_jobs">Review applied jobs</string>
+    <string name="please_click_back_again_to_exit">Please click BACK again to exit</string>
+    <string name="refresh_a_job_list">Refresh a job list?</string>
+    <string name="filter">Filter</string>
+    <string name="_1_year">1 year</string>
+    <string name="_0_year">0 year</string>
+    <string name="_3_year">3+ year</string>
+    <string name="_2_year">2 year</string>
+    <string name="location">Location</string>
+    <string name="type_of_work">Type of work</string>
+    <string name="year_of_experience">Year of Experience</string>
+    <string name="language">Language</string>
+    <string name="enter_email_or_password">Enter valid email or password</string>
 
     -----------------------------------dropdown item----------------------------------------
     <string-array name="my_dropdown_items">

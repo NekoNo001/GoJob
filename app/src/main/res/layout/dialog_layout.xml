@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/filter"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/filter_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/location"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <GridLayout
+            android:id="@+id/buttonlist_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/filter_city">
+
+                <RadioButton
+                    android:id="@+id/hochiminh"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:text="Ho Chi Minh"
+                    android:checked="false"
+                    android:onClick="onRadioButtonClickedCity"/>
+
+                <RadioButton
+                    android:id="@+id/HaNoi"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:checked="false"
+                    android:text="Ha Noi"
+                    android:onClick="onRadioButtonClickedCity"/>
+        </GridLayout>
+
+        <TextView
+            android:id="@+id/filter_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/type_of_work"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonlist_city" />
+
+        <GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/filter_type">
+
+                <RadioButton
+                    android:id="@+id/fulltime"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:checked="false"
+                    android:text="@string/full_time"
+                    android:onClick="onRadioButtonClickedType"/>
+                <RadioButton
+                    android:id="@+id/parttime"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:text="@string/part_time"
+                    android:onClick="onRadioButtonClickedType"/>
+
+                <RadioButton
+                    android:id="@+id/intern"
+                    android:layout_row="0"
+                    android:layout_column="2"
+                    android:text="@string/intern"
+                    android:onClick="onRadioButtonClickedType"/>
+
+        </GridLayout>
+
+        <TextView
+            android:id="@+id/filter_exp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/year_of_experience"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/filter_exp">
+
+                <RadioButton
+                    android:id="@+id/year0"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:text="@string/_0_year"
+                    android:onClick="onRadioButtonClickedExp"/>
+
+                <RadioButton
+                    android:id="@+id/year1"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:text="@string/_1_year"
+                    android:onClick="onRadioButtonClickedExp"/>
+                <RadioButton
+                    android:id="@+id/year2"
+                    android:layout_row="0"
+                    android:layout_column="2"
+                    android:text="@string/_2_year"
+                    android:onClick="onRadioButtonClickedExp"/>
+                <RadioButton
+                    android:id="@+id/year3"
+                    android:layout_row="0"
+                    android:layout_column="3"
+                    android:text="@string/_3_year"
+                    android:onClick="onRadioButtonClickedExp"/>
+        </GridLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

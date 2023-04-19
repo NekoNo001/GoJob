@@ -25,6 +25,7 @@
         android:drawableEnd="@drawable/edit_ic"
         android:drawableTint="@color/black"
         />
+
     <TextView
         android:id="@+id/jobPositionTxt"
         android:layout_width="wrap_content"
@@ -33,4 +34,15 @@
         android:textColor="@color/white"
         android:textSize="15sp"
         android:textStyle="bold"/>
+
+    <Switch
+        android:id="@+id/StatusBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/job_search_status"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:checked="false"
+        android:trackTint="@color/white"
+        />
 </LinearLayout>

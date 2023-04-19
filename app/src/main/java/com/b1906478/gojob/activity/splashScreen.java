@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.util.Log;
 
 import com.b1906478.gojob.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class splashScreen extends AppCompatActivity {
 
@@ -21,6 +22,7 @@ public class splashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         SharedPreferences sharedPreferences2 = getSharedPreferences("Setting", MODE_PRIVATE);
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         boolean darkMode = sharedPreferences2.getBoolean("darkMode",false);
         if(darkMode){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -31,7 +33,7 @@ public class splashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 SharedPreferences sharedPreferences = getSharedPreferences("Login", MODE_PRIVATE);
-                if (sharedPreferences.contains("loginEmail")) {
+                if (firebaseAuth.getCurrentUser() != null) {
                     String email = sharedPreferences.getString("loginEmail", "");
                     String password = sharedPreferences.getString("loginPassword", "");
                     signInStart(splashScreen.this,email,password);

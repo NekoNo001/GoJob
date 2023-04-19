@@ -65,7 +65,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.myViewHolder> 
             if(company.getCompanyAvatar() != null){
                 Picasso.get().load(company.getCompanyAvatar()).resize(1360,1370).centerCrop().into(Avatar);
             }
-            JobPosition.setText(company.getJobPosition());
+            JobPosition.setText(company.getCompanyJobPosition());
             NameCompany.setText(company.getCompanyName());
             Salary.setText(company.getCompanySalary());
             NumberOfRecruits.setText(String.valueOf(company.getCompanyNumberOfRecruits()) + holder.itemView.getContext().getResources().getString(R.string.people));
