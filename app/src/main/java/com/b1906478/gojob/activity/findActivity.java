@@ -497,7 +497,7 @@ public class findActivity extends AppCompatActivity {
                             jobPositiontxt.setText(snapshot.getString("Position"));
                             btnStatus.setChecked(snapshot.getBoolean("status"));
                             if(snapshot.getString("imageUrl") != "") {
-                                Picasso.get().load(snapshot.getString("imageUrl")).resize(500, 500).centerCrop().into(avatarImg);
+                                Picasso.get().load(snapshot.getString("imageUrl")).resize(1360, 1360).centerCrop().into(avatarImg);
                         }
                     }
                 };
@@ -911,7 +911,6 @@ public class findActivity extends AppCompatActivity {
         company.setCompanyName(documentSnapshot.getString("CompanyId"));
         company.setCompanyCity(documentSnapshot.getString("city"));
         company.setJobId(JobId);
-        String ApplyView = getIntent().getStringExtra("ApplyView");
         Timestamp timestamp = documentSnapshot.getTimestamp("dateStart");
         Date date = new Date(timestamp.toDate().getTime());
         company.setDateStart(date);

@@ -1,15 +1,19 @@
 package com.b1906478.gojob.activity;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.b1906478.gojob.R;
@@ -19,7 +23,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -102,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
-    private static void checkAccStatus(Context context) {
+    public static void checkAccStatus(Context context) {
         FirebaseAuth firebaseauth = FirebaseAuth.getInstance();
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseFirestore.collection("User").document(firebaseauth.getCurrentUser().getUid()).get()
@@ -110,21 +117,31 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         DocumentSnapshot document = task.getResult();
                         if (document.exists()) {
-                            continueCheck(context);
-                        } else {
-                            // Collection does not exist
-                            Intent I = new Intent(context, SignupActivity2.class);
-                            I.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                            Toast.makeText(context, "You need to complete register",Toast.LENGTH_LONG).show();
-                            context.startActivity(I);
-                            ((Activity) context).finish();
+                            continueCheckUser(context);
+                        }else {
+                            firebaseFirestore.collection("Company").document(firebaseauth.getCurrentUser().getUid()).get()
+                                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                            if(documentSnapshot.exists()){
+                                                continueCheckCompany(context);
+                                            }else{
+                                                // Collection does not exist
+                                                Intent I = new Intent(context, SignupActivity2.class);
+                                                I.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                Toast.makeText(context, "You need to complete register", Toast.LENGTH_LONG).show();
+                                                context.startActivity(I);
+                                                ((Activity) context).finish();
+                                            }
+                                        }
+                                    });
                         }
                     }
                 });
 
     }
 
-    private static void continueCheck(Context context) {
+    private static void continueCheckUser(Context context) {
         FirebaseAuth firebaseauth = FirebaseAuth.getInstance();
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseFirestore.collection("User").document(firebaseauth.getCurrentUser().getUid()).collection("Career").get()
@@ -137,6 +154,30 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
                         // Collection does not exist
                         Intent I = new Intent(context, CareerfieldActivity.class);
+                        I.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        Toast.makeText(context, "You need to complete register",Toast.LENGTH_LONG).show();
+                        context.startActivity(I);
+                        ((Activity) context).finish();
+                    }
+                });
+    }
+    private static void continueCheckCompany(Context context) {
+        FirebaseAuth firebaseauth = FirebaseAuth.getInstance();
+        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseFirestore.collection("Job")
+                .whereEqualTo("CompanyId",firebaseauth.getCurrentUser().getUid())
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful() && !task.getResult().isEmpty()) {
+                        Intent I = new Intent(context, CompanyActivity.class);
+                        I.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(I);
+                        ((Activity) context).finish();
+                    } else {
+                        // Collection does not exist
+                        Intent I = new Intent(context, CareerfieldActivity.class);
+                        String UserType = "Company";
+                        I.putExtra("Key",UserType);
                         I.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         Toast.makeText(context, "You need to complete register",Toast.LENGTH_LONG).show();
                         context.startActivity(I);

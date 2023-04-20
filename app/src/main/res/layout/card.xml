@@ -373,6 +373,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
             <FrameLayout
@@ -380,6 +381,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@color/Mint"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

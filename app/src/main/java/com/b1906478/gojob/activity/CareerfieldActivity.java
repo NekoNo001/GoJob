@@ -79,8 +79,6 @@ public class CareerfieldActivity extends AppCompatActivity implements careerList
                     List<Career> selectedCareer = careerAdapterOnlyOneSelection.getSelectedCareer();
                     String Career = selectedCareer.get(0).CareerId;
                     Intent i = new Intent(CareerfieldActivity.this,jobCreateActivity.class);
-                    String companyId = getIntent().getStringExtra("companyId");
-                    i.putExtra("companyId",companyId);
                     i.putExtra("careerId",Career);
                     startActivity(i);
                 }

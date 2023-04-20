@@ -181,6 +181,10 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                     User.put("DOB", timestamp);
                     User.put("imageUrl", ImageUrl);
                     User.put("status", false);
+                    User.put("Skill", "");
+                    User.put("Certificate", "");
+                    User.put("Interest", "");
+                    User.put("Work Experience","");
                     firebaseFirestore.collection("User")
                             .document(FirebaseAuth.getInstance().getUid())
                             .set(User);
@@ -262,7 +266,6 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                 int year = calendar.get(Calendar.YEAR);
                 int month = calendar.get(Calendar.MONTH);
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
-
                 DatePickerDialog datePickerDialog = new DatePickerDialog(JobseakercolletionActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {

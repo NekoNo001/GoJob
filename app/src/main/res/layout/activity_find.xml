@@ -120,6 +120,7 @@
                             android:gravity="center"
                             android:visibility="invisible"
                             android:textColor="@color/white"
+                            android:textAllCaps="false"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/btnNofication"
                             app:layout_constraintTop_toTopOf="parent" />

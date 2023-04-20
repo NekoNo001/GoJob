@@ -9,14 +9,14 @@ public class Company {
     String companyName, companyJobPosition, companyAdress, companySalary, companyTypeOfWork, companyGender, companyJobLocation, companyJobDescription, companyCandidateRequirements, companyBenefit, companyLevel, companyCity, jobId;
     Number companyNumberOfRecruits, companyWorkExperience;
     Uri companyAvatar;
-    Date dateStart;
+    Date dateStart, dateEnd;
 
-    public Date getDateStart() {
-        return dateStart;
+    public Date getDateEnd() {
+        return dateEnd;
     }
 
-    public void setDateStart(Date dateStart) {
-        this.dateStart = dateStart;
+    public void setDateEnd(Date dateEnd) {
+        this.dateEnd = dateEnd;
     }
 
     public Company() {
@@ -150,7 +150,15 @@ public class Company {
         this.companyAvatar = companyAvatar;
     }
 
-    public Company(String companyName, String companyJobPosition, String companyAdress, String companySalary, String companyTypeOfWork, String companyGender, String companyJobLocation, String companyJobDescription, String companyCandidateRequirements, String companyBenefit, String companyLevel, String companyCity, String jobId, Number companyNumberOfRecruits, Number companyWorkExperience, Uri companyAvatar) {
+    public Date getDateStart() {
+        return dateStart;
+    }
+
+    public void setDateStart(Date dateStart) {
+        this.dateStart = dateStart;
+    }
+
+    public Company(String companyName, String companyJobPosition, String companyAdress, String companySalary, String companyTypeOfWork, String companyGender, String companyJobLocation, String companyJobDescription, String companyCandidateRequirements, String companyBenefit, String companyLevel, String companyCity, String jobId, Number companyNumberOfRecruits, Number companyWorkExperience, Uri companyAvatar, Date dateStart, Date dateEnd) {
         this.companyName = companyName;
         this.companyJobPosition = companyJobPosition;
         this.companyAdress = companyAdress;
@@ -167,6 +175,7 @@ public class Company {
         this.companyNumberOfRecruits = companyNumberOfRecruits;
         this.companyWorkExperience = companyWorkExperience;
         this.companyAvatar = companyAvatar;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
     }
-
 }

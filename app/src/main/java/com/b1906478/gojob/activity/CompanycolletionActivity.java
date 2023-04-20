@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,7 +16,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.b1906478.gojob.R;
 import com.b1906478.gojob.databinding.ActivityCompanycolletionBinding;
-import com.b1906478.gojob.model.Company;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,10 +31,7 @@ import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 import java.io.ByteArrayOutputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 
@@ -70,7 +65,7 @@ public class CompanycolletionActivity extends AppCompatActivity {
                 startActivityForResult(i, 100);
             }
         });
-//        getOnDataOnCloud();
+        getOnDataOnCloud();
         backbuttob(leftArrow);
         Onclicknext(btn, img);
     }
@@ -99,22 +94,14 @@ public class CompanycolletionActivity extends AppCompatActivity {
                             .document(firebaseauth.getCurrentUser().getUid())
                             .set(Company);
                     UploadImage(img);
-//                    firebaseFirestore.collection("Company")
-//                            .add(Company).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                                @Override
-//                                public void onSuccess(DocumentReference documentReference) {
-//                                    String UserType = "Company";
-//                                    String companyId = documentReference.getId();
-//                                    Intent i = new Intent(CompanycolletionActivity.this,CareerfieldActivity.class);
-//                                    i.putExtra("Key",UserType);
-//                                    i.putExtra("companyId",companyId);
-//                                    startActivity(i);
-//                                }
-//                            });
-                    String UserType = "Company";
+                    Boolean edit = getIntent().getBooleanExtra("edit",false);
+                    if(edit.equals(true)){
+                        finish();
+                    }else{
                     Intent i = new Intent(CompanycolletionActivity.this,CareerfieldActivity.class);
+                    String UserType = "Company";
                     i.putExtra("Key",UserType);
-                    startActivity(i);
+                    startActivity(i);}
                 }
 
             }
@@ -123,14 +110,13 @@ public class CompanycolletionActivity extends AppCompatActivity {
 
     public void UploadImage(ImageView img) {
         if (img.getDrawable() != null) {
-            StorageReference mountainImagesRef = storageRef.child("Company/" + FirebaseAuth.getInstance().getUid() + ".PNG");
+            StorageReference mountainImagesRef = storageRef.child("Company/" + firebaseauth.getCurrentUser().getUid() + ".PNG");
             img.setDrawingCacheEnabled(true);
             img.buildDrawingCache();
             Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
             byte[] data = baos.toByteArray();
-
             UploadTask uploadTask = mountainImagesRef.putBytes(data);
             uploadTask.addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -142,14 +128,14 @@ public class CompanycolletionActivity extends AppCompatActivity {
                     mountainImagesRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            firebaseFirestore.collection("Company").document(FirebaseAuth.getInstance().getUid())
+                            firebaseFirestore.collection("Company").document(firebaseauth.getCurrentUser().getUid())
                                     .update("imageUrl", uri);
                         }
                     });
                 }
             });
         }else{
-            firebaseFirestore.collection("Company").document(FirebaseAuth.getInstance().getUid())
+            firebaseFirestore.collection("Company").document(firebaseauth.getCurrentUser().getUid())
                     .update("imageUrl", "");
         }
     }

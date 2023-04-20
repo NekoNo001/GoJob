@@ -112,6 +112,13 @@
     <string name="year_of_experience">Year of Experience</string>
     <string name="language">Language</string>
     <string name="enter_email_or_password">Enter valid email or password</string>
+    <string name="job_management_options">Job management options</string>
+    <string name="previous_jobs">Previous Jobs</string>
+    <string name="job_on_active">Job On Active</string>
+    <string name="setting">Setting</string>
+    <string name="hello">Hello,</string>
+    <string name="gojob_wishing_you_success_in_finding_the_perfect_candidates_to_join_your_team">Gojob wishing you success in finding the perfect candidates to join your team!</string>
+    <string name="choice_date_end">Choice Date End</string>
 
     -----------------------------------dropdown item----------------------------------------
     <string-array name="my_dropdown_items">
