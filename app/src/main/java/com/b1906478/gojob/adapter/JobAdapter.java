@@ -4,35 +4,31 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Typeface;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.b1906478.gojob.activity.JobManageActivity;
 import com.b1906478.gojob.R;
-import com.b1906478.gojob.activity.companyRequestActivity;
+import com.b1906478.gojob.activity.jobCreateActivity;
 import com.b1906478.gojob.model.Company;
-import com.b1906478.gojob.model.Notification;
-import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class JobAdapter extends  RecyclerView.Adapter<JobAdapter.CompanyViewHolder>{
     private List<Company> Companys;
+    private String careerId;
 
-    public JobAdapter(List<Company> Companys) {
+    public JobAdapter(List<Company> Companys, String careerId) {
         this.Companys = Companys;
+        this.careerId = careerId;
     }
 
     public void setCompanys(List<Company> filteredCompanys) {
@@ -67,6 +63,7 @@ public class JobAdapter extends  RecyclerView.Adapter<JobAdapter.CompanyViewHold
         TextView txtCity;
         TextView txtDateStart;
         TextView txtDateEnd;
+        ConstraintLayout LayoutJob;
 
         public CompanyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -74,6 +71,7 @@ public class JobAdapter extends  RecyclerView.Adapter<JobAdapter.CompanyViewHold
             txtCity = itemView.findViewById(R.id.txtCity);
             txtDateStart = itemView.findViewById(R.id.timeStart);
             txtDateEnd = itemView.findViewById(R.id.timeEnd);
+            LayoutJob = itemView.findViewById(R.id.LayoutJob);
         }
 
         void bindCompany(final Company company){
@@ -82,6 +80,24 @@ public class JobAdapter extends  RecyclerView.Adapter<JobAdapter.CompanyViewHold
             txtCity.setText(company.getCompanyCity());
             txtDateStart.setText(new SimpleDateFormat("d MMM yyyy").format(company.getDateStart()));
             txtDateEnd.setText(new SimpleDateFormat("d MMM yyyy").format(company.getDateEnd()));
+            LayoutJob.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(careerId != null){
+                        Intent i = new Intent(view.getContext(), jobCreateActivity.class);
+                        i.putExtra("jobId",company.getJobId());
+                        i.putExtra("careerId",careerId);
+                        Log.d(TAG, "onClick:1"+ company.getJobId()+ company.getCompanyJobPosition());
+                        view.getContext().startActivity(i);
+                    }else{
+                        Intent i = new Intent(view.getContext(), JobManageActivity.class);
+                        i.putExtra("jobId",company.getJobId());
+                        Log.d(TAG, "onClick:2"+ company.getJobId()+ company.getCompanyJobPosition());
+                        view.getContext().startActivity(i);
+                        ((Activity) view.getContext()).finish();
+                    }
+                }
+            });
         }
     }
 }

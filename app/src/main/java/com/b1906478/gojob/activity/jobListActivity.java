@@ -40,6 +40,7 @@ import java.util.List;
 
 public class jobListActivity extends AppCompatActivity {
 
+
     ActivityJobListBinding binding;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
@@ -57,10 +58,44 @@ public class jobListActivity extends AppCompatActivity {
     private void getJobToList() {
         RecyclerView recyclerView = findViewById(R.id.ListJob);
         List<Company> Companys = new ArrayList<>();
-        final JobAdapter jobAdapter = new JobAdapter(Companys);
+        String careerId = getIntent().getStringExtra("careerId");
+        Log.d(TAG, "getJobToList: " + careerId);
+        final JobAdapter jobAdapter = new JobAdapter(Companys,careerId);
         recyclerView.setAdapter(jobAdapter);
         Boolean old = getIntent().getBooleanExtra("old",false);
-        if(old.equals(true)){
+        if(careerId != null){
+            Log.d(TAG, "getJobToList: " + careerId);
+            firebaseFirestore.collection("Job")
+                    .whereEqualTo("CompanyId",firebaseAuth.getCurrentUser().getUid())
+                    .get()
+                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            for(QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
+                                Company c = new Company();
+                                c.setCompanyJobPosition(documentSnapshot.getString("jobPosition"));
+                                c.setCompanyCity(documentSnapshot.getString("city"));
+                                Timestamp dateStart = documentSnapshot.getTimestamp("dateStart");
+                                Date date = new Date(dateStart.toDate().getTime());
+                                c.setDateStart(date);
+                                Timestamp timestamp = documentSnapshot.getTimestamp("dateEnd");
+                                Date dateEnd = new Date(timestamp.toDate().getTime());
+                                c.setDateEnd(dateEnd);
+                                c.setJobId(documentSnapshot.getId());
+                                Companys.add(c);
+                                Log.d(TAG, "onSuccess: " + c.getDateStart() + c.getDateEnd() + Companys.get(0).getCompanyJobPosition() + c.getCompanyCity());
+                                Collections.sort(Companys, new Comparator<Company>() {
+                                    @Override
+                                    public int compare(Company c1, Company c2) {
+                                        return c2.getDateStart().compareTo(c1.getDateStart());
+                                    }
+                                });
+                                jobAdapter.notifyDataSetChanged();
+                            }
+                        }
+                    });
+        }
+        else if(old.equals(true)){
             firebaseFirestore.collection("Job")
                     .whereEqualTo("CompanyId",firebaseAuth.getCurrentUser().getUid())
                     .whereEqualTo("status",false)
@@ -78,6 +113,7 @@ public class jobListActivity extends AppCompatActivity {
                                 Timestamp timestamp = documentSnapshot.getTimestamp("dateEnd");
                                 Date dateEnd = new Date(timestamp.toDate().getTime());
                                 c.setDateEnd(dateEnd);
+                                c.setJobId(documentSnapshot.getId());
                                 Companys.add(c);
                                 Log.d(TAG, "onSuccess: " + c.getDateStart() + c.getDateEnd() + Companys.get(0).getCompanyJobPosition() + c.getCompanyCity());
                                 Collections.sort(Companys, new Comparator<Company>() {
@@ -109,6 +145,7 @@ public class jobListActivity extends AppCompatActivity {
                             Timestamp timestamp = documentSnapshot.getTimestamp("dateEnd");
                             Date dateEnd = new Date(timestamp.toDate().getTime());
                             c.setDateEnd(dateEnd);
+                            c.setJobId(documentSnapshot.getId());
                             Companys.add(c);
                             Log.d(TAG, "onSuccess: " + c.getDateStart() + c.getDateEnd() + Companys.get(0).getCompanyJobPosition() + c.getCompanyCity());
                             Collections.sort(Companys, new Comparator<Company>() {
@@ -151,10 +188,24 @@ public class jobListActivity extends AppCompatActivity {
             }
         });
         Boolean old = getIntent().getBooleanExtra("old",false);
+        String careerId = getIntent().getStringExtra("careerId");
         if(old.equals(true)){
             txttoolbar.setText(getString(R.string.previous_jobs));
             binding.btnNewJob.setVisibility(View.GONE);
-        }else {txttoolbar.setText(getString(R.string.job_on_active));
+        }else if(careerId != null){
+            txttoolbar.setText("Choice pattern");
+            binding.btnNewJob.setVisibility(View.GONE);
+            binding.LayoutCreate.setVisibility(View.VISIBLE);
+            binding.LayoutCreate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(jobListActivity.this,jobCreateActivity.class);
+                    i.putExtra("careerId",careerId);
+                    startActivity(i);
+                }
+            });
+        }
+        else {txttoolbar.setText(getString(R.string.job_on_active));
         binding.btnNewJob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

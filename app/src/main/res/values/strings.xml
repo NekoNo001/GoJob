@@ -35,7 +35,7 @@
     <string name="Experience">Experience*</string>
     <string name="Salary">Salary*</string>
     <string name="JobInformation">Job Information</string>
-    <string name="Addfirstjob">Add a first Job</string>
+    <string name="Addfirstjob">Add a Job</string>
     <string name="Joblocation">"   Job location*"</string>
 
     ------------------------------------------------allapp-------------------------------------
@@ -119,6 +119,7 @@
     <string name="hello">Hello,</string>
     <string name="gojob_wishing_you_success_in_finding_the_perfect_candidates_to_join_your_team">Gojob wishing you success in finding the perfect candidates to join your team!</string>
     <string name="choice_date_end">Choice Date End</string>
+    <string name="create_new_pattern">Create new pattern</string>
 
     -----------------------------------dropdown item----------------------------------------
     <string-array name="my_dropdown_items">

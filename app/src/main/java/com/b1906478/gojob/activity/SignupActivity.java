@@ -27,6 +27,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SignupActivity extends AppCompatActivity {
 
+
     FirebaseAuth firebaseauth;
     FirebaseFirestore firebaseFirestore;
     ActivitySignupBinding binding;

@@ -13,6 +13,9 @@
         android:theme="@style/Theme.GoJob"
         tools:targetApi="31">
         <activity
+            android:name=".activity.JobManageActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.jobListActivity"
             android:exported="false" />
         <activity

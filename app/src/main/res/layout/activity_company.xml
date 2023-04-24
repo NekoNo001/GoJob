@@ -65,8 +65,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:text="@string/job_management_options"
-            android:layout_marginTop="5dp"
-            android:textSize="20dp"
+            android:layout_margin="20dp"
+            android:textSize="30dp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/imageView"
             tools:layout_editor_absoluteX="20dp" />
@@ -145,10 +145,10 @@
             android:id="@+id/settingtext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_margin="20dp"
             android:layout_marginHorizontal="20dp"
             android:text="@string/setting"
-            android:textSize="20dp"
+            android:textSize="30dp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/cardOldJobId" />
 
