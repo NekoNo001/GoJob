@@ -32,6 +32,7 @@ import com.b1906478.gojob.model.Notification;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -56,17 +57,31 @@ public class JobseakercolletionActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityJobseekercolletion2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         firebaseauth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
-
         ImageView leftArrow = findViewById(R.id.leftArrow);
         TextView txttoolbar = findViewById(R.id.txtToolbar);
         Button btn = findViewById(R.id.btnNext);
         txttoolbar.setText(R.string.Create_Your_CV);
-
         backbuttob(leftArrow);
         Onclicknext(btn);
+        setupData();
+    }
+
+    private void setupData() {
+        firebaseFirestore.collection("User")
+                .document(firebaseauth.getCurrentUser().getUid())
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        binding.txtSkill.setText(documentSnapshot.getString("Skill"));
+                        binding.txtcer.setText(documentSnapshot.getString("Certificate"));
+                        binding.txtinterest.setText(documentSnapshot.getString("Interest"));
+                        binding.txtworkExperian.setText(documentSnapshot.getString("Work Experience"));
+
+                    }
+                });
     }
 
     public void backbuttob(ImageView a) {

@@ -49,4 +49,17 @@
         <item name="android:layout_marginEnd">5dp</item>
         <item name="android:textColor">@color/darkmodedfont</item>
     </style>
+    <style name="iconsizejob">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginStart">20dp</item>
+    </style>
+    <style name="textjob">
+        <item name="android:textColor">@color/darkmodedfont</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">17dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+    </style>
 </resources>

@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -54,7 +55,7 @@ public class CompanycolletionActivity extends AppCompatActivity {
         ImageView leftArrow = findViewById(R.id.leftArrow);
         TextView txttoolbar = findViewById(R.id.txtToolbar);
         Button btn = findViewById(R.id.btnNext);
-        txttoolbar.setText("We need Infomation of your Company");
+        txttoolbar.setText(getString(R.string.company_infomation));
         ImageView img = findViewById(R.id.imageView2);
         img.setOnClickListener(new View.OnClickListener() {
             @Override

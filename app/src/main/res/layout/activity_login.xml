@@ -43,7 +43,7 @@
         android:layout_below="@+id/txtemail"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:textSize="20sp" />
 
@@ -55,7 +55,7 @@
         android:layout_marginTop="-15dp"
         android:layout_marginLeft="15dp"
         android:gravity="center_vertical"
-        android:text="Reset your password"
+        android:text="@string/reset_your_password"
         android:textSize="15sp" />
 
     <Button

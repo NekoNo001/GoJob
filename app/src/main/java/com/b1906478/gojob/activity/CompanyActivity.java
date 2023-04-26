@@ -13,8 +13,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.b1906478.gojob.R;
 import com.b1906478.gojob.databinding.ActivityCompanyBinding;
@@ -40,6 +42,8 @@ public class CompanyActivity extends AppCompatActivity {
     FirebaseFirestore firebaseFirestore;
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference storageRef = storage.getReference();
+
+    private boolean doubleBackToExitPressedOnce = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +60,11 @@ public class CompanyActivity extends AppCompatActivity {
                 .addSnapshotListener(new EventListener<DocumentSnapshot>() {
                     @Override
                     public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (value.exists()) {
+                        if (error != null) {
+                            Log.w(TAG, "Listen failed.", error);
+                            return;
+                        }
+                        if (value != null && value.exists()) {
                             // Docuent already exists in Firestore
                             binding.btnname.setText(value.getString("Name"));
                             if(value.getString("imageUrl") != ""){
@@ -112,6 +120,7 @@ public class CompanyActivity extends AppCompatActivity {
                                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(i);
                                 finish();
+
                             }
                         });
                 AlertDialog alert = builder.create();
@@ -139,8 +148,8 @@ public class CompanyActivity extends AppCompatActivity {
                                 editor.apply();
                                 Intent i = new Intent(getApplicationContext(), splashScreen.class);
                                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(i);
                                 finish();
+                                startActivity(i);
                             }
                         });
                 AlertDialog alert = builder.create();
@@ -155,5 +164,24 @@ public class CompanyActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        String ApplyView = getIntent().getStringExtra("ApplyView");
+        if(ApplyView == null){
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed();
+                return;
+            }
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, R.string.please_click_back_again_to_exit, Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce=false;
+                }
+            }, 2000);}else{
+            finish();
+        }
     }
 }

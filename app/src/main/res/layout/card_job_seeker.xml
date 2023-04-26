@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:background="@color/black"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/darkmode">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="400dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/img"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Nguyen Nhat Ho"
+                android:textColor="@color/Mint"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Software Engeering"
+                android:textColor="@color/darkmodedfont"
+                android:textSize="20dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
+            <ImageView
+                android:id="@+id/addressic"
+                style="@style/iconsizejob"
+                android:src="@drawable/graduation"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line3"/>
+
+            <TextView
+                android:id="@+id/universitytxt"
+                style="@style/textjob"
+                android:text="Can tho univercity"
+                app:layout_constraintBottom_toBottomOf="@+id/addressic"
+                app:layout_constraintStart_toEndOf="@+id/addressic"
+                app:layout_constraintTop_toTopOf="@+id/addressic" />
+
+            <TextView
+                android:id="@+id/gpa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="GPA: "
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/addressic"
+                app:layout_constraintStart_toEndOf="@+id/universitytxt"
+                app:layout_constraintTop_toTopOf="@+id/addressic" />
+
+            <TextView
+                android:id="@+id/gpatxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3.11/4"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/addressic"
+                app:layout_constraintStart_toEndOf="@+id/gpa"
+                app:layout_constraintTop_toTopOf="@+id/addressic" />
+
+
+            <ImageView
+                android:id="@+id/typejobic"
+                style="@style/iconsizejob"
+                android:src="@drawable/message"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addressic" />
+
+            <TextView
+                android:id="@+id/emailtxt"
+                style="@style/textjob"
+                android:text="nguyenho6478@gmail.com"
+                app:layout_constraintBottom_toBottomOf="@+id/typejobic"
+                app:layout_constraintStart_toEndOf="@+id/typejobic"
+                app:layout_constraintTop_toTopOf="@+id/typejobic" />
+
+            <ImageView
+                android:id="@+id/levelic"
+                style="@style/iconsizejob"
+                android:src="@drawable/emergencyphone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/typejobic" />
+
+            <TextView
+                android:id="@+id/sdttxt"
+                style="@style/textjob"
+                android:text="0965577189"
+                app:layout_constraintBottom_toBottomOf="@+id/levelic"
+                app:layout_constraintStart_toEndOf="@+id/levelic"
+                app:layout_constraintTop_toTopOf="@+id/levelic" />
+
+            <ImageView
+                android:id="@+id/address"
+                style="@style/iconsizejob"
+                android:src="@drawable/location"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/levelic" />
+
+            <TextView
+                android:id="@+id/addresstxt"
+                style="@style/textjob"
+                android:text="Can Tho"
+                app:layout_constraintBottom_toBottomOf="@+id/address"
+                app:layout_constraintStart_toEndOf="@+id/address"
+                app:layout_constraintTop_toTopOf="@+id/address" />
+
+            <ImageView
+                android:id="@+id/datebirth"
+                style="@style/iconsizejob"
+                android:src="@drawable/birthday"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/address" />
+
+            <TextView
+                android:id="@+id/dobtxt"
+                style="@style/textjob"
+                android:text="15/1/2001"
+                app:layout_constraintBottom_toBottomOf="@+id/datebirth"
+                app:layout_constraintStart_toEndOf="@+id/datebirth"
+                app:layout_constraintTop_toTopOf="@+id/datebirth" />
+            <ImageView
+                android:id="@+id/webic"
+                style="@style/iconsizejob"
+                android:src="@drawable/information"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/datebirth" />
+
+            <TextView
+                android:id="@+id/webtxt"
+                style="@style/textjob"
+                android:text="github.com/neko001"
+                app:layout_constraintBottom_toBottomOf="@+id/webic"
+                app:layout_constraintStart_toEndOf="@+id/webic"
+                app:layout_constraintTop_toTopOf="@+id/webic" />
+            <View
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@color/darkmodedfont"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2"
+                android:layout_marginTop="5dp"/>
+
+
+
+
+            <TextView
+                android:id="@+id/txtaddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:text="I'm currently a fourth-year student at CanTho University. Currently, I am working onmy thesis and will graduate in September2023. I now working on Android development and I also interested in branching out intoWeb development"
+                android:textColor="@color/darkmodedfont"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line1" />
+
+            <View
+                android:id="@+id/line3"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@color/darkmodedfont"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtaddress"
+                android:layout_marginTop="10dp"/>
+
+            <View
+                android:id="@+id/line4"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/darkmodedfont"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/webic" />
+
+            <TextView
+                android:id="@+id/jobdescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/skill"
+                android:textColor="@color/Mint"
+                android:layout_margin="10dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/line4" />
+
+            <TextView
+                android:id="@+id/txtjobdescription"
+                style="@style/fontJD2"
+                android:text="Place holder"
+                android:textColor="@color/darkmodedfont"
+                android:layout_marginTop="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/jobdescription" />
+
+            <TextView
+                android:id="@+id/candidateRequirements"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/txtjobdescription"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:text="@string/certifications_js"
+                android:textSize="20dp"
+                android:textColor="@color/Mint"/>
+
+            <TextView
+                android:id="@+id/txtcandidateRequirements"
+                style="@style/fontJD2"
+                android:text="Place holder"
+                android:textColor="@color/darkmodedfont"
+                android:layout_marginTop="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/candidateRequirements" />
+
+            <TextView
+                android:id="@+id/benefit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/txtcandidateRequirements"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:text="@string/workexperian"
+                android:textSize="20dp"
+                android:textColor="@color/Mint"/>
+
+            <TextView
+                android:id="@+id/txtbenefit"
+                style="@style/fontJD2"
+                android:text="Place Holder"
+                android:textColor="@color/darkmodedfont"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/benefit"
+                android:layout_marginBottom="150dp"/>
+
+            <TextView
+                android:id="@+id/workexp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/interest"
+                android:textColor="@color/Mint"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/txtbenefit" />
+
+            <TextView
+                android:id="@+id/worktxt"
+                style="@style/fontJD2"
+                android:text="Place Holder"
+                android:textColor="@color/darkmodedfont"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/workexp" />
+
+            <FrameLayout
+                android:id="@+id/left_overlay"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <FrameLayout
+                android:id="@+id/right_overlay"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/Mint"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                app:layout_constraintTop_toBottomOf="@+id/worktxt" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</ScrollView>

@@ -13,9 +13,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -64,12 +67,14 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class findActivity extends AppCompatActivity {
     int slectionItemByCity =0;
     int slectionItemByType =0;
     int slectionItemByExp =0;
+    int choice =0;
     private View dialogView;
     ActivityFindBinding binding;
     FirebaseAuth firebaseauth;
@@ -373,32 +378,51 @@ public class findActivity extends AppCompatActivity {
                 // create an instance of AlertDialog.Builder
                 AlertDialog.Builder builder = new AlertDialog.Builder(findActivity.this);
                 // set the title of the dialog
-                builder.setTitle(getString(R.string.choice_city_to_sort)).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                    }
-                });
-                builder.setSingleChoiceItems(options, slectionItemByCity, new DialogInterface.OnClickListener() {
+                builder.setTitle(getString(R.string.choice_city_to_sort))
+                        .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                            }
+                        });
+
+                SharedPreferences sharedPreferences = getSharedPreferences("language", Context.MODE_PRIVATE);
+                String language = sharedPreferences.getString("language", "en");
+                if(language.equals("vi")){
+                    choice = 1;
+                }
+                builder.setSingleChoiceItems(options, choice , new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // handle the click event for each item in the dropdown menu
-                    }
+                        choice = which;
+                        }
                 });
+
                 builder.setPositiveButton(R.string.sort, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(findActivity.this,getString(R.string.sort_by) + options[slectionItemByCity].toString(),Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(findActivity.this, splashScreen.class);
-                            startActivity(intent);
-                            finish();
+                        if(choice == 0 ){
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("language", "en");
+                            editor.apply();
+                            setLocale("en"); // đổi ngôn ngữ hiển thị
+                            recreate();
+                        }else{
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("language", "vi");
+                            editor.apply();
+                            setLocale("vi"); // đổi ngôn ngữ hiển thị
+                            recreate();
+                        }// khởi động lại activity để áp dụng ngôn ngữ mới
                     }
                 });
+
                 // create the dialog and show it
                 AlertDialog dialog = builder.create();
                 dialog.show();
                 return false;
             }
         });
+
         btnLogout.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
@@ -684,7 +708,6 @@ public class findActivity extends AppCompatActivity {
                                                         }
                                                     });
                                         }else
-
                                 //thanh pho
                                 if(typeString == null && CityString != null && slectionItemByExp ==0 ){
                                         Button btnReset = findViewById(R.id.btnReset);
@@ -707,7 +730,6 @@ public class findActivity extends AppCompatActivity {
                                                     }
                                                 });
                                     }else
-
                                 //tp + yeah
                                 if(typeString == null && CityString != null && slectionItemByExp <4 && slectionItemByExp != 0){
                                             slectionItemByType = getIntent().getIntExtra("slectionItemByType",0);
@@ -761,7 +783,7 @@ public class findActivity extends AppCompatActivity {
 
                                 //yeah
                                 if(typeString == null && CityString == null && slectionItemByExp <4 && slectionItemByExp != 0){
-                                            slectionItemByType = getIntent().getIntExtra("slectionItemByType",0);
+                                            slectionItemByType = getIntent().getIntExtra("slectionItemByExp",0);
                                             Button btnReset = findViewById(R.id.btnReset);
                                             String temp  = String.valueOf(slectionItemByExp-1);
                                             btnReset.setText(temp + getString(R.string.year));
@@ -784,8 +806,8 @@ public class findActivity extends AppCompatActivity {
                                                     });
                                         }else
                                 //yeah >=3
-                                if(typeString != null && CityString != null && slectionItemByExp == 4 && slectionItemByExp != 0){
-                                            slectionItemByType = getIntent().getIntExtra("slectionItemByType",0);
+                                if(typeString == null && CityString == null && slectionItemByExp == 4 && slectionItemByExp != 0){
+                                            slectionItemByType = getIntent().getIntExtra("slectionItemByExp",0);
                                             Button btnReset = findViewById(R.id.btnReset);
                                             btnReset.setText("3+ " + getString(R.string.year) );
                                             btnReset.setVisibility(View.VISIBLE);
@@ -1202,9 +1224,6 @@ public class findActivity extends AppCompatActivity {
         }
     }
 
-
-
-
             @Override
     public void onBackPressed() {
         String ApplyView = getIntent().getStringExtra("ApplyView");
@@ -1223,5 +1242,13 @@ public class findActivity extends AppCompatActivity {
         }, 2000);}else{
             finish();
         }
+    }
+    public void setLocale(String lang) {
+        Locale myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
     }
 }

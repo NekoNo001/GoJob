@@ -59,7 +59,7 @@
     <string name="select_your_role">Select your role</string>
     <string name="next">Next</string>
     <string name="job_seeker">Job seeker</string>
-    <string name="Create_Your_CV">Create Your CV</string>
+    <string name="Create_Your_CV">your CV</string>
     <string name="your_avatar">Your Avatar</string>
     <string name="position">Position*</string>
     <string name="name">Name*</string>
@@ -120,6 +120,26 @@
     <string name="gojob_wishing_you_success_in_finding_the_perfect_candidates_to_join_your_team">Gojob wishing you success in finding the perfect candidates to join your team!</string>
     <string name="choice_date_end">Choice Date End</string>
     <string name="create_new_pattern">Create new pattern</string>
+    <string name="accept_list">Accept List</string>
+    <string name="view_apply">View Apply</string>
+    <string name="find_candidates">Find candidates</string>
+    <string name="you_are_invited_to_apply_for_the_position">"You are invited to apply for the position: "</string>
+    <string name="your_cv_being_refuse_many_time_we_recommend_you_edit_your_cv_or_try_different_fields">Your Cv being refuse many time. we recommend you edit your cv or try different fields</string>
+    <string name="your_cv_being_refuse_for">"Your CV being refuse for: "</string>
+    <string name="phone_number_copied_to_clipboard">Phone number copied to clipboard</string>
+    <string name="email_copied_to_clipboard">Email copied to clipboard</string>
+    <string name="your_company_avatar">Your Company Avatar</string>
+    <string name="company_name">Company Name*</string>
+    <string name="company_infomation">Company infomation</string>
+    <string name="name_">Name:</string>
+    <string name="email_">Email:</string>
+    <string name="phone_">Phone:</string>
+    <string name="date">Date:</string>
+    <string name="work_address">Work address*</string>
+    <string name="recruiter">Recruiter</string>
+    <string name="gojob_everytime_everywhere">GoJob - Everytime - Everywhere</string>
+    <string name="reset_your_password">Reset your password</string>
+    <string name="password">Password</string>
 
     -----------------------------------dropdown item----------------------------------------
     <string-array name="my_dropdown_items">

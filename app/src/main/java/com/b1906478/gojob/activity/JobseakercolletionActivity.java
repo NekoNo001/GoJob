@@ -112,7 +112,7 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                                 binding.nameId.setText(document.getString("Name"));
                                 binding.positionId.setText(document.getString("Position"));
                                 binding.university.setText(document.getString("University"));
-                                binding.txtGPA.setText(document.getString("GPA"));
+                                binding.txtGPA.setText(String.valueOf(document.getLong("GPA")));
                                 binding.txtaddress.setText(document.getString("Address"));
                                 binding.txtemail.setText(document.getString("Email"));
                                 binding.txtphone.setText(document.getString("Phone"));
@@ -173,7 +173,7 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                     User.put("Name", name);
                     User.put("Position", position);
                     User.put("University", university);
-                    User.put("GPA", gpa);
+                    User.put("GPA",Double.parseDouble(gpa));
                     User.put("Address", address);
                     User.put("Email", email);
                     User.put("Phone", phone);
@@ -185,6 +185,7 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                     User.put("Certificate", "");
                     User.put("Interest", "");
                     User.put("Work Experience","");
+                    User.put("Priority",15);
                     firebaseFirestore.collection("User")
                             .document(FirebaseAuth.getInstance().getUid())
                             .set(User);

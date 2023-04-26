@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="3dp"
+    android:background="@drawable/bordered_edittext"
+    android:id="@+id/LayoutJob">
+
+
+    <ImageView
+        android:id="@+id/avatarImg"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="2dp"
+        android:background="@drawable/img"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:gravity="start"
+        android:text="@string/name_"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/avatarImg"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtPosition"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="Nguyen Nhat Ho"
+        android:textColor="@color/Mint"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/position"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Locaton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="@string/email_"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/position"
+        app:layout_constraintTop_toBottomOf="@+id/position" />
+
+    <TextView
+        android:id="@+id/txtCity"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="Nguyenho6478@gamail.com"
+        android:textColor="@color/Mint"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/Locaton"
+        app:layout_constraintTop_toBottomOf="@+id/position" />
+
+
+    <TextView
+        android:id="@+id/sdt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="@string/phone_"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/Locaton"
+        app:layout_constraintTop_toBottomOf="@+id/Locaton" />
+
+    <TextView
+        android:id="@+id/sdtTxt"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="0965577189"
+        android:textColor="@color/Mint"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/sdt"
+        app:layout_constraintTop_toBottomOf="@+id/Locaton" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/sdt"
+        app:layout_constraintTop_toBottomOf="@+id/sdt" />
+
+    <TextView
+        android:id="@+id/timeStart"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:text="1 Apr 2022"
+        android:textColor="@color/Mint"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/date"
+        app:layout_constraintTop_toTopOf="@+id/date" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

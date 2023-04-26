@@ -2,6 +2,7 @@ package com.b1906478.gojob.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,8 +46,11 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.myViewHolder> 
     public static class myViewHolder extends RecyclerView.ViewHolder {
         TextView JobPosition,NameCompany,Salary,TypeOfWork,WorkExperience,NumberOfRecruits, Level, gender, address, jobDescription, candidateRequirements, benefit;
         ImageView Avatar;
+        FrameLayout left,right;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
+            left = itemView.findViewById(R.id.left_overlay);
+            right = itemView.findViewById(R.id.right_overlay);
             JobPosition = itemView.findViewById(R.id.textView1);
             NameCompany = itemView.findViewById(R.id.textView2);
             Salary = itemView.findViewById(R.id.txtsalary);
@@ -62,6 +66,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.myViewHolder> 
             benefit = itemView.findViewById(R.id.txtbenefit);
         }
         void bindCard(myViewHolder holder, final Company company){
+            left.setVisibility(View.VISIBLE);
+            right.setVisibility(View.VISIBLE);
             if(company.getCompanyAvatar() != null){
                 Picasso.get().load(company.getCompanyAvatar()).resize(1360,1370).centerCrop().into(Avatar);
             }

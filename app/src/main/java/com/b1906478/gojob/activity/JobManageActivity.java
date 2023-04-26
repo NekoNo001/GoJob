@@ -46,10 +46,16 @@ public class JobManageActivity extends AppCompatActivity {
                 .document(firebaseAuth.getCurrentUser().getUid())
                 .addSnapshotListener(new EventListener<DocumentSnapshot>() {
                     @Override
-                    public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                        Picasso.get().load(value.getString("imageUrl")).centerCrop()
-                                .resize(500,500)
-                                .into(binding.avatarImg);
+                    public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+                            Log.w(TAG, "Listen failed.", error);
+                            return;
+                        }
+                        if (snapshot != null && snapshot.exists()) {
+                            Picasso.get().load(snapshot.getString("imageUrl")).centerCrop()
+                                    .resize(500,500)
+                                    .into(binding.avatarImg);
+                        }
                     }
                 });
         String jobid = getIntent().getStringExtra("jobId");
@@ -67,19 +73,31 @@ public class JobManageActivity extends AppCompatActivity {
                             binding.findCadi.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-
+                                    Intent i = new Intent(JobManageActivity.this, viewJobSeekerActivity.class);
+                                    String jobid = getIntent().getStringExtra("jobId");
+                                    i.putExtra("careerId",snapshot.getString("careerId"));
+                                    i.putExtra("jobId",jobid);
+                                    startActivity(i);
                                 }
                             });
                             binding.viewApply.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-
+                                    Intent i = new Intent(JobManageActivity.this, viewJobSeekerActivity.class);
+                                    String jobid = getIntent().getStringExtra("jobId");
+                                    i.putExtra("careerId",snapshot.getString("careerId"));
+                                    i.putExtra("jobId",jobid);
+                                    i.putExtra("viewApply",true);
+                                    startActivity(i);
                                 }
                             });
                             binding.Accep.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-
+                                    Intent i = new Intent(JobManageActivity.this, jobSeekerListActivity.class);
+                                    String jobid = getIntent().getStringExtra("jobId");
+                                    i.putExtra("jobId",jobid);
+                                    startActivity(i);
                                 }
                             });
                             binding.txtPosition.setOnClickListener(new View.OnClickListener() {

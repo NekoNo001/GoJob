@@ -60,7 +60,7 @@
             android:layout_gravity="start"
             android:layoutDirection="rtl"
             android:padding="10dp"
-            android:text="Recruiter"
+            android:text="@string/recruiter"
             android:textAlignment="textStart"
             android:visibility="visible"
             android:textColor="@color/darkmodedfont"

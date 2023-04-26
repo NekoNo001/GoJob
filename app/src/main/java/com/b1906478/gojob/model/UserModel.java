@@ -3,31 +3,49 @@ package com.b1906478.gojob.model;
 import java.util.Date;
 
 public class UserModel {
-     String userIntroduce, username, userPosition, userUniversity, userAddress, userEmail, userPhone, userUnivebsity, userSkill, userCer, userInterest, userExperience, userAvatar;
-     int userGPA;
+     String userIntroduce, username, userPosition, userUniversity, userAddress, userEmail, userPhone, userSkill, userCer, userInterest, userExperience, userAvatar,userWeb,userId;
+     Number userGPA,Priority;
      Date userDOB;
+
+    public Number getPriority() {
+        return Priority;
+    }
+
+    public void setPriority(Number priority) {
+        Priority = priority;
+    }
 
     public UserModel() {
     }
 
-    public UserModel(String userIntroduce, String username, String userPosition, String userUniversity, String userAddress, String userEmail, String userPhone, String userUnivebsity, String userSkill, String userCer, String userInterest, String userExperience, String userAvatar, int userGPA, Date userDOB) {
-        this.userIntroduce = userIntroduce;
-        this.username = username;
-        this.userPosition = userPosition;
-        this.userUniversity = userUniversity;
-        this.userAddress = userAddress;
-        this.userEmail = userEmail;
-        this.userPhone = userPhone;
-        this.userUnivebsity = userUnivebsity;
-        this.userSkill = userSkill;
-        this.userCer = userCer;
-        this.userInterest = userInterest;
-        this.userExperience = userExperience;
-        this.userAvatar = userAvatar;
-        this.userGPA = userGPA;
-        this.userDOB = userDOB;
+    public String getUserWeb() {
+        return userWeb;
     }
 
+    public void setUserWeb(String userWeb) {
+        this.userWeb = userWeb;
+    }
+
+
+    public void setUserGPA(Long userGPA) {
+        this.userGPA = userGPA;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public Number getUserGPA() {
+        return userGPA;
+    }
+
+    public void setUserGPA(Number userGPA) {
+        this.userGPA = userGPA;
+    }
 
     public String getUserIntroduce() {
         return userIntroduce;
@@ -85,13 +103,6 @@ public class UserModel {
         this.userPhone = userPhone;
     }
 
-    public String getUserUnivebsity() {
-        return userUnivebsity;
-    }
-
-    public void setUserUnivebsity(String userUnivebsity) {
-        this.userUnivebsity = userUnivebsity;
-    }
 
     public String getUserSkill() {
         return userSkill;
@@ -133,13 +144,10 @@ public class UserModel {
         this.userAvatar = userAvatar;
     }
 
-    public int getUsergpa() {
+    public Number getUsergpa() {
         return userGPA;
     }
 
-    public void setUsergpa(int usergpa) {
-        this.userGPA = usergpa;
-    }
 
     public Date getUserDOB() {
         return userDOB;
