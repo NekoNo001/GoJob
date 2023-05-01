@@ -140,4 +140,10 @@
     <string name="gojob_everytime_everywhere">GoJob - Mọi lúc - Mọi nơi</string>
     <string name="reset_your_password">Quên mật khẩu</string>
     <string name="password">Mật Khẩu</string>
+    <string name="searching_for_candidates_or_approving_applicants_for_a_job_opening">Tìm kiếm ứng viên hoặc chấp nhận người nộp đơn cho công việc đang tuyển dụng.</string>
+    <string name="view_apply_of_previous_jobs_or_accept_list">Xem danh sách ứng tuyển hoặc danh sách chấp nhận của các công việc cụ.</string>
+    <string name="view_candidates">Xem ứng viên</string>
+    <string name="position_">Vị trí:</string>
+    <string name="region">Khu vực:</string>
+    <string name="choice_pattern">Chọn mẫu công việc</string>
 </resources>

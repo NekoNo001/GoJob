@@ -193,7 +193,7 @@ public class jobListActivity extends AppCompatActivity {
             txttoolbar.setText(getString(R.string.previous_jobs));
             binding.btnNewJob.setVisibility(View.GONE);
         }else if(careerId != null){
-            txttoolbar.setText("Choice pattern");
+            txttoolbar.setText(R.string.choice_pattern);
             binding.btnNewJob.setVisibility(View.GONE);
             binding.LayoutCreate.setVisibility(View.VISIBLE);
             binding.LayoutCreate.setOnClickListener(new View.OnClickListener() {

@@ -80,7 +80,7 @@ public class companyRequestActivity extends AppCompatActivity {
                 data.put("jobId",jobId);
                 firebaseFirestore.collection("Job")
                         .document(jobId.trim())
-                        .collection("Application")
+                        .collection("AcceptList")
                         .document(firebaseauth.getCurrentUser().getUid())
                         .set(data);
                 Intent i = new Intent(companyRequestActivity.this,findActivity.class);

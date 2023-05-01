@@ -59,7 +59,7 @@ public class SearchActivity extends AppCompatActivity {
                 String searchString = editText.getText().toString();
                 searchHistorySet.add(searchString);
                 sharedPreferences.edit().putStringSet("search_history" , searchHistorySet).apply();
-                i.putExtra("SearchString",searchString);
+                i.putExtra("SearchString",searchString.toLowerCase());
                 Toast.makeText(SearchActivity.this,editText.getText().toString(), Toast.LENGTH_SHORT).show();
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);

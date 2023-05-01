@@ -161,37 +161,55 @@ public class viewJobSeekerActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentSnapshot d) {
                         if(!d.exists()){
-                            UserModel um = new UserModel();
-                            um.setUserAvatar(documentSnapshot.getString("imageUrl"));
-                            um.setUsername(documentSnapshot.getString("Name"));
-                            um.setUserIntroduce(documentSnapshot.getString("Introduce"));
-                            um.setUserPosition(documentSnapshot.getString("Position"));
-                            um.setUserUniversity(documentSnapshot.getString("University"));
-                            um.setUserGPA((documentSnapshot.getLong("GPA")));
-                            um.setUserEmail(documentSnapshot.getString("Email"));
-                            um.setUserPhone(documentSnapshot.getString("Phone"));
-                            um.setUserDOB(documentSnapshot.getTimestamp("DOB").toDate());
-                            um.setUserWeb(documentSnapshot.getString("Website"));
-                            um.setUserSkill(documentSnapshot.getString("Skill"));
-                            um.setUserCer(documentSnapshot.getString("Certificate"));
-                            um.setUserInterest(documentSnapshot.getString("Interest"));
-                            um.setUserExperience(documentSnapshot.getString("Work Experience"));
-                            um.setUserId(documentSnapshot.getId());
-                            um.setUserAddress(documentSnapshot.getString("Address"));
-                            um.setPriority(documentSnapshot.getLong("Priority"));
-                            Log.d(TAG, "onComplete: " + um.getUserPosition());
-                            userModels.add(um);
-                            Collections.sort(userModels, new Comparator<UserModel>() {
-                                @Override
-                                public int compare(UserModel c1, UserModel c2) {
-                                    return Integer.compare(c1.getPriority().intValue(), c2.getPriority().intValue());
-                                }
-                            });
-                            adapter.notifyDataSetChanged();
+                            CheckAccept(documentSnapshot);
                         }
                     }
                 });}
     }
+
+    private void CheckAccept(DocumentSnapshot documentSnapshot) {
+        String jobid = getIntent().getStringExtra("jobId");
+        firebaseFirestore.collection("Job")
+                .document(jobid)
+                .collection("AcceptList")
+                .document(documentSnapshot.getId())
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot d) {
+                        if(!d.exists()){
+                            {
+                                UserModel um = new UserModel();
+                                um.setUserAvatar(documentSnapshot.getString("imageUrl"));
+                                um.setUsername(documentSnapshot.getString("Name"));
+                                um.setUserIntroduce(documentSnapshot.getString("Introduce"));
+                                um.setUserPosition(documentSnapshot.getString("Position"));
+                                um.setUserUniversity(documentSnapshot.getString("University"));
+                                um.setUserGPA((documentSnapshot.getLong("GPA")));
+                                um.setUserEmail(documentSnapshot.getString("Email"));
+                                um.setUserPhone(documentSnapshot.getString("Phone"));
+                                um.setUserDOB(documentSnapshot.getTimestamp("DOB").toDate());
+                                um.setUserWeb(documentSnapshot.getString("Website"));
+                                um.setUserSkill(documentSnapshot.getString("Skill"));
+                                um.setUserCer(documentSnapshot.getString("Certificate"));
+                                um.setUserInterest(documentSnapshot.getString("Interest"));
+                                um.setUserExperience(documentSnapshot.getString("Work Experience"));
+                                um.setUserId(documentSnapshot.getId());
+                                um.setUserAddress(documentSnapshot.getString("Address"));
+                                um.setPriority(documentSnapshot.getLong("Priority"));
+                                Log.d(TAG, "onComplete: " + um.getUserPosition());
+                                userModels.add(um);
+                                Collections.sort(userModels, new Comparator<UserModel>() {
+                                    @Override
+                                    public int compare(UserModel c1, UserModel c2) {
+                                        return Integer.compare(c1.getPriority().intValue(), c2.getPriority().intValue());
+                                    }
+                                });
+                                adapter.notifyDataSetChanged();
+                            }
+                        }
+                    }
+                });}
 
     private void setup() {
         Button backBtn = binding.btnMenu;
@@ -276,6 +294,7 @@ public class viewJobSeekerActivity extends AppCompatActivity {
                                     });}
                 }
                 if(direction == Direction.Left){
+                    if(getIntent().getBooleanExtra("viewApply",false)){
                     String userId = userModels.get(manager.getTopPosition()-1).getUserId();
                     firebaseFirestore.collection("User")
                             .document(userId)
@@ -318,7 +337,6 @@ public class viewJobSeekerActivity extends AppCompatActivity {
                                             });
                                 }
                             });
-                    if(getIntent().getBooleanExtra("viewApply",false)){
                     firebaseFirestore.collection("Job")
                             .document(jobid)
                             .collection("Application")

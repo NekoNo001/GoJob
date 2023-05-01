@@ -36,6 +36,7 @@ import com.b1906478.gojob.R;
 import com.b1906478.gojob.adapter.CardAdapter;
 import com.b1906478.gojob.databinding.ActivityFindBinding;
 import com.b1906478.gojob.model.Company;
+import com.b1906478.gojob.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -66,7 +67,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -162,6 +162,24 @@ public class findActivity extends AppCompatActivity {
                                     Company company = createCompanyFromDocumentView(documentSnapshot,documentSnapshot.getId(),document.getTimestamp("applyTime"));
                                     Log.d(TAG, "test apply: "+documentSnapshot.getId() +documentSnapshot.getString("jobPosition")+ documentSnapshot.getTimestamp("applyTime"));
                                     getNameAndAvatar(company);
+                                }else{
+                                    firebaseFirestore.collection("Job").document(documentSnapshot.getId())
+                                            .collection("AcceptList")
+                                            .document(firebaseauth.getCurrentUser().getUid())
+                                            .get()
+                                            .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                    if (task.isSuccessful()) {
+                                                        DocumentSnapshot document = task.getResult();
+                                                        if (document.exists()) {
+                                                            Company company = createCompanyFromDocumentView(documentSnapshot, documentSnapshot.getId(), document.getTimestamp("applyTime"));
+                                                            Log.d(TAG, "test apply: " + documentSnapshot.getId() + documentSnapshot.getString("jobPosition") + documentSnapshot.getTimestamp("applyTime"));
+                                                            getNameAndAvatar(company);
+                                                        }
+                                                    }
+                                                }
+                                            });
                                 }
                             }
                         }
@@ -359,10 +377,11 @@ public class findActivity extends AppCompatActivity {
                                 editor.putBoolean("darkMode", !darkMode);
                                 editor.apply();
                                 Log.d(TAG, "onMenuItemClick: "+ sharedPreferences.getBoolean("darkMode",false));
-                                Intent i = new Intent(getApplicationContext(), splashScreen.class);
-                                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(i);
-                                finish();
+                                recreate();
+                                //                                Intent i = new Intent(getApplicationContext(), splashScreen.class);
+//                                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+//                                startActivity(i);
+//                                finish();
                             }
                         });
                 AlertDialog alert = builder.create();
@@ -397,7 +416,7 @@ public class findActivity extends AppCompatActivity {
                         }
                 });
 
-                builder.setPositiveButton(R.string.sort, new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if(choice == 0 ){
@@ -868,13 +887,32 @@ public class findActivity extends AppCompatActivity {
                             DocumentSnapshot document = task.getResult();
                             if (!document.exists()) {
                                 Log.d(TAG, "test 1: "+ JobId);
-                                addJobToList(JobId);
+                                checkAccept(JobId);
                             }
                         }
                     }
                 });
 
     }
+
+    private void checkAccept(String jobId) {
+        firebaseFirestore.collection("Job")
+                .document(jobId)
+                .collection("AcceptList")
+                .document(firebaseauth.getCurrentUser().getUid())
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot d) {
+                        if(!d.exists()){
+                            {
+                                addJobToList(jobId);
+                            }
+                        }
+                    }
+                });
+    }
+
     private void addJobToList(String JobId) {
         firebaseFirestore.collection("Job")
                 .document(JobId)

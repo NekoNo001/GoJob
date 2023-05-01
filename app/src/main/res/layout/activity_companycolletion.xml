@@ -52,14 +52,14 @@
             android:id="@+id/txtcompanyName"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:maxLength="50"
             android:layout_marginEnd="20dp"
-            android:layout_marginTop="10dp"
             android:gravity="center_vertical"
             android:hint="@string/company_name"
+            android:maxLength="50"
             android:singleLine="true"
+            app:layout_constraintBottom_toBottomOf="@+id/personid"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toTopOf="@+id/personid" />
 
         <ImageView
             android:id="@+id/personid"

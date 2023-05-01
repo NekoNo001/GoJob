@@ -12,4 +12,6 @@
     <color name="Mint">#FF03DAC5</color>
     <color name="gray">#E3E3E3</color>
     <color name="Darkgray">#4C4C4C</color>
+    <color name="darkmodeCard">#FFFFFF</color>
+    <color name="darkmodebackgroungbelow">#E8E6E6</color>
 </resources>

@@ -47,9 +47,10 @@ public class CardJobSeekerAdapter extends RecyclerView.Adapter<CardJobSeekerAdap
 
     public static class myViewHolder extends RecyclerView.ViewHolder {
         TextView addresstxt,nametxt, jobtxt, introtxt, universitytxt, gpatxt, emailtxt, sdttxt, dobtxt, webtxt, skill, skilltxt, cer, certxt, exp, exptxt, interet, interettxt;
-        ImageView avatarImg;
+        ImageView avatarImg,webic;
         View line3;
         FrameLayout left,right;
+
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -69,6 +70,7 @@ public class CardJobSeekerAdapter extends RecyclerView.Adapter<CardJobSeekerAdap
             sdttxt= itemView.findViewById(R.id.sdttxt);
             dobtxt= itemView.findViewById(R.id.dobtxt);
             webtxt = itemView.findViewById(R.id.webtxt);
+            webic = itemView.findViewById(R.id.webic);
 
             //skill part
             skill= itemView.findViewById(R.id.jobdescription);
@@ -109,11 +111,12 @@ public class CardJobSeekerAdapter extends RecyclerView.Adapter<CardJobSeekerAdap
                 Picasso.get().load(userModels.getUserAvatar()).resize(1360,1370).centerCrop().into(avatarImg);
             }
             if(userModels.getUserIntroduce().equals("")){
-                webtxt.setVisibility(View.GONE);
+                introtxt.setVisibility(View.GONE);
+                line3.setVisibility(View.GONE);
             }
             if(userModels.getUserWeb().equals("")){
-                exp.setVisibility(View.GONE);
-                exptxt.setVisibility(View.GONE);
+                webtxt.setVisibility(View.GONE);
+                webic.setVisibility(View.GONE);
             }
             if(userModels.getUserSkill().equals("")){
                 skill.setVisibility(View.GONE);

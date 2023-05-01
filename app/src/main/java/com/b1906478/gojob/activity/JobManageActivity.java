@@ -52,9 +52,11 @@ public class JobManageActivity extends AppCompatActivity {
                             return;
                         }
                         if (snapshot != null && snapshot.exists()) {
-                            Picasso.get().load(snapshot.getString("imageUrl")).centerCrop()
-                                    .resize(500,500)
-                                    .into(binding.avatarImg);
+                            if(!snapshot.getString("imageUrl").equals("")) {
+                                Picasso.get().load(snapshot.getString("imageUrl")).centerCrop()
+                                        .resize(500, 500)
+                                        .into(binding.avatarImg);
+                            }
                         }
                     }
                 });
@@ -112,7 +114,6 @@ public class JobManageActivity extends AppCompatActivity {
                             });
                             binding.txtPosition.setText(snapshot.getString("jobPosition"));
                             binding.txtCity.setText(snapshot.getString("city"));
-                            binding.txtnumofrecut.setText(String.valueOf(snapshot.getLong("numberOfRecruits")));
                             binding.txtLevel.setText(snapshot.getString("typeOfWork"));
                             binding.txtexp.setText(String.valueOf(snapshot.getLong("workExperienceNeed")) + getString(R.string.year));
                             ImageView statusimg = findViewById(R.id.statusimg);

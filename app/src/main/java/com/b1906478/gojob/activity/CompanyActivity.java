@@ -11,10 +11,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -35,10 +39,13 @@ import com.squareup.picasso.Picasso;
 
 import org.checkerframework.checker.units.qual.C;
 
+import java.util.Locale;
+
 public class CompanyActivity extends AppCompatActivity {
 
     ActivityCompanyBinding binding;
     FirebaseAuth firebaseAuth;
+    int choice =0;
     FirebaseFirestore firebaseFirestore;
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference storageRef = storage.getReference();
@@ -120,7 +127,6 @@ public class CompanyActivity extends AppCompatActivity {
                                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(i);
                                 finish();
-
                             }
                         });
                 AlertDialog alert = builder.create();
@@ -156,12 +162,62 @@ public class CompanyActivity extends AppCompatActivity {
                 alert.show();
             }
         });
-        binding.btnname.setOnClickListener(new View.OnClickListener() {
+        binding.btnApply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(CompanyActivity.this, CompanycolletionActivity.class);
                 i.putExtra("edit",true);
                 startActivity(i);
+            }
+        });
+        binding.Language.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String[] options = {"English", "Tiếng việt"};
+                // create an instance of AlertDialog.Builder
+                AlertDialog.Builder builder = new AlertDialog.Builder(CompanyActivity.this);
+                // set the title of the dialog
+                builder.setTitle(getString(R.string.choice_city_to_sort))
+                        .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                            }
+                        });
+
+                SharedPreferences sharedPreferences = getSharedPreferences("language", Context.MODE_PRIVATE);
+                String language = sharedPreferences.getString("language", "en");
+                if(language.equals("vi")){
+                    choice = 1;
+                }
+                builder.setSingleChoiceItems(options, choice , new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        choice = which;
+                    }
+                });
+
+                builder.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if(choice == 0 ){
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("language", "en");
+                            editor.apply();
+                            setLocale("en"); // đổi ngôn ngữ hiển thị
+                            recreate();
+                        }else{
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("language", "vi");
+                            editor.apply();
+                            setLocale("vi"); // đổi ngôn ngữ hiển thị
+                            recreate();
+                        }// khởi động lại activity để áp dụng ngôn ngữ mới
+                    }
+                });
+
+                // create the dialog and show it
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
     }
@@ -183,5 +239,13 @@ public class CompanyActivity extends AppCompatActivity {
             }, 2000);}else{
             finish();
         }
+    }
+    public void setLocale(String lang) {
+        Locale myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
     }
 }

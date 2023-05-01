@@ -140,6 +140,12 @@
     <string name="gojob_everytime_everywhere">GoJob - Everytime - Everywhere</string>
     <string name="reset_your_password">Reset your password</string>
     <string name="password">Password</string>
+    <string name="searching_for_candidates_or_approving_applicants_for_a_job_opening">Searching for candidates or approving applicants for a job opening.</string>
+    <string name="view_apply_of_previous_jobs_or_accept_list">View apply of previous jobs or accept list</string>
+    <string name="view_candidates">View candidates</string>
+    <string name="position_">Position:</string>
+    <string name="region">Region:</string>
+    <string name="choice_pattern">Choice pattern</string>
 
     -----------------------------------dropdown item----------------------------------------
     <string-array name="my_dropdown_items">
