@@ -377,11 +377,10 @@ public class findActivity extends AppCompatActivity {
                                 editor.putBoolean("darkMode", !darkMode);
                                 editor.apply();
                                 Log.d(TAG, "onMenuItemClick: "+ sharedPreferences.getBoolean("darkMode",false));
-                                recreate();
-                                //                                Intent i = new Intent(getApplicationContext(), splashScreen.class);
-//                                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                                startActivity(i);
-//                                finish();
+                                Intent i = new Intent(getApplicationContext(), splashScreen.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(i);
+                                finish();
                             }
                         });
                 AlertDialog alert = builder.create();
@@ -802,7 +801,7 @@ public class findActivity extends AppCompatActivity {
 
                                 //yeah
                                 if(typeString == null && CityString == null && slectionItemByExp <4 && slectionItemByExp != 0){
-                                            slectionItemByType = getIntent().getIntExtra("slectionItemByExp",0);
+                                            slectionItemByExp = getIntent().getIntExtra("slectionItemByExp",0);
                                             Button btnReset = findViewById(R.id.btnReset);
                                             String temp  = String.valueOf(slectionItemByExp-1);
                                             btnReset.setText(temp + getString(R.string.year));
@@ -826,7 +825,7 @@ public class findActivity extends AppCompatActivity {
                                         }else
                                 //yeah >=3
                                 if(typeString == null && CityString == null && slectionItemByExp == 4 && slectionItemByExp != 0){
-                                            slectionItemByType = getIntent().getIntExtra("slectionItemByExp",0);
+                                            slectionItemByExp = getIntent().getIntExtra("slectionItemByExp",0);
                                             Button btnReset = findViewById(R.id.btnReset);
                                             btnReset.setText("3+ " + getString(R.string.year) );
                                             btnReset.setVisibility(View.VISIBLE);
@@ -900,8 +899,7 @@ public class findActivity extends AppCompatActivity {
                 .document(jobId)
                 .collection("AcceptList")
                 .document(firebaseauth.getCurrentUser().getUid())
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot d) {
                         if(!d.exists()){
@@ -924,7 +922,8 @@ public class findActivity extends AppCompatActivity {
                         if(SearchString != null){
                             Button btnReset = findViewById(R.id.btnReset);
                             btnReset.setVisibility(View.VISIBLE);
-                            btnReset.setText(getString(R.string.search) + " by " + SearchString);
+                            btnReset.setText(getString(R.string.search) + getString(R.string.by) + SearchString);
+                            SearchString = SearchString.toLowerCase();
                             if(documentSnapshot.getString("jobPosition").toLowerCase().contains(SearchString.toLowerCase())) {
                                 Company company = createCompanyFromDocument(documentSnapshot,JobId);
                                 getNameAndAvatar(company);

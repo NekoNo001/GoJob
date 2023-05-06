@@ -22,7 +22,7 @@
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="370dp"
+            android:layout_height="350dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/img"
@@ -36,7 +36,7 @@
             android:id="@+id/txteIntroduce"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:gravity="center"
             android:hint="@string/introduce_you_self"
             android:inputType="textMultiLine"
@@ -64,23 +64,23 @@
         <EditText
             android:id="@+id/nameId"
             android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="20dp"
-            android:maxLength="30"
             android:gravity="center_vertical"
             android:hint="@string/name"
+            android:maxLength="30"
             android:singleLine="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/personid"
-            app:layout_constraintTop_toBottomOf="@+id/txteIntroduce" />
+            app:layout_constraintTop_toTopOf="@+id/personid" />
 
         <ImageView
             android:id="@+id/personid"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/man"
+            android:backgroundTint="@color/Mint"
             app:layout_constraintEnd_toStartOf="@id/nameId"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txteIntroduce" />
@@ -88,23 +88,23 @@
         <EditText
             android:id="@+id/txtGPA"
             android:layout_width="60dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="20dp"
             android:gravity="center_vertical"
             android:hint="GPA*"
-            android:maxLength="1"
             android:inputType="numberDecimal"
-            android:layout_marginTop="10dp"
+            android:maxLength="1"
             android:singleLine="true"
+            app:layout_constraintBottom_toBottomOf="@+id/university"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/university"
-            app:layout_constraintTop_toBottomOf="@+id/positionId" />
+            app:layout_constraintTop_toTopOf="@+id/university" />
 
         <EditText
             android:singleLine="true"
             android:id="@+id/university"
             android:layout_width="240dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:maxLength="30"
             android:gravity="center_vertical"
             android:hint="@string/university"
@@ -116,10 +116,10 @@
             android:imeOptions="actionNext"/>
 
         <ImageView
-
+            android:backgroundTint="@color/Mint"
             android:id="@+id/universityico"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@drawable/graduation"
             android:layout_marginTop="10dp"
             android:layout_marginStart="9dp"
@@ -132,7 +132,7 @@
             android:singleLine="true"
             android:id="@+id/positionId"
             android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="20dp"
             android:gravity="center_vertical"
             android:hint="@string/position"
@@ -143,10 +143,11 @@
 
         <ImageView
             android:id="@+id/workid"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@drawable/jobs"
             android:layout_marginTop="10dp"
+            android:backgroundTint="@color/Mint"
             app:layout_constraintEnd_toStartOf="@+id/positionId"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/personid" />
@@ -156,7 +157,7 @@
             android:id="@+id/txtaddress"
             android:layout_width="300dp"
             android:layout_marginTop="10dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="20dp"
             android:gravity="center_vertical"
             android:hint="@string/address"
@@ -169,10 +170,11 @@
 
         <ImageView
             android:id="@+id/addressic"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@drawable/location"
             android:layout_marginTop="10dp"
+            android:backgroundTint="@color/Mint"
             app:layout_constraintEnd_toStartOf="@+id/txtaddress"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/universityico" />
@@ -181,7 +183,7 @@
             android:singleLine="true"
             android:id="@+id/txtemail"
             android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="20dp"
             android:layout_marginTop="10dp"
             android:gravity="center_vertical"
@@ -193,10 +195,11 @@
 
         <ImageView
             android:id="@+id/emailic"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@drawable/message"
             android:layout_marginTop="10dp"
+            android:backgroundTint="@color/Mint"
             app:layout_constraintEnd_toStartOf="@+id/txtemail"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addressic" />
@@ -204,7 +207,7 @@
         <EditText
             android:id="@+id/txtphone"
             android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="20dp"
             android:gravity="center_vertical"
             android:hint="@string/phone_number"
@@ -219,10 +222,11 @@
 
         <ImageView
             android:id="@+id/phoneic"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@drawable/emergencyphone"
             android:layout_marginTop="10dp"
+            android:backgroundTint="@color/Mint"
             app:layout_constraintEnd_toStartOf="@+id/txtemail"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailic" />
@@ -230,8 +234,9 @@
 
         <ImageView
             android:id="@+id/datebirth"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:backgroundTint="@color/Mint"
             android:background="@drawable/birthday"
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toStartOf="@+id/editTextDate"
@@ -241,7 +246,7 @@
         <EditText
             android:id="@+id/editTextDate"
             android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="20dp"
             android:hint="@string/date_of_birth"
             android:focusable="false"
@@ -253,10 +258,11 @@
 
         <ImageView
             android:id="@+id/webic"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@drawable/information"
             android:layout_marginTop="10dp"
+            android:backgroundTint="@color/Mint"
             app:layout_constraintEnd_toStartOf="@+id/txtweb"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/datebirth" />
@@ -267,7 +273,7 @@
             android:layout_height="50dp"
             android:layout_marginEnd="20dp"
             android:hint="@string/website"
-            android:maxLength="50"
+            android:maxLength="40"
             android:singleLine="true"
             android:layout_marginTop="10dp"
             android:imeOptions="actionDone"

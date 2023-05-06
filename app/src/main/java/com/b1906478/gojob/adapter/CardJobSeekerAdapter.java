@@ -110,29 +110,29 @@ public class CardJobSeekerAdapter extends RecyclerView.Adapter<CardJobSeekerAdap
             if(!userModels.getUserAvatar().equals("")){
                 Picasso.get().load(userModels.getUserAvatar()).resize(1360,1370).centerCrop().into(avatarImg);
             }
-            if(userModels.getUserIntroduce().equals("")){
-                introtxt.setVisibility(View.GONE);
-                line3.setVisibility(View.GONE);
+            if(!userModels.getUserIntroduce().equals("")){
+                introtxt.setVisibility(View.VISIBLE);
+                line3.setVisibility(View.VISIBLE);
             }
-            if(userModels.getUserWeb().equals("")){
-                webtxt.setVisibility(View.GONE);
-                webic.setVisibility(View.GONE);
+            if(!userModels.getUserWeb().equals("")){
+                webtxt.setVisibility(View.VISIBLE);
+                webic.setVisibility(View.VISIBLE);
             }
-            if(userModels.getUserSkill().equals("")){
-                skill.setVisibility(View.GONE);
-                skilltxt.setVisibility(View.GONE);
+            if(!userModels.getUserSkill().equals("")){
+                skill.setVisibility(View.VISIBLE);
+                skilltxt.setVisibility(View.VISIBLE);
             }
-            if(userModels.getUserCer().equals("")){
-                cer.setVisibility(View.GONE);
-                certxt.setVisibility(View.GONE);
+            if(!userModels.getUserCer().equals("")){
+                cer.setVisibility(View.VISIBLE);
+                certxt.setVisibility(View.VISIBLE);
             }
-            if(userModels.getUserInterest().equals("")){
-                interet.setVisibility(View.GONE);
-                interettxt.setVisibility(View.GONE);
+            if(!userModels.getUserInterest().equals("")){
+                interet.setVisibility(View.VISIBLE);
+                interettxt.setVisibility(View.VISIBLE);
             }
-            if(userModels.getUserExperience().equals("")){
-                exp.setVisibility(View.GONE);
-                exptxt.setVisibility(View.GONE);
+            if(!userModels.getUserExperience().equals("")){
+                exp.setVisibility(View.VISIBLE);
+                exptxt.setVisibility(View.VISIBLE);
             }
 
         }

@@ -68,12 +68,10 @@ public class careerAdapterOnlyOneSelection extends  RecyclerView.Adapter<careerA
             viewbackground = itemView.findViewById(R.id.viewBackground);
             layoutCareer = itemView.findViewById(R.id.layoutCareer);
             txtCareer = itemView.findViewById(R.id.txtCareer);
-            careerIc = itemView.findViewById(R.id.Careeric);
         }
 
         void bindCareer(final Career career){
             txtCareer.setText(career.nameCareer);
-            careerIc.setImageResource(career.image);
             if(career.isSelected){
                 viewbackground.setBackgroundResource(R.drawable.career_background_selected);
                 txtCareer.setTextColor(txtCareer.getResources().getColor(R.color.darkmode));

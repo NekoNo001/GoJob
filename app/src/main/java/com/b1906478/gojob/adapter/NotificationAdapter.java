@@ -3,6 +3,7 @@ package com.b1906478.gojob.adapter;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.text.Spannable;
@@ -62,26 +63,38 @@ public class NotificationAdapter extends  RecyclerView.Adapter<NotificationAdapt
     class notificationViewHolder extends RecyclerView.ViewHolder {
         ConstraintLayout layoutNotification;
         TextView txtNotification;
-        TextView txtNotificationTime;
+        TextView txtNotificationTime,txtposition;
         ImageView notificationIc;
 
         public notificationViewHolder(@NonNull View itemView) {
             super(itemView);
             layoutNotification = itemView.findViewById(R.id.layoutNotification);
             txtNotification = itemView.findViewById(R.id.txtNotification);
+            txtposition = itemView.findViewById(R.id.txtPosition);
             txtNotificationTime = itemView.findViewById(R.id.txtNotificationTime);
             notificationIc = itemView.findViewById(R.id.nofication_ic);
+
         }
 
         void bindNotification(final Notification notification){
             if(notification.jobPosition != null){
-            SpannableString spannableString = new SpannableString(notification.NotificationMessenge + " " +notification.jobPosition);
-            spannableString.setSpan(new StyleSpan(Typeface.BOLD), spannableString.length() - notification.jobPosition.length(), spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            txtNotification.setText(spannableString);
+                txtposition.setText(notification.jobPosition);
+                if(notification.NotificationMessenge.equals("M102".trim())){
+                    txtNotification.setText(R.string.you_are_invited_to_apply_for_the_position);
+                } else if (notification.NotificationMessenge.equals("M103".trim())) {
+                    txtNotification.setText(R.string.your_cv_being_refuse_for_position);
+                }else if (notification.NotificationMessenge.equals("M104".trim())) {
+                    txtNotification.setText(R.string.your_cv_was_accept_please_wait_for_company_contact_position);
+                }
             }else{
-                txtNotification.setText(notification.NotificationMessenge);
+                txtposition.setVisibility(View.GONE);
+                if(notification.NotificationMessenge.equals("M100".trim())) {
+                    txtNotification.setText(R.string.hello_new_user_we_wish_you_all_the_luck_in_finding_a_job);
+                }else if(notification.NotificationMessenge.equals("M101".trim())){
+                    txtNotification.setText(R.string.your_cv_being_refuse_many_time_we_recommend_you_edit_your_cv_or_try_different_fields);
+                }
             }
-            txtNotificationTime.setText(new SimpleDateFormat("d MMM yyyy 'at' HH:mm").format(notification.NotificationTime.toDate()));
+            txtNotificationTime.setText(new SimpleDateFormat("d'/'MM'/'yyyy HH:mm").format(notification.NotificationTime.toDate()));
             Picasso.get().load(notification.imageUrl).resize(500, 500).centerCrop().into(notificationIc);
             layoutNotification.setOnClickListener(new View.OnClickListener() {
                 @Override

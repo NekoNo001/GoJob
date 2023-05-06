@@ -146,6 +146,12 @@
     <string name="position_">Position:</string>
     <string name="region">Region:</string>
     <string name="choice_pattern">Choice pattern</string>
+    <string name="you_cant_edit_this_job_anymore_please_create_new_job">You cant edit this job anymore, please create new job</string>
+    <string name="you_cant_turn_on_this_job_please_create_new_job">you cant turn on this job, please create new job</string>
+    <string name="you_cant_find_candidates_to_this_job_please_create_new_job">you cant find Candidates to this job, please create new job</string>
+    <string name="by">" by "</string>
+    <string name="your_cv_being_refuse_for_position">"Your CV being refuse for position: "</string>
+    <string name="your_cv_was_accept_please_wait_for_company_contact_position">"Your CV was accept please wait for Company contact. Position: "</string>
 
     -----------------------------------dropdown item----------------------------------------
     <string-array name="my_dropdown_items">

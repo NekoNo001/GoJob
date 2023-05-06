@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,10 +20,12 @@ import com.b1906478.gojob.R;
 import com.b1906478.gojob.databinding.ActivityJobManageBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.protobuf.StringValue;
 import com.squareup.picasso.Picasso;
 
@@ -118,7 +122,7 @@ public class JobManageActivity extends AppCompatActivity {
                             binding.txtexp.setText(String.valueOf(snapshot.getLong("workExperienceNeed")) + getString(R.string.year));
                             ImageView statusimg = findViewById(R.id.statusimg);
                             if (snapshot.getBoolean("status")) {
-                                statusimg.setImageResource(R.drawable.switchon_ic);
+                                statusimg.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.Mint, null)));
                                 statusimg.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
@@ -137,7 +141,7 @@ public class JobManageActivity extends AppCompatActivity {
                                                         firebaseFirestore.collection("Job")
                                                                 .document(jobid)
                                                                 .update("status", false);
-                                                        statusimg.setImageResource(R.drawable.switchoff_ic);
+                                                        statusimg.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
                                                     }
                                                 });
                                         AlertDialog alert = builder.create();
@@ -148,26 +152,61 @@ public class JobManageActivity extends AppCompatActivity {
                                 binding.txtPosition.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        Toast.makeText(JobManageActivity.this,"You cant edit this job anymore, please create new job",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(JobManageActivity.this, R.string.you_cant_edit_this_job_anymore_please_create_new_job,Toast.LENGTH_SHORT).show();
                                     }
                                 });
                                 statusimg.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        Toast.makeText(JobManageActivity.this,"you cant turn on this job, please create new job",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(JobManageActivity.this, R.string.you_cant_turn_on_this_job_please_create_new_job ,Toast.LENGTH_SHORT).show();
                                     }
                                 });
                                 binding.findCadi.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        Toast.makeText(JobManageActivity.this,"you cant find Candidates to this job, please create new job",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(JobManageActivity.this, R.string.you_cant_find_candidates_to_this_job_please_create_new_job ,Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }
                         };
                     }
                 });
-
+        firebaseFirestore.collection("Job")
+                .document(jobid)
+                .collection("Application")
+                .whereEqualTo("jobId",jobid)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+                            Log.e(TAG, "Error querying Firestore: ", error);
+                            return;
+                        }
+                        if (value != null && !value.isEmpty()) {
+                            binding.numberView.setText(String.valueOf(value.size()));
+                        }else {
+                            binding.numberView.setText("0");
+                        }
+                    }
+                });
+        firebaseFirestore.collection("Job")
+                .document(jobid)
+                .collection("AcceptList")
+                .whereEqualTo("jobId",jobid)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        if (error != null) {
+                            Log.e(TAG, "Error querying Firestore: ", error);
+                            return;
+                        }
+                        if (value != null && !value.isEmpty()) {
+                            binding.numberapply.setText(String.valueOf(value.size()));
+                        }else {
+                            binding.numberapply.setText("0");
+                        }
+                    }
+                });
     }
     public void backbuttob() {
         binding.imageView4.setOnClickListener(new View.OnClickListener() {

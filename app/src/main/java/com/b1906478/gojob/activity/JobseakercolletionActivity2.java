@@ -79,7 +79,6 @@ public class JobseakercolletionActivity2 extends AppCompatActivity {
                         binding.txtcer.setText(documentSnapshot.getString("Certificate"));
                         binding.txtinterest.setText(documentSnapshot.getString("Interest"));
                         binding.txtworkExperian.setText(documentSnapshot.getString("Work Experience"));
-
                     }
                 });
     }

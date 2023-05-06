@@ -22,37 +22,42 @@
         />
 
     <EditText
-        android:drawableTint="@color/Mint"
-        android:drawableLeft="@drawable/ic_baseline_email_24"
         android:id="@+id/txtemail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/hind1id"
-        android:layout_marginTop="16dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:drawableTint="@color/Mint"
         android:hint="Email"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:imeOptions="actionNext"
+        android:singleLine="true"
         android:textSize="20sp" />
 
     <EditText
-        android:drawableLeft="@drawable/padlock"
-        android:drawableTint="@color/Mint"
         android:id="@+id/txtpw"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtemail"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:drawableLeft="@drawable/padlock"
+        android:drawableTint="@color/Mint"
         android:hint="@string/password"
+        android:imeOptions="actionDone"
         android:inputType="textPassword"
+        android:singleLine="true"
         android:textSize="20sp" />
 
     <TextView
         android:id="@+id/btnResetpw"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="25dp"
         android:layout_below="@+id/txtpw"
-        android:layout_marginTop="-15dp"
         android:layout_marginLeft="15dp"
         android:gravity="center_vertical"
         android:text="@string/reset_your_password"

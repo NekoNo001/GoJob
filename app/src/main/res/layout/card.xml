@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardBackgroundColor="@color/darkmode">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -57,9 +58,10 @@
                 style="@style/iconsize"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/regularpayments"
+                android:background="@drawable/regularpayment"
                 app:layout_constraintEnd_toStartOf="@+id/Salary"
                 app:layout_constraintStart_toStartOf="parent"
+                android:backgroundTint="@color/Mint"
                 app:layout_constraintTop_toBottomOf="@+id/line1" />
 
             <TextView
@@ -96,7 +98,8 @@
                 style="@style/iconsize"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
-                android:src="@drawable/recruitment"
+                android:backgroundTint="@color/Mint"
+                android:background="@drawable/recruitments"
                 app:layout_constraintStart_toEndOf="@id/txtsalary"
                 app:layout_constraintTop_toBottomOf="@+id/line1" />
 
@@ -133,7 +136,8 @@
             <ImageView
                 android:id="@+id/typejobic"
                 style="@style/iconsize"
-                android:src="@drawable/parttime"
+                android:backgroundTint="@color/Mint"
+                android:background="@drawable/timework"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/addressic" />
 
@@ -169,7 +173,8 @@
                 android:layout_marginEnd="10dp"
                 android:src="@drawable/ic_experience"
                 app:layout_constraintStart_toEndOf="@id/txtLevel"
-                app:layout_constraintTop_toBottomOf="@+id/imgNumOfrecut" />
+                app:layout_constraintTop_toBottomOf="@+id/imgNumOfrecut"
+                app:tint="@color/Mint"/>
 
             <TextView
                 android:id="@+id/exp"
@@ -215,7 +220,8 @@
             <ImageView
                 android:id="@+id/levelic"
                 style="@style/iconsize"
-                android:src="@drawable/mlm"
+                android:background="@drawable/mlm"
+                android:backgroundTint="@color/Mint"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/typejobic" />
 
@@ -231,7 +237,8 @@
             <ImageView
                 android:id="@+id/icgender"
                 style="@style/iconsize"
-                android:src="@drawable/equality"
+                android:background="@drawable/equality"
+                android:backgroundTint="@color/Mint"
                 app:layout_constraintStart_toEndOf="@+id/txtTypejob"
                 app:layout_constraintTop_toBottomOf="@+id/typejobic" />
 
@@ -386,7 +393,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

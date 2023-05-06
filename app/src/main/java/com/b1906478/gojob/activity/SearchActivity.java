@@ -57,6 +57,7 @@ public class SearchActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(SearchActivity.this,findActivity.class);
                 String searchString = editText.getText().toString();
+                searchString = searchString.toLowerCase();
                 searchHistorySet.add(searchString);
                 sharedPreferences.edit().putStringSet("search_history" , searchHistorySet).apply();
                 i.putExtra("SearchString",searchString.toLowerCase());

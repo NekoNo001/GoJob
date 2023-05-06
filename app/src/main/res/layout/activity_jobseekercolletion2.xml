@@ -51,6 +51,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
+            android:backgroundTint="@color/Mint"
             android:background="@drawable/skills"
             app:layout_constraintEnd_toStartOf="@id/view1"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,6 +60,7 @@
         <ImageView
             android:id="@+id/ceric"
             android:layout_width="50dp"
+            android:backgroundTint="@color/Mint"
             android:layout_height="50dp"
             android:layout_marginTop="100dp"
             android:background="@drawable/certificate"
@@ -69,6 +71,7 @@
         <ImageView
             android:id="@+id/interestIc"
             android:layout_width="50dp"
+            android:backgroundTint="@color/Mint"
             android:layout_height="50dp"
             android:layout_marginTop="104dp"
             android:background="@drawable/mentalhealth"
@@ -77,7 +80,6 @@
             app:layout_constraintTop_toBottomOf="@+id/ceric" />
 
         <ImageView
-
             android:id="@+id/workEIc"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -85,7 +87,8 @@
             android:background="@drawable/ic_experience"
             app:layout_constraintEnd_toStartOf="@+id/view4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/interestIc" />
+            app:layout_constraintTop_toBottomOf="@+id/interestIc"
+            android:backgroundTint="@color/Mint"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/view2"

@@ -55,7 +55,8 @@
             <ImageView
                 android:id="@+id/addressic"
                 style="@style/iconsizejob"
-                android:src="@drawable/graduation"
+                android:backgroundTint="@color/Mint"
+                android:background="@drawable/graduation"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/line3"/>
 
@@ -75,6 +76,7 @@
                 android:text="GPA: "
                 android:textSize="17sp"
                 android:textStyle="bold"
+                android:textColor="@color/Mint"
                 app:layout_constraintBottom_toBottomOf="@+id/addressic"
                 app:layout_constraintStart_toEndOf="@+id/universitytxt"
                 app:layout_constraintTop_toTopOf="@+id/addressic" />
@@ -93,7 +95,8 @@
             <ImageView
                 android:id="@+id/typejobic"
                 style="@style/iconsizejob"
-                android:src="@drawable/message"
+                android:background="@drawable/message"
+                android:backgroundTint="@color/Mint"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/addressic" />
 
@@ -108,7 +111,8 @@
             <ImageView
                 android:id="@+id/levelic"
                 style="@style/iconsizejob"
-                android:src="@drawable/emergencyphone"
+                android:backgroundTint="@color/Mint"
+                android:background="@drawable/emergencyphone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/typejobic" />
 
@@ -123,7 +127,8 @@
             <ImageView
                 android:id="@+id/address"
                 style="@style/iconsizejob"
-                android:src="@drawable/location"
+                android:background="@drawable/location"
+                android:backgroundTint="@color/Mint"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/levelic" />
 
@@ -138,9 +143,10 @@
             <ImageView
                 android:id="@+id/datebirth"
                 style="@style/iconsizejob"
-                android:src="@drawable/birthday"
+                android:background="@drawable/birthday"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/address" />
+                app:layout_constraintTop_toBottomOf="@+id/address"
+                android:backgroundTint="@color/Mint"/>
 
             <TextView
                 android:id="@+id/dobtxt"
@@ -152,9 +158,11 @@
             <ImageView
                 android:id="@+id/webic"
                 style="@style/iconsizejob"
-                android:src="@drawable/information"
+                android:background="@drawable/information"
+                android:backgroundTint="@color/Mint"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/datebirth" />
+                app:layout_constraintTop_toBottomOf="@+id/datebirth"
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/webtxt"
@@ -162,7 +170,8 @@
                 android:text="github.com/neko001"
                 app:layout_constraintBottom_toBottomOf="@+id/webic"
                 app:layout_constraintStart_toEndOf="@+id/webic"
-                app:layout_constraintTop_toTopOf="@+id/webic" />
+                app:layout_constraintTop_toTopOf="@+id/webic"
+                android:visibility="gone"/>
             <View
                 android:id="@+id/line1"
                 android:layout_width="match_parent"
@@ -183,6 +192,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:gravity="center"
+                android:visibility="gone"
                 android:text="I'm currently a fourth-year student at CanTho University. Currently, I am working onmy thesis and will graduate in September2023. I now working on Android development and I also interested in branching out intoWeb development"
                 android:textColor="@color/darkmodedfont"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -193,6 +203,7 @@
                 android:id="@+id/line3"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
+                android:visibility="gone"
                 android:layout_marginHorizontal="10dp"
                 android:background="@color/darkmodedfont"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -219,6 +230,7 @@
                 android:textColor="@color/Mint"
                 android:layout_margin="10dp"
                 android:textSize="20dp"
+                android:visibility="gone"
                 android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@+id/line4" />
 
@@ -226,6 +238,7 @@
                 android:id="@+id/txtjobdescription"
                 style="@style/fontJD2"
                 android:text="Place holder"
+                android:visibility="gone"
                 android:textColor="@color/darkmodedfont"
                 android:layout_marginTop="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -240,6 +253,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="5dp"
                 android:textStyle="bold"
+                android:visibility="gone"
                 android:text="@string/certifications_js"
                 android:textSize="20dp"
                 android:textColor="@color/Mint"/>
@@ -247,6 +261,7 @@
             <TextView
                 android:id="@+id/txtcandidateRequirements"
                 style="@style/fontJD2"
+                android:visibility="gone"
                 android:text="Place holder"
                 android:textColor="@color/darkmodedfont"
                 android:layout_marginTop="0dp"
@@ -262,6 +277,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="5dp"
                 android:textStyle="bold"
+                android:visibility="gone"
                 android:text="@string/workexperian"
                 android:textSize="20dp"
                 android:textColor="@color/Mint"/>
@@ -270,6 +286,7 @@
                 android:id="@+id/txtbenefit"
                 style="@style/fontJD2"
                 android:text="Place Holder"
+                android:visibility="gone"
                 android:textColor="@color/darkmodedfont"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -282,6 +299,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/interest"
+                android:visibility="gone"
                 android:textColor="@color/Mint"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="5dp"
@@ -293,6 +311,7 @@
                 android:id="@+id/worktxt"
                 style="@style/fontJD2"
                 android:text="Place Holder"
+                android:visibility="gone"
                 android:textColor="@color/darkmodedfont"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

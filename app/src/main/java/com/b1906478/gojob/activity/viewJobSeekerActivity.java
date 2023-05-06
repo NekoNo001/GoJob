@@ -313,7 +313,7 @@ public class viewJobSeekerActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onSuccess(Void unused) {
                                                     Map<String, Object> Notification = new HashMap<>();
-                                                    Notification.put("message", getString(R.string.your_cv_being_refuse_many_time_we_recommend_you_edit_your_cv_or_try_different_fields));
+                                                    Notification.put("message", "M101".trim());
                                                     Notification.put("notificationTime", FieldValue.serverTimestamp());
                                                     Notification.put("status",false);
                                                     Notification.put("imageUrl", "https://firebasestorage.googleapis.com/v0/b/gojob-f9aa4.appspot.com/o/Company%2Flogo.png?alt=media&token=e205e05d-271b-47d6-9cb0-604e89fc8cfe");
@@ -381,7 +381,7 @@ public class viewJobSeekerActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentSnapshot d) {
                         Map<String, Object> Notification = new HashMap<>();
-                        Notification.put("message", getString(R.string.you_are_invited_to_apply_for_the_position));
+                        Notification.put("message","M102".trim());
                         Notification.put("jobId", documentSnapshot.getId());
                         Notification.put("jobPosition", documentSnapshot.getString("jobPosition"));
                         Notification.put("notificationTime", FieldValue.serverTimestamp());
@@ -404,7 +404,7 @@ public class viewJobSeekerActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentSnapshot d) {
                         Map<String, Object> Notification = new HashMap<>();
-                        Notification.put("message", "Your CV being refuse for position: ");;
+                        Notification.put("message", "M103".trim());
                         Notification.put("jobPosition", documentSnapshot.getString("jobPosition"));
                         Notification.put("notificationTime", FieldValue.serverTimestamp());
                         Notification.put("status",false);
@@ -426,7 +426,7 @@ public class viewJobSeekerActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentSnapshot d) {
                         Map<String, Object> Notification = new HashMap<>();
-                        Notification.put("message", "Your CV was accept please wait for Company contact. Position: ");;
+                        Notification.put("message", "M104".trim());;
                         Notification.put("jobPosition", documentSnapshot.getString("jobPosition"));
                         Notification.put("notificationTime", FieldValue.serverTimestamp());
                         Notification.put("status",false);

@@ -78,8 +78,8 @@ public class JobAdapter extends  RecyclerView.Adapter<JobAdapter.CompanyViewHold
             Log.d(TAG, "bindCompany: " + company.getCompanyJobPosition());
             txtPosition.setText(company.getCompanyJobPosition());
             txtCity.setText(company.getCompanyCity());
-            txtDateStart.setText(new SimpleDateFormat("d MMM yyyy").format(company.getDateStart()));
-            txtDateEnd.setText(new SimpleDateFormat("d MMM yyyy").format(company.getDateEnd()));
+            txtDateStart.setText(new SimpleDateFormat("d'/'MM'/'yyyy").format(company.getDateStart()));
+            txtDateEnd.setText(new SimpleDateFormat("d'/'MM'/'yyyy").format(company.getDateEnd()));
             LayoutJob.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

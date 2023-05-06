@@ -96,9 +96,10 @@
 
     <ImageView
         android:id="@+id/statusimg"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/switchoff_ic"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/switchoff_ic"
+        android:backgroundTint="#FF0000"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cardView"
@@ -187,9 +188,9 @@
         android:text="@string/view_candidates"
         android:textSize="20sp"
         android:textStyle="bold"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addressic" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -251,8 +252,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/card1"
                     app:layout_constraintTop_toTopOf="@+id/card1" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
+
 
         <androidx.cardview.widget.CardView
             android:id="@+id/viewApply"
@@ -308,6 +311,30 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/card2"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/reddot"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/reddot_ic"
+                    android:backgroundTint="@color/Mint"
+                    android:elevation="20dp"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/numberView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="15dp"
+                    android:textColor="@color/white"
+                    android:elevation="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/reddot"
+                    app:layout_constraintEnd_toEndOf="@+id/reddot"
+                    app:layout_constraintStart_toStartOf="@+id/reddot"
+                    app:layout_constraintTop_toTopOf="@+id/reddot" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
@@ -325,6 +352,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/darkmode">
+                <ImageView
+                    android:id="@+id/reddot1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/reddot_ic"
+                    android:backgroundTint="@color/Mint"
+                    android:elevation="20dp"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/numberapply"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="15dp"
+                    android:textColor="@color/white"
+                    android:elevation="20dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/reddot1"
+                    app:layout_constraintEnd_toEndOf="@+id/reddot1"
+                    app:layout_constraintStart_toStartOf="@+id/reddot1"
+                    app:layout_constraintTop_toTopOf="@+id/reddot1" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/card3"

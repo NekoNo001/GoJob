@@ -168,32 +168,32 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                 if (name.matches("") || position.matches("") || university.matches("") || gpa.matches("") || address.matches("") || email.matches("") || phone.matches("") || dob.matches("")) {
                     Toast.makeText(JobseakercolletionActivity.this, R.string.missing, Toast.LENGTH_LONG).show();
                 } else {
-                    Map<String, Object> User = new HashMap<>();
-                    User.put("Introduce", Introduce);
-                    User.put("Name", name);
-                    User.put("Position", position);
-                    User.put("University", university);
-                    User.put("GPA",Double.parseDouble(gpa));
-                    User.put("Address", address);
-                    User.put("Email", email);
-                    User.put("Phone", phone);
-                    User.put("Website", website);
-                    User.put("DOB", timestamp);
-                    User.put("imageUrl", ImageUrl);
-                    User.put("status", false);
-                    User.put("Skill", "");
-                    User.put("Certificate", "");
-                    User.put("Interest", "");
-                    User.put("Work Experience","");
-                    User.put("Priority",15);
-                    firebaseFirestore.collection("User")
-                            .document(FirebaseAuth.getInstance().getUid())
-                            .set(User);
-                    UploadImage(img);
                     String edit = getIntent().getStringExtra("Key");
                     if(edit == null) {
+                        Map<String, Object> User = new HashMap<>();
+                        User.put("Introduce", Introduce);
+                        User.put("Name", name);
+                        User.put("Position", position);
+                        User.put("University", university);
+                        User.put("GPA",Double.parseDouble(gpa));
+                        User.put("Address", address);
+                        User.put("Email", email);
+                        User.put("Phone", phone);
+                        User.put("Website", website);
+                        User.put("DOB", timestamp);
+                        User.put("imageUrl", ImageUrl);
+                        User.put("status", true);
+                        User.put("Priority",15);
+                        User.put("Skill", "");
+                        User.put("Certificate", "");
+                        User.put("Interest", "");
+                        User.put("Work Experience","");
+                        firebaseFirestore.collection("User")
+                                .document(FirebaseAuth.getInstance().getUid())
+                                .set(User);
+                        UploadImage(img);
                         Map<String, Object> Notification = new HashMap<>();
-                        Notification.put("message", getString(R.string.hello_new_user_we_wish_you_all_the_luck_in_finding_a_job));
+                        Notification.put("message", "M100");
                         Notification.put("notificationTime", FieldValue.serverTimestamp());
                         Notification.put("status",false);
                         Notification.put("imageUrl", "https://firebasestorage.googleapis.com/v0/b/gojob-f9aa4.appspot.com/o/Company%2Flogo.png?alt=media&token=e205e05d-271b-47d6-9cb0-604e89fc8cfe");
@@ -205,6 +205,22 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                         Intent i = new Intent(JobseakercolletionActivity.this,JobseakercolletionActivity2.class);
                         startActivity(i);
                     }else{
+                        Map<String, Object> User = new HashMap<>();
+                        User.put("Introduce", Introduce);
+                        User.put("Name", name);
+                        User.put("Position", position);
+                        User.put("University", university);
+                        User.put("GPA",Double.parseDouble(gpa));
+                        User.put("Address", address);
+                        User.put("Email", email);
+                        User.put("Phone", phone);
+                        User.put("Website", website);
+                        User.put("DOB", timestamp);
+                        User.put("imageUrl", ImageUrl);
+                        firebaseFirestore.collection("User")
+                                .document(FirebaseAuth.getInstance().getUid())
+                                .update(User);
+                        UploadImage(img);
                         Intent i = new Intent(JobseakercolletionActivity.this,JobseakercolletionActivity2.class);
                         i.putExtra("Key","Edit");
                         startActivity(i);

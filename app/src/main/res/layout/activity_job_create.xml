@@ -91,6 +91,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:layout_marginStart="15dp"
+            android:backgroundTint="@color/Mint"
             android:background="@drawable/man"
             app:layout_constraintEnd_toStartOf="@id/jobPosition"
             app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +112,8 @@
             android:id="@+id/addressic"
             style="@style/iconsizeforcreate"
             android:layout_marginStart="30dp"
-            android:src="@drawable/regularpayments"
+            android:background="@drawable/regularpayment"
+            android:backgroundTint="@color/Mint"
             app:layout_constraintEnd_toStartOf="@+id/Salary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line1" />
@@ -150,8 +152,9 @@
         <ImageView
             android:id="@+id/imgNumOfrecut"
             style="@style/iconsizeforcreate"
-            android:src="@drawable/recruitment"
+            android:background="@drawable/recruitments"
             app:layout_constraintStart_toEndOf="@id/txtsalary"
+            android:backgroundTint="@color/Mint"
             app:layout_constraintTop_toBottomOf="@+id/line1" />
 
         <TextView
@@ -190,7 +193,8 @@
             style="@style/iconsizeforcreate"
             android:layout_marginStart="30dp"
             android:layout_marginTop="15dp"
-            android:src="@drawable/mlm"
+            android:background="@drawable/mlm"
+            android:backgroundTint="@color/Mint"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addressic" />
 
@@ -229,7 +233,8 @@
             style="@style/iconsizeforcreate"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="15dp"
-            android:src="@drawable/ic_experience"
+            android:background="@drawable/ic_experience"
+            android:backgroundTint="@color/Mint"
             app:layout_constraintStart_toEndOf="@id/txtLevel"
             app:layout_constraintTop_toBottomOf="@+id/imgNumOfrecut" />
 
@@ -268,8 +273,9 @@
         <ImageView
             android:id="@+id/levelic"
             style="@style/iconsizeforcreate"
-            android:src="@drawable/parttime"
+            android:background="@drawable/timework"
             android:layout_marginStart="30dp"
+            android:backgroundTint="@color/Mint"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/typejobic" />
 
@@ -300,7 +306,8 @@
         <ImageView
             android:id="@+id/icgender"
             style="@style/iconsizeforcreate"
-            android:src="@drawable/equality"
+            android:background="@drawable/equality"
+            android:backgroundTint="@color/Mint"
             app:layout_constraintStart_toEndOf="@+id/txtTypejob"
             app:layout_constraintTop_toBottomOf="@+id/typejobic" />
 
