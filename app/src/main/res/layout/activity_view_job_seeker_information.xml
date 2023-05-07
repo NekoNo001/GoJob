@@ -65,9 +65,10 @@
                 <ImageView
                     android:id="@+id/addressic"
                     style="@style/iconsizejob"
-                    android:src="@drawable/graduation"
+                    android:background="@drawable/graduation"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/line3" />
+                    app:layout_constraintTop_toBottomOf="@+id/line3"
+                    android:backgroundTint="@color/Mint"/>
 
                 <TextView
                     android:id="@+id/universitytxt"
@@ -103,13 +104,15 @@
                 <ImageView
                     android:id="@+id/typejobic"
                     style="@style/iconsizejob"
-                    android:src="@drawable/message"
+                    android:backgroundTint="@color/Mint"
+                    android:background="@drawable/message"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/addressic" />
 
                 <TextView
                     android:id="@+id/emailtxt"
                     style="@style/textjob"
+
                     android:text="nguyenho6478@gmail.com"
                     app:layout_constraintBottom_toBottomOf="@+id/typejobic"
                     app:layout_constraintStart_toEndOf="@+id/typejobic"
@@ -118,7 +121,8 @@
                 <ImageView
                     android:id="@+id/levelic"
                     style="@style/iconsizejob"
-                    android:src="@drawable/emergencyphone"
+                    android:backgroundTint="@color/Mint"
+                    android:background="@drawable/emergencyphone"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/typejobic" />
 
@@ -133,7 +137,8 @@
                 <ImageView
                     android:id="@+id/address"
                     style="@style/iconsizejob"
-                    android:src="@drawable/location"
+                    android:backgroundTint="@color/Mint"
+                    android:background="@drawable/location"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/levelic" />
 
@@ -148,7 +153,8 @@
                 <ImageView
                     android:id="@+id/datebirth"
                     style="@style/iconsizejob"
-                    android:src="@drawable/birthday"
+                    android:backgroundTint="@color/Mint"
+                    android:background="@drawable/birthday"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/address" />
 
@@ -163,7 +169,8 @@
                 <ImageView
                     android:id="@+id/webic"
                     style="@style/iconsizejob"
-                    android:src="@drawable/information"
+                    android:backgroundTint="@color/Mint"
+                    android:background="@drawable/information"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/datebirth" />
 

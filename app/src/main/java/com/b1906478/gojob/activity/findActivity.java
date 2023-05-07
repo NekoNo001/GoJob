@@ -87,6 +87,9 @@ public class findActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences sharedPreferences = this.getSharedPreferences("language", Context.MODE_PRIVATE);
+        String language =  sharedPreferences.getString("language","en");
+        setLocale(language);
         super.onCreate(savedInstanceState);
         binding=ActivityFindBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -379,8 +382,8 @@ public class findActivity extends AppCompatActivity {
                                 Log.d(TAG, "onMenuItemClick: "+ sharedPreferences.getBoolean("darkMode",false));
                                 Intent i = new Intent(getApplicationContext(), splashScreen.class);
                                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(i);
                                 finish();
+                                startActivity(i);
                             }
                         });
                 AlertDialog alert = builder.create();

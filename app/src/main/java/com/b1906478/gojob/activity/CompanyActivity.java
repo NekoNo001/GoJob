@@ -53,6 +53,9 @@ public class CompanyActivity extends AppCompatActivity {
     private boolean doubleBackToExitPressedOnce = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences sharedPreferences = this.getSharedPreferences("language", Context.MODE_PRIVATE);
+        String language =  sharedPreferences.getString("language","en");
+        setLocale(language);
         super.onCreate(savedInstanceState);
         binding= ActivityCompanyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

@@ -117,7 +117,6 @@ public class JobSeekerAdapter extends  RecyclerView.Adapter<JobSeekerAdapter.Com
                     Intent i = new Intent(view.getContext(), viewJobSeekerInformationActivity.class);
                     i.putExtra("userId",userModel.getUserId());
                     view.getContext().startActivity(i);
-                    ((Activity) view.getContext()).finish();
                 }
             });
         }
