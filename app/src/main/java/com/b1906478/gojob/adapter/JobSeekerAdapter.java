@@ -89,7 +89,7 @@ public class JobSeekerAdapter extends  RecyclerView.Adapter<JobSeekerAdapter.Com
             TxtEmail.setPaintFlags(TxtEmail.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
             TxtPhone.setText(userModel.getUserPhone());
             TxtPhone.setPaintFlags(TxtEmail.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-            TxtDateApply.setText(new SimpleDateFormat("d MMM yyyy").format(userModel.getUserDOB()));
+            TxtDateApply.setText(new SimpleDateFormat("d MM yyyy").format(userModel.getUserDOB()));
             if(!userModel.getUserAvatar().equals("")){
                 Picasso.get().load(userModel.getUserAvatar()).resize(500,500).centerCrop().into(avatarImg);
             }

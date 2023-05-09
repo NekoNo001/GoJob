@@ -37,7 +37,7 @@ public class viewJobSeekerInformationActivity extends AppCompatActivity {
                                 binding.textView2.setText(documentSnapshot.getString("Position"));
                                 binding.txtaddress.setText(documentSnapshot.getString("Introduce"));
                                 binding.universitytxt.setText(documentSnapshot.getString("University"));
-                                binding.gpatxt.setText(documentSnapshot.getLong("GPA").toString() + "/4");
+                                binding.gpatxt.setText(documentSnapshot.getDouble("GPA").toString() + "/4.0");
                                 binding.emailtxt.setText(documentSnapshot.getString("Email"));
                                 binding.sdttxt.setText(documentSnapshot.getString("Phone"));
                                 binding.dobtxt.setText(new SimpleDateFormat("d'/'MM'/'yyyy").format(documentSnapshot.getTimestamp("DOB").toDate()));
@@ -55,6 +55,7 @@ public class viewJobSeekerInformationActivity extends AppCompatActivity {
                                 }
                                 if(documentSnapshot.getString("Website").equals("")){
                                     binding.webtxt.setVisibility(View.GONE);
+                                    binding.webic.setVisibility(View.GONE);
                                 }
                                 if(documentSnapshot.getString("Skill").equals("")){
                                     binding.jobdescription.setVisibility(View.GONE);

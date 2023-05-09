@@ -122,12 +122,16 @@ public class viewJobSeekerActivity extends AppCompatActivity {
                         public void onSuccess(DocumentSnapshot d) {
                             if(d.exists()){
                                 UserModel um = new UserModel();
-                                um.setUserAvatar(documentSnapshot.getString("imageUrl"));
+                                if(documentSnapshot.getString("imageUrl").equals("")){
+                                    um.setUserAvatar("None");
+                                }else{
+                                    um.setUserAvatar(documentSnapshot.getString("imageUrl"));
+                                }
                                 um.setUsername(documentSnapshot.getString("Name"));
                                 um.setUserIntroduce(documentSnapshot.getString("Introduce"));
                                 um.setUserPosition(documentSnapshot.getString("Position"));
                                 um.setUserUniversity(documentSnapshot.getString("University"));
-                                um.setUserGPA((documentSnapshot.getLong("GPA")));
+                                um.setUserGPA((documentSnapshot.getDouble("GPA")));
                                 um.setUserEmail(documentSnapshot.getString("Email"));
                                 um.setUserPhone(documentSnapshot.getString("Phone"));
                                 um.setUserDOB(documentSnapshot.getTimestamp("DOB").toDate());
@@ -180,12 +184,17 @@ public class viewJobSeekerActivity extends AppCompatActivity {
                         if(!d.exists()){
                             {
                                 UserModel um = new UserModel();
-                                um.setUserAvatar(documentSnapshot.getString("imageUrl"));
+                                if(documentSnapshot.getString("imageUrl").equals("")){
+                                    um.setUserAvatar("None");
+                                }else{
+                                    um.setUserAvatar(documentSnapshot.getString("imageUrl"));
+                                }
+                                Log.d(TAG, "on1234: "+um.getUserAvatar());
                                 um.setUsername(documentSnapshot.getString("Name"));
                                 um.setUserIntroduce(documentSnapshot.getString("Introduce"));
                                 um.setUserPosition(documentSnapshot.getString("Position"));
                                 um.setUserUniversity(documentSnapshot.getString("University"));
-                                um.setUserGPA((documentSnapshot.getLong("GPA")));
+                                um.setUserGPA((documentSnapshot.getDouble("GPA")));
                                 um.setUserEmail(documentSnapshot.getString("Email"));
                                 um.setUserPhone(documentSnapshot.getString("Phone"));
                                 um.setUserDOB(documentSnapshot.getTimestamp("DOB").toDate());

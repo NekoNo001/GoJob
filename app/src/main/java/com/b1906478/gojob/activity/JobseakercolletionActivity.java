@@ -112,7 +112,7 @@ public class JobseakercolletionActivity extends AppCompatActivity {
                                 binding.nameId.setText(document.getString("Name"));
                                 binding.positionId.setText(document.getString("Position"));
                                 binding.university.setText(document.getString("University"));
-                                binding.txtGPA.setText(String.valueOf(document.getLong("GPA")));
+                                binding.txtGPA.setText(String.valueOf(document.getDouble("GPA")));
                                 binding.txtaddress.setText(document.getString("Address"));
                                 binding.txtemail.setText(document.getString("Email"));
                                 binding.txtphone.setText(document.getString("Phone"));

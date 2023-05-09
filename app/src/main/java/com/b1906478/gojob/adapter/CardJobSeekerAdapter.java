@@ -1,4 +1,7 @@
 package com.b1906478.gojob.adapter;
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,7 +101,7 @@ public class CardJobSeekerAdapter extends RecyclerView.Adapter<CardJobSeekerAdap
             jobtxt.setText(userModels.getUserPosition());
             introtxt.setText(userModels.getUserIntroduce());
             universitytxt.setText(userModels.getUserUniversity());
-            gpatxt.setText(userModels.getUsergpa().toString() + "/4");
+            gpatxt.setText(userModels.getUsergpa().toString() + "/4.0");
             emailtxt.setText(userModels.getUserEmail());
             sdttxt.setText(userModels.getUserPhone());
             dobtxt.setText(new SimpleDateFormat("d'/'MM'/'yyyy").format(userModels.getUserDOB()));
@@ -107,9 +110,11 @@ public class CardJobSeekerAdapter extends RecyclerView.Adapter<CardJobSeekerAdap
             certxt.setText(userModels.getUserCer());
             exptxt.setText(userModels.getUserExperience());
             interettxt.setText(userModels.getUserInterest());
-            if(!userModels.getUserAvatar().equals("")){
+            if(userModels.getUserAvatar().equals("None")){
+                Picasso.get().load(R.drawable.img).resize(1360,1370).centerCrop().into(avatarImg);
+            }else{
                 Picasso.get().load(userModels.getUserAvatar()).resize(1360,1370).centerCrop().into(avatarImg);
-            }
+            }Log.d(TAG, "bindCard: "+ userModels.getUserAvatar() );
             if(!userModels.getUserIntroduce().equals("")){
                 introtxt.setVisibility(View.VISIBLE);
                 line3.setVisibility(View.VISIBLE);
