@@ -157,6 +157,9 @@
     <string name="reset">Reset</string>
     <string name="choice_language">Choice language</string>
     <string name="search_history">Search History</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="not_required">Not Required</string>
 
     -----------------------------------dropdown item----------------------------------------
     <string-array name="my_dropdown_items">

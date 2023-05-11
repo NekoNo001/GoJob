@@ -118,7 +118,13 @@ public class JobManageActivity extends AppCompatActivity {
                             });
                             binding.txtPosition.setText(snapshot.getString("jobPosition"));
                             binding.txtCity.setText(snapshot.getString("city"));
-                            binding.txtLevel.setText(snapshot.getString("typeOfWork"));
+                            if(snapshot.getString("typeOfWork").equals("Full-Time")){
+                                binding.txtLevel.setText(R.string.full_time);
+                            } else if (snapshot.getString("typeOfWork").equals("Part-Time")) {
+                                binding.txtLevel.setText(R.string.part_time);
+                            }else {
+                                binding.txtLevel.setText(R.string.intern);
+                            }
                             binding.txtexp.setText(String.valueOf(snapshot.getLong("workExperienceNeed")) + getString(R.string.year));
                             ImageView statusimg = findViewById(R.id.statusimg);
                             if (snapshot.getBoolean("status")) {

@@ -584,7 +584,13 @@ public class findActivity extends AppCompatActivity {
                                 //loai
                                 if(typeString != null && CityString == null && slectionItemByExp ==0 ){
                                     Button btnReset = findViewById(R.id.btnReset);
-                                    btnReset.setText(typeString);
+                                    if(typeString.equals("Full-Time")){
+                                        btnReset.setText(R.string.full_time);
+                                    } else if (typeString.equals("Part-Time")){
+                                        btnReset.setText(R.string.part_time);
+                                    }else {
+                                        btnReset.setText(R.string.intern);
+                                    }
                                     btnReset.setVisibility(View.VISIBLE);
                                     firebaseFirestore.collection("Job")
                                             .whereEqualTo("careerId", document.getId())

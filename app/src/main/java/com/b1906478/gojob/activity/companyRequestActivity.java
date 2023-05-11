@@ -104,10 +104,22 @@ public class companyRequestActivity extends AppCompatActivity {
                         NameCompany.setText(documentSnapshot.getString("CompanyId"));
                         Salary.setText(documentSnapshot.getString("salary"));
                         NumberOfRecruits.setText(String.valueOf(documentSnapshot.getLong("numberOfRecruits")) + getString(R.string.people));
-                        TypeOfWork.setText(documentSnapshot.getString("typeOfWork"));
+                        if(documentSnapshot.getString("typeOfWork").equals("Full-Time")){
+                            TypeOfWork.setText(R.string.full_time);
+                        } else if (documentSnapshot.getString("typeOfWork").equals("Part-Time")) {
+                            TypeOfWork.setText(R.string.part_time);
+                        }else {
+                            TypeOfWork.setText(R.string.intern);
+                        }
                         WorkExperience.setText(String.valueOf(documentSnapshot.getLong("workExperienceNeed")) + getString(R.string.year));
                         Level.setText(documentSnapshot.getString("level"));
-                        gender.setText(documentSnapshot.getString("gender"));
+                        if(documentSnapshot.getString("gender").equals("Male")){
+                            gender.setText(R.string.male);
+                        } else if (documentSnapshot.getString("gender").equals("Female")) {
+                            gender.setText(R.string.female);
+                        }else {
+                            gender.setText(R.string.not_required);
+                        }
                         address.setText(documentSnapshot.getString("address"));
                         jobDescription.setText(documentSnapshot.getString("jobDescription"));
                         candidateRequirements.setText(documentSnapshot.getString("candidateRequirements"));

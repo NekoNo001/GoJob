@@ -157,4 +157,7 @@
     <string name="reset">Đặt lại</string>
     <string name="choice_language">Chọn ngôn ngữ</string>
     <string name="search_history">Lịch sử tìm kiếm</string>
+    <string name="male">Nam</string>
+    <string name="female">Nữ</string>
+    <string name="not_required">Không yêu cầu</string>
 </resources>

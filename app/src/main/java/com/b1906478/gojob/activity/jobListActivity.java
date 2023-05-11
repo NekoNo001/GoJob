@@ -6,8 +6,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -37,6 +42,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 public class jobListActivity extends AppCompatActivity {
 
@@ -46,6 +52,9 @@ public class jobListActivity extends AppCompatActivity {
     FirebaseFirestore firebaseFirestore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences sharedPreferences = this.getSharedPreferences("language", Context.MODE_PRIVATE);
+        String language =  sharedPreferences.getString("language","en");
+        setLocale(language);
         super.onCreate(savedInstanceState);
         binding=ActivityJobListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -214,5 +223,13 @@ public class jobListActivity extends AppCompatActivity {
                 i.putExtra("Key",UserType);
                 startActivity(i);}
         });}
+    }
+    public void setLocale(String lang) {
+        Locale myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
     }
 }

@@ -76,9 +76,22 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.myViewHolder> 
             Salary.setText(company.getCompanySalary());
             NumberOfRecruits.setText(String.valueOf(company.getCompanyNumberOfRecruits()) + holder.itemView.getContext().getResources().getString(R.string.people));
             TypeOfWork.setText(company.getCompanyTypeOfWork());
+            if(company.getCompanyTypeOfWork().equals("Full-Time")){
+                TypeOfWork.setText(R.string.full_time);
+            } else if (company.getCompanyTypeOfWork().equals("Part-Time")) {
+                TypeOfWork.setText(R.string.part_time);
+            }else {
+                TypeOfWork.setText(R.string.intern);
+            }
             WorkExperience.setText(String.valueOf(company.getCompanyWorkExperience()) + holder.itemView.getContext().getResources().getString(R.string.year));
             Level.setText(company.getCompanyLevel());
-            gender.setText(company.getCompanyGender());
+            if(company.getCompanyGender().equals("Male")){
+                gender.setText(R.string.male);
+            } else if (company.getCompanyGender().equals("Male")) {
+                gender.setText(R.string.female);
+            }else {
+                gender.setText(R.string.not_required);
+            }
             address.setText(company.getCompanyAdress().replace("\\n","\n"));
             jobDescription.setText(company.getCompanyJobDescription().replace("\\n","\n"));
             candidateRequirements.setText(company.getCompanyCandidateRequirements().replace("\\n","\n"));
