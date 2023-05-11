@@ -127,8 +127,8 @@ public class JobManageActivity extends AppCompatActivity {
                                     @Override
                                     public void onClick(View view) {
                                         AlertDialog.Builder builder = new AlertDialog.Builder(JobManageActivity.this);
-                                        builder.setMessage("you will not be able to continue searching candidates for this job")
-                                                .setTitle("Turn off finding?")
+                                        builder.setMessage(R.string.you_will_not_be_able_to_continue_searching_candidates_for_this_job)
+                                                .setTitle(R.string.turn_off_finding)
                                                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                                                     @Override
                                                     public void onClick(DialogInterface dialogInterface, int i) {

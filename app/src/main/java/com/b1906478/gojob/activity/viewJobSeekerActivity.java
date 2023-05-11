@@ -123,23 +123,47 @@ public class viewJobSeekerActivity extends AppCompatActivity {
                             if(d.exists()){
                                 UserModel um = new UserModel();
                                 if(documentSnapshot.getString("imageUrl").equals("")){
-                                    um.setUserAvatar("None");
+                                    um.setUserAvatar("None".trim());
                                 }else{
                                     um.setUserAvatar(documentSnapshot.getString("imageUrl"));
                                 }
+                                if(documentSnapshot.getString("Introduce").equals("")){
+                                    um.setUserIntroduce("None".trim());
+                                }else{
+                                    um.setUserIntroduce(documentSnapshot.getString("Introduce"));
+                                }
+                                if(documentSnapshot.getString("Website").equals("")){
+                                    um.setUserWeb("None".trim());
+                                }else{
+                                    um.setUserWeb(documentSnapshot.getString("Website"));
+                                }
+                                if(documentSnapshot.getString("Skill").equals("")){
+                                    um.setUserSkill("None".trim());
+                                }else{
+                                    um.setUserSkill(documentSnapshot.getString("Skill"));
+                                }
+                                if(documentSnapshot.getString("Certificate").equals("")){
+                                    um.setUserCer("None".trim());
+                                }else{
+                                    um.setUserCer(documentSnapshot.getString("Certificate"));
+                                }
+                                if(documentSnapshot.getString("Interest").equals("")){
+                                    um.setUserInterest("None".trim());
+                                }else{
+                                    um.setUserInterest(documentSnapshot.getString("Interest"));
+                                }
+                                if(documentSnapshot.getString("Work Experience").equals("")){
+                                    um.setUserExperience("None".trim());
+                                }else{
+                                    um.setUserExperience(documentSnapshot.getString("Work Experience"));
+                                }
                                 um.setUsername(documentSnapshot.getString("Name"));
-                                um.setUserIntroduce(documentSnapshot.getString("Introduce"));
                                 um.setUserPosition(documentSnapshot.getString("Position"));
                                 um.setUserUniversity(documentSnapshot.getString("University"));
                                 um.setUserGPA((documentSnapshot.getDouble("GPA")));
                                 um.setUserEmail(documentSnapshot.getString("Email"));
                                 um.setUserPhone(documentSnapshot.getString("Phone"));
                                 um.setUserDOB(documentSnapshot.getTimestamp("DOB").toDate());
-                                um.setUserWeb(documentSnapshot.getString("Website"));
-                                um.setUserSkill(documentSnapshot.getString("Skill"));
-                                um.setUserCer(documentSnapshot.getString("Certificate"));
-                                um.setUserInterest(documentSnapshot.getString("Interest"));
-                                um.setUserExperience(documentSnapshot.getString("Work Experience"));
                                 um.setUserId(documentSnapshot.getId());
                                 um.setUserAddress(documentSnapshot.getString("Address"));
                                 um.setPriority(documentSnapshot.getLong("Priority"));
@@ -185,24 +209,48 @@ public class viewJobSeekerActivity extends AppCompatActivity {
                             {
                                 UserModel um = new UserModel();
                                 if(documentSnapshot.getString("imageUrl").equals("")){
-                                    um.setUserAvatar("None");
+                                    um.setUserAvatar("None".trim());
                                 }else{
                                     um.setUserAvatar(documentSnapshot.getString("imageUrl"));
                                 }
+                                if(documentSnapshot.getString("Introduce").equals("")){
+                                    um.setUserIntroduce("None".trim());
+                                }else{
+                                    um.setUserIntroduce(documentSnapshot.getString("Introduce"));
+                                }
+                                if(documentSnapshot.getString("Website").equals("")){
+                                    um.setUserWeb("None".trim());
+                                }else{
+                                    um.setUserWeb(documentSnapshot.getString("Website"));
+                                }
+                                if(documentSnapshot.getString("Skill").equals("")){
+                                    um.setUserSkill("None".trim());
+                                }else{
+                                    um.setUserSkill(documentSnapshot.getString("Skill"));
+                                }
+                                if(documentSnapshot.getString("Certificate").equals("")){
+                                    um.setUserCer("None".trim());
+                                }else{
+                                    um.setUserCer(documentSnapshot.getString("Certificate"));
+                                }
+                                if(documentSnapshot.getString("Interest").equals("")){
+                                    um.setUserInterest("None".trim());
+                                }else{
+                                    um.setUserInterest(documentSnapshot.getString("Interest"));
+                                }
+                                if(documentSnapshot.getString("Work Experience").equals("")){
+                                    um.setUserExperience("None".trim());
+                                }else{
+                                    um.setUserExperience(documentSnapshot.getString("Work Experience"));
+                                }
                                 Log.d(TAG, "on1234: "+um.getUserAvatar());
                                 um.setUsername(documentSnapshot.getString("Name"));
-                                um.setUserIntroduce(documentSnapshot.getString("Introduce"));
                                 um.setUserPosition(documentSnapshot.getString("Position"));
                                 um.setUserUniversity(documentSnapshot.getString("University"));
                                 um.setUserGPA((documentSnapshot.getDouble("GPA")));
                                 um.setUserEmail(documentSnapshot.getString("Email"));
                                 um.setUserPhone(documentSnapshot.getString("Phone"));
                                 um.setUserDOB(documentSnapshot.getTimestamp("DOB").toDate());
-                                um.setUserWeb(documentSnapshot.getString("Website"));
-                                um.setUserSkill(documentSnapshot.getString("Skill"));
-                                um.setUserCer(documentSnapshot.getString("Certificate"));
-                                um.setUserInterest(documentSnapshot.getString("Interest"));
-                                um.setUserExperience(documentSnapshot.getString("Work Experience"));
                                 um.setUserId(documentSnapshot.getId());
                                 um.setUserAddress(documentSnapshot.getString("Address"));
                                 um.setPriority(documentSnapshot.getLong("Priority"));

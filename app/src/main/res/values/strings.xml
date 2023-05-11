@@ -152,6 +152,11 @@
     <string name="by">" by "</string>
     <string name="your_cv_being_refuse_for_position">"Your CV being refuse for position: "</string>
     <string name="your_cv_was_accept_please_wait_for_company_contact_position">"Your CV was accept please wait for Company contact. Position: "</string>
+    <string name="you_will_not_be_able_to_continue_searching_candidates_for_this_job">you will not be able to continue searching candidates for this job</string>
+    <string name="turn_off_finding">Turn off finding?</string>
+    <string name="reset">Reset</string>
+    <string name="choice_language">Choice language</string>
+    <string name="search_history">Search History</string>
 
     -----------------------------------dropdown item----------------------------------------
     <string-array name="my_dropdown_items">

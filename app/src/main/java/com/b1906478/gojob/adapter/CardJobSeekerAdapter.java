@@ -115,27 +115,28 @@ public class CardJobSeekerAdapter extends RecyclerView.Adapter<CardJobSeekerAdap
             }else{
                 Picasso.get().load(userModels.getUserAvatar()).resize(1360,1370).centerCrop().into(avatarImg);
             }Log.d(TAG, "bindCard: "+ userModels.getUserAvatar() );
-            if(!userModels.getUserIntroduce().equals("")){
+
+            if(!userModels.getUserIntroduce().equals("None".trim())){
                 introtxt.setVisibility(View.VISIBLE);
                 line3.setVisibility(View.VISIBLE);
             }
-            if(!userModels.getUserWeb().equals("")){
+            if(!userModels.getUserWeb().equals("None".trim())){
                 webtxt.setVisibility(View.VISIBLE);
                 webic.setVisibility(View.VISIBLE);
             }
-            if(!userModels.getUserSkill().equals("")){
+            if(!userModels.getUserSkill().equals("None".trim())){
                 skill.setVisibility(View.VISIBLE);
                 skilltxt.setVisibility(View.VISIBLE);
             }
-            if(!userModels.getUserCer().equals("")){
+            if(!userModels.getUserCer().equals("None".trim())){
                 cer.setVisibility(View.VISIBLE);
                 certxt.setVisibility(View.VISIBLE);
             }
-            if(!userModels.getUserInterest().equals("")){
+            if(!userModels.getUserInterest().equals("None".trim())){
                 interet.setVisibility(View.VISIBLE);
                 interettxt.setVisibility(View.VISIBLE);
             }
-            if(!userModels.getUserExperience().equals("")){
+            if(!userModels.getUserExperience().equals("None".trim())){
                 exp.setVisibility(View.VISIBLE);
                 exptxt.setVisibility(View.VISIBLE);
             }

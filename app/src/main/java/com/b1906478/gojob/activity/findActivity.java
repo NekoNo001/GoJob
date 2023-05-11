@@ -399,7 +399,7 @@ public class findActivity extends AppCompatActivity {
                 // create an instance of AlertDialog.Builder
                 AlertDialog.Builder builder = new AlertDialog.Builder(findActivity.this);
                 // set the title of the dialog
-                builder.setTitle(getString(R.string.choice_city_to_sort))
+                builder.setTitle(R.string.choice_language)
                         .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -1078,7 +1078,7 @@ public class findActivity extends AppCompatActivity {
                 finish();
             }
         });
-        builder.setNegativeButton("Reset", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.reset, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent i = new Intent(findActivity.this,findActivity.class);
@@ -1087,7 +1087,7 @@ public class findActivity extends AppCompatActivity {
                 finish();
             }
         });
-        builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 slectionItemByType = 0;

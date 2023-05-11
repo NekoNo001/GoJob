@@ -149,8 +149,12 @@
     <string name="you_cant_edit_this_job_anymore_please_create_new_job">Bạn không thể chỉnh sửa công việc này nữa, vui lòng tạo công việc mới</string>
     <string name="you_cant_turn_on_this_job_please_create_new_job">Bạn không thể bật công việc này, vui lòng tạo công việc mới</string>
     <string name="you_cant_find_candidates_to_this_job_please_create_new_job">Bạn không thể tìm thấy ứng viên cho công việc này, vui lòng tạo công việc mới</string>
-
     <string name="by">" bởi "</string>
     <string name="your_cv_being_refuse_for_position">"CV của bạn đã bị từ chối cho vị trí: "</string>
     <string name="your_cv_was_accept_please_wait_for_company_contact_position">"CV của bạn đã được chấp nhận, vui lòng đợi liên hệ từ công ty. Vị trí: "</string>
+    <string name="you_will_not_be_able_to_continue_searching_candidates_for_this_job">Bạn sẽ không thể tiếp tục tìm kiếm ứng viên cho công việc này</string>
+    <string name="turn_off_finding">Tắt tìm kiếm?</string>
+    <string name="reset">Đặt lại</string>
+    <string name="choice_language">Chọn ngôn ngữ</string>
+    <string name="search_history">Lịch sử tìm kiếm</string>
 </resources>
